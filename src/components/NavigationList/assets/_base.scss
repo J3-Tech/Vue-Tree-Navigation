@@ -1,0 +1,11 @@
+.navigation-list {
+  &.closed {
+    li {
+      display: none;
+    }
+
+    ul {
+      display: none;
+    }
+  }
+}

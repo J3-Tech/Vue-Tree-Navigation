@@ -1,0 +1,20 @@
+.tree-navigation {
+  display: inline-block;
+
+  ul {
+    padding-left:    15px;
+    font-weight:     bold;
+    line-height:     30px;
+    text-align:      left;
+    list-style-type: none;
+
+    li {
+      padding-left: 40px;
+      font-weight:  normal;
+    }
+  }
+
+  & > ul {
+    padding-left: 0;
+  }
+}

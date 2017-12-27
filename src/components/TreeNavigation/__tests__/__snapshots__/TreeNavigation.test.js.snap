@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeNavigation  renders 1`] = `
+<div class="tree-navigation">
+    <ul>
+        <li>
+            <a href="#home">Home</a>
+        </li>
+        <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+            <a href="#products">Products</a>
+            <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+                <a href="#shoes">Running shoes</a>
+                <li>
+                    <a href="#race">Race</a>
+                </li>
+                <li>
+                    <a href="#road">Road</a>
+                </li>
+                <li>
+                    <a href="#trail">Trail</a>
+                </li>
+            </ul>
+            <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+                <a href="#clothing">Running clothing</a>
+                <li>
+                    <a href="#jackets">Jackets</a>
+                </li>
+                <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> Tops
+                    <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+                        <a href="#long-sleeve">Long Sleeve</a>
+                        <li>
+                            <a href="#summer">For summer</a>
+                        </li>
+                        <li>
+                            <a href="#winter">For winter</a>
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="#short-sleeve">Short Sleeve</a>
+                    </li>
+                    <li>
+                        <a href="#sleeveless">Sleeveless</a>
+                    </li>
+                </ul>
+                <li>
+                    <a href="#trousers">Trousers</a>
+                </li>
+            </ul>
+        </ul>
+        <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> About
+            <li>
+                <a href="#company">Company</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+            <li>
+                <a href="#blog">Blog</a>
+            </li>
+        </ul>
+    </ul>
+</div>
+`;

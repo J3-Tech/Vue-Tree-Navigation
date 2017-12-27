@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationToggle  renders 1`] = `<span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>`;

@@ -1,0 +1,13 @@
+{
+  "processors": ["stylelint-processor-html"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recess-order"
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "declaration-colon-space-after": null
+  }
+}
