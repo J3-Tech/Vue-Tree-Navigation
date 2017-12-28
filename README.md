@@ -61,6 +61,31 @@ You don't need to specify `href` field. Menu item will be rendered as a simple v
 
 Optional. Default value is 0 (everything is closed).
 
+## Nuxt
+
+You can use the component in your [Nuxt.js](https://nuxtjs.org/) project if you disable server-side rendering for your Nuxt plugin:
+
+**plugins/vue-tree-navigation.js**
+
+```javascript
+import Vue from 'vue';
+import VueTreeNavigation from 'vue-tree-navigation';
+
+Vue.use(VueTreeNavigation);
+```
+
+**nuxt.config.js**
+
+```javascript
+module.exports = {
+  ...
+  plugins: [
+    { src: '~plugins/vue-tree-navigation', ssr: false }
+  ],
+  ...
+}
+```
+
 ## Developers
 
 Install dependencies:
