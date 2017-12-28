@@ -1,12 +1,12 @@
 # vue-tree-navigation
 
-A Vue.js tree navigation
+A Vue.js tree navigation menu
 
 [Demo](https://vue-tree-navigation.misrob.cz)
 
 ## Features:
 
-* infinite number of levels
+* unlimited number of levels
 * you can define default open level
 * focused on core functionality, only necessary styles included - just apply your own styles like I did for demo page :wink:
 
@@ -34,6 +34,7 @@ Vue.use(VueTreeNavigation);
 
 ```javascript
 export default {
+  ...
   data() {
     return {
       items: [
@@ -43,21 +44,30 @@ export default {
         ]},
         { name: 'Second category', href: '#take-me-somewhere' }
       ],
-      defaultOpenLevel: 2
+      defaultOpenLevel: 1
     }
-  }
+  },
+  ...
 };
 ```
 
-**items**
+**items** `Array`
 
-You don't need to specify `href` field. Menu item will be rendered as a simple value instead of hyperlink in this case.
+An array containing navigation menu items.
 
-**defaultOpenLevel**
+You don't need to specify `href` field. Menu item will be rendered as a simple value instead of a hyperlink in this case.
 
-Optional. Default value is 0.
+**defaultOpenLevel** `Number`
+
+Optional. Default value is 0 (everything is closed).
 
 ## Developers
+
+Install dependencies:
+
+```console
+$ npm install
+```
 
 Run tests:
 
@@ -87,6 +97,7 @@ Run demo development server:
 
 ```console
 $ cd demo
+$ npm install
 $ npm run dev
 ```
 
