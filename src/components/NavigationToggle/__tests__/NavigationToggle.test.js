@@ -13,17 +13,19 @@ describe('NavigationToggle ', () => {
     expect(wrapper.html()).toMatchSnapshot();
   }),
 
-  it('assigns `closed` class to outer span when `isClosed` is `true`', () => {
-    const wrapper = mount(NavigationToggle, {
-      propsData: {
-        isClosed: true,
-      },
+  context('with `isClosed` property equal to true', () => {
+    it('assigns `closed` class to outer span', () => {
+      const wrapper = mount(NavigationToggle, {
+        propsData: {
+          isClosed: true,
+        },
+      });
+
+      expect(wrapper.classes()).toContain('closed');
     });
+  });
 
-    expect(wrapper.classes()).toContain('closed');
-  }),
-
-  it('does not assign `closed` class to outer span when `isClosed` is `false`', () => {
+  context('with `isClosed` property equal to false', () => {
     const wrapper = mount(NavigationToggle, {
       propsData: {
         isClosed: false,
