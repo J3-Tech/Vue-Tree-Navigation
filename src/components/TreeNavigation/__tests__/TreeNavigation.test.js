@@ -46,7 +46,7 @@ describe('TreeNavigation ', () => {
       propsData: {
         items: [{
           name: 'Item',
-          href: "#",
+          href: '#',
         }],
       },
     });
