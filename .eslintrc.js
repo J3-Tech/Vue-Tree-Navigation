@@ -10,6 +10,8 @@ module.exports = {
   plugins: [
     'html'
   ],
-  rules: {},
+  rules: {
+    quotes: ['error', 'single']
+  },
   globals: {}
 }
