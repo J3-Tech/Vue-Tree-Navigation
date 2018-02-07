@@ -13,7 +13,7 @@ A Vue.js tree navigation menu
 
 ## Requirements
 
-* [vue-router](https://router.vuejs.org) (v2.0.0 or higher) - Optional. You need to install it to your project only if you need to render some menu items as route links.
+* [vue-router](https://router.vuejs.org) (v2.0.0 or higher) - Optional. You need to install it to your project only if you need to render some menu items as router links.
 
 ## Installation
 
@@ -64,7 +64,7 @@ Use this field in case you need to treat the URL like `<router-link>` URL.
 You need to install `vue-router` to your project if you decide to use this field at least once.
 
 `href`
-Use this field in case you need to the URL like standard `<a>` URL.
+Use this field in case you need to treat the URL like standard `<a>` URL.
 
 You don't need to specify `href` or `to` field. Menu item will be rendered as a simple value instead of a hyperlink in this case.
 
@@ -74,7 +74,7 @@ Optional. Default value is 0 (everything is closed).
 
 ## Examples
 
-### Simple navigation based on element IDs, no router
+### 1. Simple navigation based on element IDs, no router
 
 You can use the menu to navigate to elements at one page by passing the elements IDs to the `href` field. You don't need to install `vue-router` to your project in this case.
 
@@ -102,7 +102,35 @@ export default {
 };
 ```
 
-### Router links combined with element IDs
+### 2. Router navigation only
+
+Just use `to` everywhere.
+
+```html
+<vue-tree-navigation :items="menuItems" />
+```
+
+```javascript
+export default {
+  ...
+  data() {
+    return {
+      menuItems: [
+        { name: 'Products', to: 'products' },              // #/products
+        { name: 'About', to: 'about', children: [          // #/about
+          { name: 'Contact', to: 'contact', children: [    // #/about/contact
+            { name: 'E-mail', to: 'email' },               // #/about/contact/email
+            { name: 'Phone', to: 'phone' },                // #/about/contact/phone
+          ]},
+        ]},
+      ],
+    };
+  },
+  ...
+};
+```
+
+### 3. Router links combined with element IDs
 
 ```html
 <vue-tree-navigation :items="menuItems" />
@@ -130,7 +158,7 @@ export default {
 
 ## Scroll behaviour
 
-If you need to jump directly to a particular anchor tag (`href`) which is a children of a route view, you need to modify the `scrollBehaviour` function as follows:
+If you need to jump directly to a particular anchor tag which is a children of a router view (like in the third example for `#/about/contact#email`), you need to modify the `scrollBehaviour` function as follows:
 
 ```javascript
 new VueRouter({
