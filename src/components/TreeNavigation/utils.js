@@ -1,11 +1,11 @@
 import NavigationList from '../NavigationList/NavigationList.vue';
 
 /**
- * Get tree item label (hyperlink element or simple value).
+ * Get navigation item (hyperlink element or simple value).
  * Return <a href=`href`>`name`</a> when `href` is defined.
  * Otherwise return only `name`.
  */
-function getItemLabel(createElement, name, href) {
+function getNavItem(createElement, name, href) {
   if (href !== undefined) {
     return createElement('a', {
       attrs: {
@@ -27,7 +27,7 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
   const children = [];
 
   items.forEach(item => {
-    const label = getItemLabel(createElement, item.name, item.href);
+    const navItem = getNavItem(createElement, item.name, item.href);
 
     if (item.hasOwnProperty('children')) {
       children.push(
@@ -37,7 +37,7 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
             defaultOpenLevel,
           },
         }, [
-          label,
+          navItem,
           ...generateLevel(createElement,
                            item.children,
                            level + 1,
@@ -46,7 +46,7 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
       );
     } else {
       children.push(createElement('li', [
-        label,
+        navItem,
       ]));
     }
   });
