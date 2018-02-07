@@ -1,22 +1,45 @@
 import NavigationList from '../NavigationList/NavigationList.vue';
 
 /**
- * Get navigation item (hyperlink element or simple value).
- * Return <a href=`href`>`name`</a> when `href` is defined.
- * Otherwise return only `name`.
+ * Get navigation item - a hyperlink, a router link, or a simple value.
+ * Return only `name` in case both `to` and `href` are not defined.
+ * Return <router-link to=`location`>`name`</router-link> if `to` is defined.
+ * Return <a href=`location`>`name`</a> when `href` is defined.
  */
-function getNavItem(createElement, { name, href }) {
-  if (href !== undefined) {
-    return createElement('a', {
-      attrs: {
-        href,
-      },
-    }, [
-      name,
-    ]);
+function getNavItem(createElement, { name, to, href }, location='') {
+
+  if (to === undefined && href === undefined) {
+    return name;
   }
 
-  return name;
+  let element;
+  let attrs;
+  let props;
+
+  if (href !== undefined) {
+    element = 'a';
+    attrs = {
+      href: location,
+    };
+    props = {};
+  }
+
+  // user shouldn't define both `to` and `href` but in case he does,
+  // `href` will be overridden by `to` which has a higher priority
+  if (to !== undefined) {
+    element = 'router-link';
+    attrs = {};
+    props = {
+      to: location,
+    };
+  }
+
+  return createElement(element, {
+    attrs,
+    props,
+  }, [
+    name,
+  ]);
 }
 
 /**
