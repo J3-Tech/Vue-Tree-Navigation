@@ -128,6 +128,24 @@ export default {
 };
 ```
 
+## Scroll behaviour
+
+If you need to jump directly to a particular anchor tag (`href`) which is a children of a route view, you need to modify the `scrollBehaviour` function as follows:
+
+```javascript
+new VueRouter({
+  ...
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return { selector: to.hash }
+    } else {
+      return { x: 0, y: 0}
+    }
+  },
+  ...
+});
+```
+
 ## Nuxt
 
 You can use the component in your [Nuxt.js](https://nuxtjs.org/) project if you disable server-side rendering for your Nuxt plugin:
