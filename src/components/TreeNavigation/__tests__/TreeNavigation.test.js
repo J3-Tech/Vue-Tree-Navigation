@@ -2,31 +2,31 @@ import { mount } from 'vue-test-utils';
 
 import TreeNavigation from '../TreeNavigation';
 
-const items = [
-  { name: 'Home', href: '#home' },
-  { name: 'Products', href: '#products', children: [
-    { name: 'Running shoes', href: '#shoes', children: [
-      { name: 'Race', href: '#race' },
-      { name: 'Road', href: '#road' },
-      { name: 'Trail', href: '#trail' },
+const items= [
+  { name: 'Home' },
+  { name: 'Products', children: [
+    { name: 'Running shoes', children: [
+      { name: 'Race' },
+      { name: 'Road' },
+      { name: 'Trail' },
     ]},
-    { name: 'Running clothing', href: '#clothing', children: [
-      { name: 'Jackets', href: '#jackets' },
+    { name: 'Running clothing', children: [
+      { name: 'Jackets' },
       { name: 'Tops', children: [
-        { name: 'Long Sleeve', href: '#long-sleeve', children: [
-          { name: 'For summer', href: '#summer' },
-          { name: 'For winter', href: '#winter' },
+        { name: 'Long Sleeve', children: [
+          { name: 'For summer' },
+          { name: 'For winter' },
         ]},
-        { name: 'Short Sleeve', href: '#short-sleeve' },
-        { name: 'Sleeveless', href: '#sleeveless' },
+        { name: 'Short Sleeve' },
+        { name: 'Sleeveless' },
       ]},
-      { name: 'Trousers', href: '#trousers' },
+      { name: 'Trousers' },
     ]},
   ]},
   { name: 'About', children: [
-    { name: 'Company', href: '#company' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Blog', href: '#blog' },
+    { name: 'Company' },
+    { name: 'Contact' },
+    { name: 'Blog' },
   ]},
 ];
 
