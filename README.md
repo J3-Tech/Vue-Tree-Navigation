@@ -174,6 +174,10 @@ new VueRouter({
 });
 ```
 
+## Styling
+
+All router links are assigned a `router-link` class so you can easily distinguish them from simple hyperlinks by using `.router-link` selector in your css.
+
 ## Developers
 
 Install dependencies:
