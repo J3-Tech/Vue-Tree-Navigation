@@ -56,6 +56,7 @@
     "file-loader": "^1.1.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.0.4",
+    "jest-plugin-context": "^2.6.0",
     "jest-serializer-vue": "^0.3.0",
     "node-sass": "^4.5.3",
     "pre-commit": "^1.2.2",
@@ -89,6 +90,9 @@
     },
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
+    ],
+    "setupFiles": [
+      "jest-plugin-context/setup"
     ]
   }
 }
