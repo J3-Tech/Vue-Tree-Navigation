@@ -147,7 +147,7 @@ describe('TreeNavigation', () => {
         expect(wrapper.find('div > ul > ul').classes()).not.toContain('closed');
 
         // level 2 list
-        expect(wrapper.find('div > ul > ul').classes()).not.toContain('closed');
+        expect(wrapper.find('div > ul > ul > ul').classes()).not.toContain('closed');
       });
     });
   });
