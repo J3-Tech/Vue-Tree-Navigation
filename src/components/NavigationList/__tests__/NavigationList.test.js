@@ -14,36 +14,42 @@ describe('NavigationList ', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('assigns `closed` class to list when `level` > `defaultOpenLevel`', () => {
-    const wrapper = mount(NavigationList, {
-      propsData: {
-        level: 3,
-        defaultOpenLevel: 2,
-      },
+  context('with level greater than default open level', () => {
+    it('assigns `closed` class to a list`', () => {
+      const wrapper = mount(NavigationList, {
+        propsData: {
+          level: 3,
+          defaultOpenLevel: 2,
+        },
+      });
+
+      expect(wrapper.classes()).toContain('closed');
     });
+  });
 
-    expect(wrapper.classes()).toContain('closed');
-  }),
+  context('with level equal to default open level', () => {
+    it('does not assign `closed` class to a list`', () => {
+      const wrapper = mount(NavigationList, {
+        propsData: {
+          level: 3,
+          defaultOpenLevel: 3,
+        },
+      });
 
-  it('does not assign `closed` class to list when `level` = `defaultOpenLevel`', () => {
-    const wrapper = mount(NavigationList, {
-      propsData: {
-        level: 3,
-        defaultOpenLevel: 3,
-      },
+      expect(wrapper.classes()).not.toContain('closed');
     });
+  });
 
-    expect(wrapper.classes()).not.toContain('closed');
-  }),
+  context('with level less than default open level', () => {
+    it('does not assign `closed` class to a list`', () => {
+      const wrapper = mount(NavigationList, {
+        propsData: {
+          level: 2,
+          defaultOpenLevel: 3,
+        },
+      });
 
-  it('does not assign `closed` class to list when `level` < `defaultOpenLevel`', () => {
-    const wrapper = mount(NavigationList, {
-      propsData: {
-        level: 2,
-        defaultOpenLevel: 3,
-      },
+      expect(wrapper.classes()).not.toContain('closed');
     });
-
-    expect(wrapper.classes()).not.toContain('closed');
   });
 });
