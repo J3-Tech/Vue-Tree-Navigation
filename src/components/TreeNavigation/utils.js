@@ -5,7 +5,7 @@ import NavigationList from '../NavigationList/NavigationList.vue';
  * Return <a href=`href`>`name`</a> when `href` is defined.
  * Otherwise return only `name`.
  */
-function getNavItem(createElement, name, href) {
+function getNavItem(createElement, { name, href }) {
   if (href !== undefined) {
     return createElement('a', {
       attrs: {
@@ -27,7 +27,7 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
   const children = [];
 
   items.forEach(item => {
-    const navItem = getNavItem(createElement, item.name, item.href);
+    const navItem = getNavItem(createElement, item);
 
     if (item.hasOwnProperty('children')) {
       children.push(
