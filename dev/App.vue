@@ -12,6 +12,7 @@
     <router-link to="/products/clothing/tops">Products - clothing - tops</router-link>
     <router-link to="/products/clothing/tops#long-sleeve">Products - clothing - tops - long-sleeve</router-link>
 
+    <!-- <div style="height: 700px"></div> -->
     <hr>
     <h2>Router View:</h2>
     <router-view></router-view>
