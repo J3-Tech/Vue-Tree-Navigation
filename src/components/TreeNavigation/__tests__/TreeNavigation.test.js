@@ -41,29 +41,68 @@ describe('TreeNavigation ', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('renders item label as hyperlink when `href` field is defined', () => {
+  it('renders item as a simple value when both `to` and `href` fields are undefined', () => {
     const wrapper = mount(TreeNavigation, {
       propsData: {
         items: [{
           name: 'Item',
-          href: '#',
         }],
       },
     });
 
-    expect(wrapper.contains('a')).toBe(true);
+    expect(wrapper.find('li').html()).toBe('<li>Item</li>');
   });
 
-  it('does not render item label as hyperlink when `href` field is undefined', () => {
+  it('renders item as a hyperlink when `href` field is defined', () => {
     const wrapper = mount(TreeNavigation, {
       propsData: {
         items: [{
           name: 'Item',
+          href: '#contact',
         }],
       },
     });
 
-    expect(wrapper.contains('a')).toBe(false);
+    expect(wrapper.find('li').contains('a')).toBe(true);
+  });
+
+  it('renders item as a router link when `to` field is defined', () => {
+    const wrapper = mount(TreeNavigation, {
+      propsData: {
+        items: [{
+          name: 'Item',
+          to: 'home',
+        }],
+      },
+    });
+
+    expect(wrapper.find('li').contains('router-link')).toBe(true);
+  });
+
+  it('does not assign `router-link` class to a simple hyperlink', () => {
+    const wrapper = mount(TreeNavigation, {
+      propsData: {
+        items: [{
+          name: 'Item',
+          href: '#contact',
+        }],
+      },
+    });
+
+    expect(wrapper.find('a').classes()).not.toContain('router-link');
+  });
+
+  it('assigns `router-link` class to a router link', () => {
+    const wrapper = mount(TreeNavigation, {
+      propsData: {
+        items: [{
+          name: 'Item',
+          to: 'home',
+        }],
+      },
+    });
+
+    expect(wrapper.find('router-link').classes()).toContain('router-link');
   });
 
   it('assigns `closed` class to lists with level deeper than `defaultOpenLevel`', () => {
