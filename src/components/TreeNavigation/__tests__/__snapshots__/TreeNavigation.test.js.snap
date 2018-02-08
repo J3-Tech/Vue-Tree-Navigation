@@ -3,30 +3,56 @@
 exports[`TreeNavigation renders 1`] = `
 <div class="tree-navigation">
     <ul>
-        <li>Home</li>
-        <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> Products
-            <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> Running shoes
-                <li>Race</li>
-                <li>Road</li>
-                <li>Trail</li>
+        <li>
+            <a href="#/#" class="router-link">Home</a>
+        </li>
+        <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+            <a href="#/#" class="router-link">Products</a>
+            <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+                <a href="#/#" class="router-link">Running shoes</a>
+                <li>
+                    <a href="#" class="">Race</a>
+                </li>
+                <li>
+                    <a href="#" class="">Road</a>
+                </li>
+                <li>
+                    <a href="#" class="">Trail</a>
+                </li>
             </ul>
-            <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> Running clothing
-                <li>Jackets</li>
-                <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> Tops
-                    <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> Long Sleeve
-                        <li>For summer</li>
-                        <li>For winter</li>
+            <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+                <a href="#/#" class="router-link">Running clothing</a>
+                <li>
+                    <a href="#/#" class="router-link">Jackets</a>
+                </li>
+                <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+                    <a href="#/#" class="router-link">Tops</a>
+                    <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+                        <a href="#" class="">Long Sleeve</a>
+                        <li>
+                            <a href="#" class="">For summer</a>
+                        </li>
+                        <li>
+                            <a href="#" class="">For winter</a>
+                        </li>
                     </ul>
-                    <li>Short Sleeve</li>
-                    <li>Sleeveless</li>
+                    <li>
+                        <a href="#" class="">Short Sleeve</a>
+                    </li>
+                    <li>
+                        <a href="#" class="">Sleeveless</a>
+                    </li>
                 </ul>
-                <li>Trousers</li>
             </ul>
         </ul>
         <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> About
             <li>Company</li>
-            <li>Contact</li>
-            <li>Blog</li>
+            <li>
+                <a href="#" class="">Contact</a>
+            </li>
+            <li>
+                <a href="#" class="">Blog</a>
+            </li>
         </ul>
     </ul>
 </div>
