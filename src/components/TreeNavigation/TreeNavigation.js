@@ -22,13 +22,22 @@ const TreeNavigation = {
     },
   },
 
+  computed: {
+    itemsWithMetadata() {
+      const self = this;
+
+      const items = JSON.parse(JSON.stringify(self.items));
+      return utils.insertMetadataToItems(items);
+    },
+  },
+
   render(createElement) {
     const self = this;
 
     const level = 1;
     const tree = createElement('ul',
       utils.generateLevel(createElement,
-                          self.items,
+                          self.itemsWithMetadata,
                           level,
                           self.defaultOpenLevel));
 

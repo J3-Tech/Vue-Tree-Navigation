@@ -1,43 +1,80 @@
-import { mount } from 'vue-test-utils';
+import { createLocalVue, mount } from 'vue-test-utils';
+import VueRouter from 'vue-router';
 
 import TreeNavigation from '../TreeNavigation';
 
-const items= [
-  { name: 'Home' },
-  { name: 'Products', children: [
-    { name: 'Running shoes', children: [
-      { name: 'Race' },
-      { name: 'Road' },
-      { name: 'Trail' },
+const items = [
+  { name: 'Home', to: 'home' },
+  { name: 'Products', to: 'products', children: [
+    { name: 'Running shoes', to: 'shoes', children: [
+      { name: 'Race', href: '#race' },
+      { name: 'Road', href: '#road' },
+      { name: 'Trail', href: '#trail' },
     ]},
-    { name: 'Running clothing', children: [
-      { name: 'Jackets' },
-      { name: 'Tops', children: [
-        { name: 'Long Sleeve', children: [
-          { name: 'For summer' },
-          { name: 'For winter' },
+    { name: 'Running clothing', to: 'clothing', children: [
+      { name: 'Jackets', to: 'jackets' },
+      { name: 'Tops', to: 'tops', children: [
+        { name: 'Long Sleeve', href: '#long-sleeve', children: [
+          { name: 'For summer', href: '#summer' },
+          { name: 'For winter', href: '#winter' },
         ]},
-        { name: 'Short Sleeve' },
-        { name: 'Sleeveless' },
+        { name: 'Short Sleeve', href: '#short-sleeve' },
+        { name: 'Sleeveless', href: '#sleeveless' },
       ]},
-      { name: 'Trousers' },
     ]},
   ]},
   { name: 'About', children: [
     { name: 'Company' },
-    { name: 'Contact' },
-    { name: 'Blog' },
+    { name: 'Contact', href: '#contact' },
+    { name: 'Blog', href: '#blog' },
   ]},
 ];
 
+const routes = [
+  {
+    path: '/home',
+  },
+  {
+    path: '/products',
+  },
+  {
+    path: '/products/shoes',
+  },
+  {
+    path: '/products/clothing',
+    children: [
+      {
+        path: 'jackets',
+      },
+      {
+        path: 'tops',
+      },
+    ],
+  },
+];
+
 describe('TreeNavigation', () => {
+  let localVue;
+  let router;
+
+  beforeAll(() => {
+    localVue = createLocalVue();
+    localVue.use(VueRouter);
+    router = new VueRouter({
+      routes,
+    });
+  });
+
   it('renders', () => {
     const wrapper = mount(TreeNavigation, {
+      localVue,
+      router,
       propsData: {
         items,
       },
     });
 
+    // link targets are dummy # right now
     expect(wrapper.html()).toMatchSnapshot();
   });
 
