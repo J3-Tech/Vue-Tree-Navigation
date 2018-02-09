@@ -4,29 +4,29 @@ import VueRouter from 'vue-router';
 import TreeNavigation from '../TreeNavigation';
 
 const items = [
-  { name: 'Home', to: 'home' },
-  { name: 'Products', to: 'products', children: [
-    { name: 'Running shoes', to: 'shoes', children: [
-      { name: 'Race', href: '#race' },
-      { name: 'Road', href: '#road' },
-      { name: 'Trail', href: '#trail' },
+  { name: 'Home', route: 'home' },
+  { name: 'Products', route: 'products', children: [
+    { name: 'Running shoes', route: 'shoes', children: [
+      { name: 'Race', element: '#race' },
+      { name: 'Road', element: '#road' },
+      { name: 'Trail', element: '#trail' },
     ]},
-    { name: 'Running clothing', to: 'clothing', children: [
-      { name: 'Jackets', to: 'jackets' },
-      { name: 'Tops', to: 'tops', children: [
-        { name: 'Long Sleeve', href: '#long-sleeve', children: [
-          { name: 'For summer', href: '#summer' },
-          { name: 'For winter', href: '#winter' },
+    { name: 'Running clothing', route: 'clothing', children: [
+      { name: 'Jackets', route: 'jackets' },
+      { name: 'Tops', route: 'tops', children: [
+        { name: 'Long Sleeve', element: '#long-sleeve', children: [
+          { name: 'For summer', element: '#summer' },
+          { name: 'For winter', element: '#winter' },
         ]},
-        { name: 'Short Sleeve', href: '#short-sleeve' },
-        { name: 'Sleeveless', href: '#sleeveless' },
+        { name: 'Short Sleeve', element: '#short-sleeve' },
+        { name: 'Sleeveless', element: '#sleeveless' },
       ]},
     ]},
   ]},
   { name: 'About', children: [
     { name: 'Company' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Blog', href: '#blog' },
+    { name: 'Contact', element: '#contact' },
+    { name: 'Blog', element: '#blog' },
   ]},
 ];
 
