@@ -1,10 +1,13 @@
 import NavigationList from '../NavigationList/NavigationList.vue';
 
+import pathTypes from '../../pathTypes';
+const { PATH_TYPE_NONE, PATH_TYPE_ELEMENT, PATH_TYPE_ROUTE } = pathTypes;
+
 /**
  * Get navigation item - a hyperlink, a router link, or a simple value.
- * Return only `name` in case both `route` and `element` are not defined.
- * Return <router-link to=`meta.location`>`name`</router-link> if `route` is defined.
- * Return <a href=`meta.location`>`name`</a> when `element` is defined.
+ * Return only item name in case it is neither the route nor the element.
+ * Return a router link in case the item is route.
+ * Return a hyperlink in case the item is element.
  */
 function getNavItem(createElement, item) {
 
@@ -17,7 +20,7 @@ function getNavItem(createElement, item) {
   let props;
   let classes;
 
-  if (item.element !== undefined) {
+  if (item.meta.pathType === PATH_TYPE_ELEMENT) {
     elementName = 'a';
     attrs = {
       href: item.meta.path,
@@ -26,9 +29,7 @@ function getNavItem(createElement, item) {
     classes = [];
   }
 
-  // user shouldn't define both `route` and `element` but in case he does,
-  // `element` will be overridden by `route` which has a higher priority
-  if (item.route !== undefined) {
+  if (item.meta.pathType === PATH_TYPE_ROUTE) {
     elementName = 'router-link';
     attrs = {};
     props = {
@@ -49,20 +50,140 @@ function getNavItem(createElement, item) {
 }
 
 /**
+ * Check if there is an element appended to the end
+ * of the path and then remove it.
+ */
+function removeElementFromPath(path) {
+  const hashPos = path.indexOf('#');
+
+  if (hashPos === -1) {
+    return path;
+  }
+
+  return path.slice(0, hashPos);
+}
+
+/**
+ * Return item metadata object: { path: ..., pathType: ... }
+ */
+function getItemMetadata(item, parent) {
+
+  // item is its own parent
+  if (parent === undefined) {
+    if (item.element === undefined && item.route === undefined) {
+      return {
+        path: undefined,
+        pathType: PATH_TYPE_NONE,
+      };
+    }
+
+    if (item.route !== undefined) {
+      return {
+        path: '/' + item.route,  // TODO: clever join
+        pathType: PATH_TYPE_ROUTE,
+      };
+    }
+
+    if (item.element !== undefined) {
+      return {
+        path: item.element,
+        pathType: PATH_TYPE_ELEMENT,
+      };
+    }
+  }
+
+  // route -> route
+  if (parent.meta.pathType === PATH_TYPE_ROUTE && item.route !== undefined) {
+    const parentPath = removeElementFromPath(parent.meta.path);
+
+    return {
+      path: parentPath + '/' + item.route, // TODO: clever join
+      pathType: PATH_TYPE_ROUTE,
+    };
+  }
+
+  // route -> element
+  if (parent.meta.pathType === PATH_TYPE_ROUTE && item.element !== undefined) {
+    const parentPath = removeElementFromPath(parent.meta.path);
+
+    return {
+      path: parentPath + item.element, // TODO: clever join
+      pathType: PATH_TYPE_ROUTE,
+    };
+  }
+
+  // route -> label
+  if (parent.meta.pathType === PATH_TYPE_ROUTE && item.element === undefined && item.route === undefined) {
+    const parentPath = removeElementFromPath(parent.meta.path);
+
+    return {
+      path: parentPath,
+      pathType: PATH_TYPE_ROUTE,
+    };
+  }
+
+  // element -> route
+  if (parent.meta.pathType === PATH_TYPE_ELEMENT && item.route !== undefined) {
+    return {
+      path: '/' + item.route,  // TODO: clever join
+      pathType: PATH_TYPE_ROUTE,
+    };
+  }
+
+  // element -> element
+  if (parent.meta.pathType === PATH_TYPE_ELEMENT && item.element !== undefined) {
+    return {
+      path: item.element,
+      pathType: PATH_TYPE_ELEMENT,
+    };
+  }
+
+  // element -> label
+  if (parent.meta.pathType === PATH_TYPE_ELEMENT && item.element === undefined && item.route === undefined) {
+    return {
+      path: undefined,
+      pathType: PATH_TYPE_NONE,
+    };
+  }
+
+  // label -> route
+  if (parent.meta.pathType === PATH_TYPE_NONE && item.route !== undefined) {
+    return {
+      path: '/' + item.route, // TODO: clever join
+      pathType: PATH_TYPE_ROUTE,
+    };
+  }
+
+  // label -> element
+  if (parent.meta.pathType === PATH_TYPE_NONE && item.element !== undefined) {
+    return {
+      path: item.element,
+      pathType: PATH_TYPE_ELEMENT,
+    };
+  }
+
+  // label -> label
+  if (parent.meta.pathType === PATH_TYPE_NONE && item.element === undefined && item.route === undefined) {
+    return {
+      path: undefined,
+      pathType: PATH_TYPE_NONE,
+    };
+  }
+}
+
+/**
  * Recursive function.
  * Insert metadata containing the navigation path and its type to each item.
  **/
-function insertMetadataToItems(items) {
-  // dummy
+function insertMetadataToItems(items, parent) {
   items.forEach(item => {
-    item.meta = {
-      path: '#',
-      pathType: undefined,
-    };
+    item.meta = getItemMetadata(item, parent);
+
     if (item.hasOwnProperty('children')) {
-      item.children = insertMetadataToItems(item.children);
+      item.children = insertMetadataToItems(item.children, item);
     }
   });
+
   return items;
 }
 
@@ -102,6 +223,8 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
 }
 
 export default {
+  removeElementFromPath,
+  getItemMetadata,
   insertMetadataToItems,
   generateLevel,
 };
