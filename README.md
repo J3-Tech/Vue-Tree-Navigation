@@ -41,11 +41,13 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: 'Products', to: 'products' },              // #/products
-        { name: 'About', to: 'about', children: [          // #/about
-          { name: 'Contact', to: 'contact', children: [    // #/about/contact       
-            { name: 'E-mail', href: '#email' },            // #/about/contact#email
-            { name: 'Phone', href: '#phone' },             // #/about/contact#phone
+        { name: 'Products', children: [                       // category label, leads nowhere
+          { name: 'Shoes', route: 'shoes' }                   // #/shoes
+        ]},
+        { name: 'About', route: 'about', children: [          // #/about
+          { name: 'Contact', route: 'contact', children: [    // #/about/contact       
+            { name: 'E-mail', element: '#email' },            // #/about/contact#email
+            { name: 'Phone', element: '#phone' }              // #/about/contact#phone
           ]},
         ]},
       ],
@@ -59,14 +61,14 @@ export default {
 
 An array containing navigation menu items.
 
-`to`
-Use this field in case you need to treat the URL like `<router-link>` URL.
+`route`
+Use this field for a router link URL.
 You need to install `vue-router` to your project if you decide to use this field at least once.
 
-`href`
-Use this field in case you need to treat the URL like standard `<a>` URL.
+`element` (the `element` field replaces v1 `href` field)
+Use this field for an element URL.
 
-You don't need to specify `href` or `to` field. Menu item will be rendered as a simple value instead of a hyperlink in this case.
+You don't need to specify `route` or `element` field. Menu item will be rendered as a simple value instead of a hyperlink in this case so you can use it as a category label.
 
 **defaultOpenLevel** `Number`
 
@@ -76,7 +78,7 @@ Optional. Default value is 0 (everything is closed).
 
 ### 1. Simple navigation based on element IDs, no router
 
-You can use the menu to navigate to elements at one page by passing the elements IDs to the `href` field. You don't need to install `vue-router` to your project in this case.
+You can use the menu to navigate to elements at one page by passing the elements IDs to the `element` field. You don't need to install `vue-router` to your project in this case.
 
 ```html
 <vue-tree-navigation :items="menuItems" />
@@ -88,11 +90,11 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: 'Products', href: '#products' },              // #products
-        { name: 'About', href: '#about', children: [          // #about
-          { name: 'Contact', children: [   
-            { name: 'E-mail', href: '#email' },               // #email
-            { name: 'Phone', href: '#phone' },                // #phone
+        { name: 'Products', element: '#products' },              // #products
+        { name: 'About', element: '#about', children: [          // #about
+          { name: 'Contact', children: [                         // category label, leads nowhere
+            { name: 'E-mail', element: '#email' },               // #email
+            { name: 'Phone', element: '#phone' },                // #phone
           ]},
         ]},
       ],
@@ -104,7 +106,7 @@ export default {
 
 ### 2. Router navigation only
 
-Just use `to` everywhere.
+Routes are joined to reflect the menu tree structure.
 
 ```html
 <vue-tree-navigation :items="menuItems" />
@@ -116,11 +118,11 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: 'Products', to: 'products' },              // #/products
-        { name: 'About', to: 'about', children: [          // #/about
-          { name: 'Contact', to: 'contact', children: [    // #/about/contact
-            { name: 'E-mail', to: 'email' },               // #/about/contact/email
-            { name: 'Phone', to: 'phone' },                // #/about/contact/phone
+        { name: 'Products', route: 'products' },              // #/products
+        { name: 'About', route: 'about', children: [          // #/about
+          { name: 'Contact', route: 'contact', children: [    // #/about/contact
+            { name: 'E-mail', route: 'email' },               // #/about/contact/email
+            { name: 'Phone', route: 'phone' },                // #/about/contact/phone
           ]},
         ]},
       ],
@@ -132,6 +134,10 @@ export default {
 
 ### 3. Router links combined with element IDs
 
+Routes are joined to reflect the menu tree structure. Elements are appended to their parent route.
+
+Feel free to try on various parent-child combinations (like element parent - route child), there are no restrictions.
+
 ```html
 <vue-tree-navigation :items="menuItems" />
 ```
@@ -142,11 +148,13 @@ export default {
   data() {
     return {
       menuItems: [
-        { name: 'Products', to: 'products' },              // #/products
-        { name: 'About', to: 'about', children: [          // #/about
-          { name: 'Contact', to: 'contact', children: [    // #/about/contact       
-            { name: 'E-mail', href: '#email' },            // #/about/contact#email
-            { name: 'Phone', href: '#phone' },             // #/about/contact#phone
+        { name: 'Products', route: 'products' },              // #/products
+        { name: 'About', route: 'about', children: [          // #/about
+          { name: 'Contact', route: 'contact', children: [    // #/about/contact       
+            { name: 'E-mail', element: '#email' },            // #/about/contact#email
+            { name: 'Phone', element: '#phone', children: [   // #/about/contact#phone
+              name: 'Office', element: '#phone-office' },     // #/about/contact#phone-office
+            ]},             
           ]},
         ]},
       ],
