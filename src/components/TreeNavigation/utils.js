@@ -86,7 +86,7 @@ function getItemMetadata(item, parent) {
 
     if (item.element !== undefined) {
       return {
-        path: item.element,
+        path: '#' + item.element,    // TODO: clever join
         pathType: PATH_TYPE_ELEMENT,
       };
     }
@@ -107,7 +107,7 @@ function getItemMetadata(item, parent) {
     const parentPath = removeElementFromPath(parent.meta.path);
 
     return {
-      path: parentPath + item.element, // TODO: clever join
+      path: parentPath + '#' + item.element, // TODO: clever join
       pathType: PATH_TYPE_ROUTE,
     };
   }
@@ -133,7 +133,7 @@ function getItemMetadata(item, parent) {
   // element -> element
   if (parent.meta.pathType === PATH_TYPE_ELEMENT && item.element !== undefined) {
     return {
-      path: item.element,
+      path: '#' + item.element, // TODO: clever join
       pathType: PATH_TYPE_ELEMENT,
     };
   }
@@ -157,7 +157,7 @@ function getItemMetadata(item, parent) {
   // label -> element
   if (parent.meta.pathType === PATH_TYPE_NONE && item.element !== undefined) {
     return {
-      path: item.element,
+      path: '#' + item.element,    // TODO: clever join
       pathType: PATH_TYPE_ELEMENT,
     };
   }

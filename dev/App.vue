@@ -26,26 +26,26 @@ export default {
         { name: 'Home', route: 'home' },
         { name: 'Products', route: 'products', children: [
           { name: 'Running shoes', route: 'shoes', children: [
-            { name: 'Race', element: '#race' },
+            { name: 'Race', element: 'race' },
             { name: 'Road' },
-            { name: 'Trail', element: '#trail' },
+            { name: 'Trail', element: 'trail' },
           ]},
           { name: 'Running clothing', route: 'clothing', children: [
             { name: 'Jackets', route: 'jackets' },
             { name: 'Tops', route: 'tops', children: [
-              { name: 'Long Sleeve', element: '#long-sleeve', children: [
-                { name: 'For summer', element: '#summer' },
-                { name: 'For winter', element: '#winter' },
+              { name: 'Long Sleeve', element: 'long-sleeve', children: [
+                { name: 'For summer', element: 'summer' },
+                { name: 'For winter', element: 'winter' },
               ]},
-              { name: 'Short Sleeve', element: '#short-sleeve' },
-              { name: 'Sleeveless', element: '#sleeveless' },
+              { name: 'Short Sleeve', element: 'short-sleeve' },
+              { name: 'Sleeveless', element: 'sleeveless' },
             ]},
           ]},
         ]},
         { name: 'About', children: [
-          { name: 'Company', element: '#company' },
-          { name: 'Contact', element: '#contact' },
-          { name: 'Blog', element: '#blog' },
+          { name: 'Company', element: 'company' },
+          { name: 'Contact', element: 'contact' },
+          { name: 'Blog', element: 'blog' },
         ]},
       ],
       defaultOpenLevel: 2,

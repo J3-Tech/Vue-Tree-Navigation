@@ -68,7 +68,7 @@ describe('TreeNavigation', () => {
         context('with element item', () => {
           it('returns correct metadata', () => {
             const item = {
-              element: '#element',
+              element: 'element',
             };
 
             const expected = {
@@ -113,7 +113,7 @@ describe('TreeNavigation', () => {
           };
 
           const item = {
-            element: '#about',
+            element: 'about',
           };
 
           const expected = {
@@ -179,7 +179,7 @@ describe('TreeNavigation', () => {
           };
 
           const item = {
-            element: '#child',
+            element: 'child',
           };
 
           const expected = {
@@ -245,7 +245,7 @@ describe('TreeNavigation', () => {
           };
 
           const item = {
-            element: '#element',
+            element: 'element',
           };
 
           const expected = {
@@ -289,17 +289,17 @@ describe('TreeNavigation', () => {
           { name: 'Route 1', route: 'route-1' },
           { name: 'Route 2', route: 'route-2', children: [
             { name: 'Route 2-I', route: 'route-2-I', children: [
-              { name: 'Element 1', element: '#element-1', children: [
+              { name: 'Element 1', element: 'element-1', children: [
                 { name: 'Route 2-I-a', route: 'route-2-I-a' },
               ]},
-              { name: 'Element 2', element: '#element-2' },
+              { name: 'Element 2', element: 'element-2' },
             ]},
             { name: 'Label 1', children: [
-              { name: 'Element 3', element: '#element-3' },
+              { name: 'Element 3', element: 'element-3' },
               { name: 'Label 2', children: [
-                { name: 'Element 4', element: '#element-4', children: [
+                { name: 'Element 4', element: 'element-4', children: [
                   { name: 'Route 5', route: 'route-5' },
-                  { name: 'Element 5', element: '#element-5' },
+                  { name: 'Element 5', element: 'element-5' },
                 ]},
               ]},
             ]},
@@ -308,12 +308,12 @@ describe('TreeNavigation', () => {
             { name: 'Route 6', route: 'route-6' },
           ]},
           { name: 'Label 4', children: [
-            { name: 'Element 6', element: '#element-6' },
+            { name: 'Element 6', element: 'element-6' },
           ]},
-          { name: 'Element 7', element: '#element-7', children: [
+          { name: 'Element 7', element: 'element-7', children: [
             { name: 'Label 5' },
           ]},
-          { name: 'Element 8', element: '#element-8', children: [
+          { name: 'Element 8', element: 'element-8', children: [
             { name: 'Route 7', route: 'route-7' },
           ]},
         ];
@@ -325,25 +325,25 @@ describe('TreeNavigation', () => {
             meta: { path: '/route-2', pathType: PATH_TYPE_ROUTE }, children: [
             { name: 'Route 2-I', route: 'route-2-I',
               meta: { path: '/route-2/route-2-I', pathType: PATH_TYPE_ROUTE }, children: [
-              { name: 'Element 1', element: '#element-1',
+              { name: 'Element 1', element: 'element-1',
                 meta: { path: '/route-2/route-2-I#element-1', pathType: PATH_TYPE_ROUTE }, children: [
                 { name: 'Route 2-I-a', route: 'route-2-I-a',
                   meta: { path: '/route-2/route-2-I/route-2-I-a', pathType: PATH_TYPE_ROUTE }},
               ]},
-              { name: 'Element 2', element: '#element-2',
+              { name: 'Element 2', element: 'element-2',
                 meta: { path: '/route-2/route-2-I#element-2', pathType: PATH_TYPE_ROUTE }},
             ]},
             { name: 'Label 1',
               meta: { path: '/route-2', pathType: PATH_TYPE_ROUTE }, children: [
-              { name: 'Element 3', element: '#element-3',
+              { name: 'Element 3', element: 'element-3',
                 meta: { path: '/route-2#element-3', pathType: PATH_TYPE_ROUTE }},
               { name: 'Label 2',
                 meta: { path: '/route-2', pathType: PATH_TYPE_ROUTE }, children: [
-                { name: 'Element 4', element: '#element-4',
+                { name: 'Element 4', element: 'element-4',
                   meta: { path: '/route-2#element-4', pathType: PATH_TYPE_ROUTE }, children: [
                   { name: 'Route 5', route: 'route-5',
                     meta: { path: '/route-2/route-5', pathType: PATH_TYPE_ROUTE }},
-                  { name: 'Element 5', element: '#element-5',
+                  { name: 'Element 5', element: 'element-5',
                     meta: { path: '/route-2#element-5', pathType: PATH_TYPE_ROUTE }},
                 ]},
               ]},
@@ -356,15 +356,15 @@ describe('TreeNavigation', () => {
           ]},
           { name: 'Label 4',
             meta: { path: undefined, pathType: PATH_TYPE_NONE }, children: [
-            { name: 'Element 6', element: '#element-6',
+            { name: 'Element 6', element: 'element-6',
               meta: { path: '#element-6', pathType: PATH_TYPE_ELEMENT }},
           ]},
-          { name: 'Element 7', element: '#element-7',
+          { name: 'Element 7', element: 'element-7',
             meta: { path: '#element-7', pathType: PATH_TYPE_ELEMENT }, children: [
             { name: 'Label 5',
               meta: { path: undefined, pathType: PATH_TYPE_NONE }},
           ]},
-          { name: 'Element 8', element: '#element-8',
+          { name: 'Element 8', element: 'element-8',
             meta: { path: '#element-8', pathType: PATH_TYPE_ELEMENT }, children: [
             { name: 'Route 7', route: 'route-7',
               meta: { path: '/route-7', pathType: PATH_TYPE_ROUTE }},
