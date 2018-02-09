@@ -6,6 +6,52 @@ const { PATH_TYPE_NONE, PATH_TYPE_ELEMENT, PATH_TYPE_ROUTE } = pathTypes;
 describe('TreeNavigation', () => {
   describe('utils', () => {
 
+    describe('sanitizeRoute', () => {
+      context('with undefined route', () => {
+        it('returns undefined', () => {
+          expect(utils.sanitizeRoute(undefined)).toBe(undefined);
+        });
+      });
+
+      context('with route with backlash at the first position', () => {
+        it('returns original route', () => {
+          expect(utils.sanitizeRoute('/route')).toBe('/route');
+        });
+      });
+
+      context('with route without backlash at the first position', () => {
+        it('adds backslash to the first position', () => {
+          expect(utils.sanitizeRoute('route')).toBe('/route');
+        });
+      });
+
+      context('with route with backlash at the last position', () => {
+        it('removes backslash from the last position', () => {
+          expect(utils.sanitizeRoute('route/')).toBe('/route');
+        });
+      });
+    });
+
+    describe('sanitizeElement', () => {
+      context('with undefined element', () => {
+        it('returns undefined', () => {
+          expect(utils.sanitizeElement(undefined)).toBe(undefined);
+        });
+      });
+
+      context('with element with hash at the first position', () => {
+        it('returns original element', () => {
+          expect(utils.sanitizeElement('#element')).toBe('#element');
+        });
+
+        context('with element without hash at the first position', () => {
+          it('adds hash to the first position', () => {
+            expect(utils.sanitizeElement('element')).toBe('#element');
+          });
+        });
+      });
+    });
+
     describe('removeElementFromPath', () => {
       context('with empty path', () => {
         it('returns empty path', () => {
