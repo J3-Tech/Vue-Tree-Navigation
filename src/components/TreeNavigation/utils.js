@@ -64,6 +64,41 @@ function removeElementFromPath(path) {
 }
 
 /**
+ * First character should be backslash.
+ * Last character shouldn't be backslash.
+ */
+function sanitizeRoute(route) {
+  if (route === undefined) {
+    return;
+  }
+
+  if (route[0] !== '/') {
+    route = '/' + route;
+  }
+
+  if (route[route.length -1] === '/') {
+    route = route.slice(0, -1);
+  }
+
+  return route;
+}
+
+/**
+ * First character should be #.
+ */
+function sanitizeElement(element) {
+  if (element === undefined) {
+    return;
+  }
+
+  if (element[0] !== '#') {
+    element = '#' + element;
+  }
+
+  return element;
+}
+
+/**
  * Return item metadata object: { path: ..., pathType: ... }
  */
 function getItemMetadata(item, parent) {
@@ -223,6 +258,8 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
 }
 
 export default {
+  sanitizeRoute,
+  sanitizeElement,
   removeElementFromPath,
   getItemMetadata,
   insertMetadataToItems,
