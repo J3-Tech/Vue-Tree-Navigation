@@ -102,53 +102,55 @@ function sanitizeElement(element) {
  * Return item metadata object: { path: ..., pathType: ... }
  */
 function getItemMetadata(item, parent) {
+  const element = sanitizeElement(item.element);
+  const route = sanitizeRoute(item.route);
 
   // item is its own parent
   if (parent === undefined) {
-    if (item.element === undefined && item.route === undefined) {
+    if (element === undefined && route === undefined) {
       return {
         path: undefined,
         pathType: PATH_TYPE_NONE,
       };
     }
 
-    if (item.route !== undefined) {
+    if (route !== undefined) {
       return {
-        path: '/' + item.route,  // TODO: clever join
+        path: route,
         pathType: PATH_TYPE_ROUTE,
       };
     }
 
-    if (item.element !== undefined) {
+    if (element !== undefined) {
       return {
-        path: '#' + item.element,    // TODO: clever join
+        path: element,
         pathType: PATH_TYPE_ELEMENT,
       };
     }
   }
 
   // route -> route
-  if (parent.meta.pathType === PATH_TYPE_ROUTE && item.route !== undefined) {
+  if (parent.meta.pathType === PATH_TYPE_ROUTE && route !== undefined) {
     const parentPath = removeElementFromPath(parent.meta.path);
 
     return {
-      path: parentPath + '/' + item.route, // TODO: clever join
+      path: parentPath + route,
       pathType: PATH_TYPE_ROUTE,
     };
   }
 
   // route -> element
-  if (parent.meta.pathType === PATH_TYPE_ROUTE && item.element !== undefined) {
+  if (parent.meta.pathType === PATH_TYPE_ROUTE && element !== undefined) {
     const parentPath = removeElementFromPath(parent.meta.path);
 
     return {
-      path: parentPath + '#' + item.element, // TODO: clever join
+      path: parentPath + element,
       pathType: PATH_TYPE_ROUTE,
     };
   }
 
   // route -> label
-  if (parent.meta.pathType === PATH_TYPE_ROUTE && item.element === undefined && item.route === undefined) {
+  if (parent.meta.pathType === PATH_TYPE_ROUTE && element === undefined && route === undefined) {
     const parentPath = removeElementFromPath(parent.meta.path);
 
     return {
@@ -158,23 +160,23 @@ function getItemMetadata(item, parent) {
   }
 
   // element -> route
-  if (parent.meta.pathType === PATH_TYPE_ELEMENT && item.route !== undefined) {
+  if (parent.meta.pathType === PATH_TYPE_ELEMENT && route !== undefined) {
     return {
-      path: '/' + item.route,  // TODO: clever join
+      path: route,
       pathType: PATH_TYPE_ROUTE,
     };
   }
 
   // element -> element
-  if (parent.meta.pathType === PATH_TYPE_ELEMENT && item.element !== undefined) {
+  if (parent.meta.pathType === PATH_TYPE_ELEMENT && element !== undefined) {
     return {
-      path: '#' + item.element, // TODO: clever join
+      path: element, // TODO: clever join
       pathType: PATH_TYPE_ELEMENT,
     };
   }
 
   // element -> label
-  if (parent.meta.pathType === PATH_TYPE_ELEMENT && item.element === undefined && item.route === undefined) {
+  if (parent.meta.pathType === PATH_TYPE_ELEMENT && element === undefined && route === undefined) {
     return {
       path: undefined,
       pathType: PATH_TYPE_NONE,
@@ -182,23 +184,23 @@ function getItemMetadata(item, parent) {
   }
 
   // label -> route
-  if (parent.meta.pathType === PATH_TYPE_NONE && item.route !== undefined) {
+  if (parent.meta.pathType === PATH_TYPE_NONE && route !== undefined) {
     return {
-      path: '/' + item.route, // TODO: clever join
+      path: route,
       pathType: PATH_TYPE_ROUTE,
     };
   }
 
   // label -> element
-  if (parent.meta.pathType === PATH_TYPE_NONE && item.element !== undefined) {
+  if (parent.meta.pathType === PATH_TYPE_NONE && element !== undefined) {
     return {
-      path: '#' + item.element,    // TODO: clever join
+      path: element,
       pathType: PATH_TYPE_ELEMENT,
     };
   }
 
   // label -> label
-  if (parent.meta.pathType === PATH_TYPE_NONE && item.element === undefined && item.route === undefined) {
+  if (parent.meta.pathType === PATH_TYPE_NONE && element === undefined && route === undefined) {
     return {
       path: undefined,
       pathType: PATH_TYPE_NONE,
