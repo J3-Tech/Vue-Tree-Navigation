@@ -219,12 +219,3 @@ Build:
 ```console
 $ npm run build
 ```
-
-Run demo development server:
-
-```console
-$ cd demo
-$ npm install
-$ npm run dev
-```
-
