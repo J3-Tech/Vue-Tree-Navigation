@@ -7,9 +7,9 @@ Vue.js 2 tree navigation
 ## Developers
 
 ```console
-$ npm run lint
-$ npm run test
-$ npm run test:verbose
-$ npm run dev
-$ npm run build
+$ yarn lint
+$ yarn test
+$ yarn test:verbose
+$ yarn dev
+$ yarn build
 ```
