@@ -4,16 +4,12 @@ module.exports = {
   env: {
     browser: true,
     node: true,
+    es6: true,
     jest: true,
   },
-  extends: 'eslint-config-genius',
-  plugins: [
-    'html'
-  ],
-  rules: {
-    quotes: ['error', 'single']
-  },
+  extends: ['standard', 'prettier'],
+  plugins: ['html'],
   globals: {
-    context: false
+    context: true
   }
-}
+};
