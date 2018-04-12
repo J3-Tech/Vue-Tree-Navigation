@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
   entry: './dev/main.js',
   output: {
     path: path.resolve(__dirname, 'dev/', 'dist/'),
@@ -87,6 +88,7 @@ module.exports = {
 };
 
 if (process.env.NODE_ENV === 'production') {
+  module.exports.mode = 'production'
   module.exports.entry = './src/index.js';
 
   module.exports.output = {
