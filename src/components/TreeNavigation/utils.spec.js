@@ -1,6 +1,6 @@
-import utils from '../utils';
+import utils from './utils';
 
-import pathTypes from '../../../pathTypes';
+import pathTypes from '../../pathTypes';
 const { PATH_TYPE_NONE, PATH_TYPE_ELEMENT, PATH_TYPE_ROUTE } = pathTypes;
 
 describe('TreeNavigation', () => {

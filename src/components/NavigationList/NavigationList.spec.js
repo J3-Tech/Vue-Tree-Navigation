@@ -1,6 +1,6 @@
 import { mount } from 'vue-test-utils';
 
-import NavigationList from '../NavigationList';
+import NavigationList from './NavigationList';
 
 describe('NavigationList ', () => {
   it('renders', () => {

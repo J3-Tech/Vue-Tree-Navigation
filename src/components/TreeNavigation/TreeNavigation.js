@@ -1,6 +1,6 @@
 import utils from './utils';
 
-require('./assets/_base.scss');
+require('./TreeNavigation.scss');
 
 const TreeNavigation = {
   name: 'vue-tree-navigation',

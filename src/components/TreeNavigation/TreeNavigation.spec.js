@@ -1,7 +1,7 @@
 import { createLocalVue, mount } from 'vue-test-utils';
 import VueRouter from 'vue-router';
 
-import TreeNavigation from '../TreeNavigation';
+import TreeNavigation from './TreeNavigation';
 
 const items = [
   { name: 'Home', route: 'home' },
