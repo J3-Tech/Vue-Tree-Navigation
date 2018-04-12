@@ -37,7 +37,7 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
 ### Include with a script tag
 
 ```html
-<script src="https://unpkg.com/vue-tree-navigation@2.0.1/dist/vue-tree-navigation.js"></script>
+<script src="https://unpkg.com/vue-tree-navigation@2.1.1/dist/vue-tree-navigation.js"></script>
 
 <script>
   Vue.use(VueTreeNavigation)
