@@ -10,6 +10,6 @@ module.exports = {
   extends: ['standard', 'prettier'],
   plugins: ['html'],
   globals: {
-    context: true
-  }
+    context: true,
+  },
 };

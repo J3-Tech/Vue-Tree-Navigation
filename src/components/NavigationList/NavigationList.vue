@@ -28,19 +28,19 @@ export default {
 
   computed: {
     classes() {
-      return { 'closed': this.closed };
+      return { closed: this.closed };
     },
   },
 
   watch: {
-    defaultOpenLevel: function () {
+    defaultOpenLevel: function() {
       this.closed = this.level > this.defaultOpenLevel;
     },
   },
 
   methods: {
     toggle() {
-      this.closed = ! this.closed;
+      this.closed = !this.closed;
     },
   },
 
@@ -51,6 +51,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './assets/_base.scss';
+@import './assets/_base.scss';
 </style>
-
