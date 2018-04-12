@@ -5,29 +5,52 @@ import TreeNavigation from '../TreeNavigation';
 
 const items = [
   { name: 'Home', route: 'home' },
-  { name: 'Products', route: '/products', children: [
-    { name: 'Running shoes', route: 'shoes', children: [
-      { name: 'Race', element: 'race' },
-      { name: 'Road', element: '#road' },
-      { name: 'Trail', element: '#trail' },
-    ]},
-    { name: 'Running clothing', route: 'clothing', children: [
-      { name: 'Jackets', route: '/jackets/' },
-      { name: 'Tops', route: 'tops', children: [
-        { name: 'Long Sleeve', element: 'long-sleeve', children: [
-          { name: 'For summer', element: 'summer' },
-          { name: 'For winter', element: 'winter' },
-        ]},
-        { name: 'Short Sleeve', element: 'short-sleeve' },
-        { name: 'Sleeveless', element: 'sleeveless' },
-      ]},
-    ]},
-  ]},
-  { name: 'About', children: [
-    { name: 'Company' },
-    { name: 'Contact', element: 'contact' },
-    { name: 'Blog', element: 'blog' },
-  ]},
+  {
+    name: 'Products',
+    route: '/products',
+    children: [
+      {
+        name: 'Running shoes',
+        route: 'shoes',
+        children: [
+          { name: 'Race', element: 'race' },
+          { name: 'Road', element: '#road' },
+          { name: 'Trail', element: '#trail' },
+        ],
+      },
+      {
+        name: 'Running clothing',
+        route: 'clothing',
+        children: [
+          { name: 'Jackets', route: '/jackets/' },
+          {
+            name: 'Tops',
+            route: 'tops',
+            children: [
+              {
+                name: 'Long Sleeve',
+                element: 'long-sleeve',
+                children: [
+                  { name: 'For summer', element: 'summer' },
+                  { name: 'For winter', element: 'winter' },
+                ],
+              },
+              { name: 'Short Sleeve', element: 'short-sleeve' },
+              { name: 'Sleeveless', element: 'sleeveless' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'About',
+    children: [
+      { name: 'Company' },
+      { name: 'Contact', element: 'contact' },
+      { name: 'Blog', element: 'blog' },
+    ],
+  },
 ];
 
 const routes = [
@@ -89,10 +112,14 @@ describe('TreeNavigation', () => {
         });
 
         // level 3 list
-        expect(wrapper.find('div > ul > ul > ul > ul').classes()).toContain('closed');
+        expect(wrapper.find('div > ul > ul > ul > ul').classes()).toContain(
+          'closed'
+        );
 
         // level 4 list
-        expect(wrapper.find('div > ul > ul > ul > ul > ul').classes()).toContain('closed');
+        expect(
+          wrapper.find('div > ul > ul > ul > ul > ul').classes()
+        ).toContain('closed');
       });
     });
 
@@ -112,7 +139,9 @@ describe('TreeNavigation', () => {
         expect(wrapper.find('div > ul > ul').classes()).not.toContain('closed');
 
         // level 2 list
-        expect(wrapper.find('div > ul > ul > ul').classes()).not.toContain('closed');
+        expect(wrapper.find('div > ul > ul > ul').classes()).not.toContain(
+          'closed'
+        );
       });
     });
   });

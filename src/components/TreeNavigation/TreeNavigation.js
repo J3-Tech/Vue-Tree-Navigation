@@ -35,17 +35,23 @@ const TreeNavigation = {
     const self = this;
 
     const level = 1;
-    const tree = createElement('ul',
-      utils.generateLevel(createElement,
-                          self.itemsWithMetadata,
-                          level,
-                          self.defaultOpenLevel));
+    const tree = createElement(
+      'ul',
+      utils.generateLevel(
+        createElement,
+        self.itemsWithMetadata,
+        level,
+        self.defaultOpenLevel
+      )
+    );
 
-    const wrapper = createElement('div', {
-      'class': self.classes,
-    }, [
-      tree,
-    ]);
+    const wrapper = createElement(
+      'div',
+      {
+        class: self.classes,
+      },
+      [tree]
+    );
 
     return wrapper;
   },

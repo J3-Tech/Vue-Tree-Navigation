@@ -9,16 +9,14 @@ const Jackets = { template: '<div><h1>Jackets</h1></div>' };
 const Products = { template: '<div><h1>Products</h1></div>' };
 
 const Clothing = {
-  template:
-    `<div>
+  template: `<div>
       <h1>Running clothing</h1>
       <router-view></router-view>
     </div>`,
 };
 
 const Shoes = {
-  template:
-    `<div>
+  template: `<div>
       <h1>Running shoes</h1>
       <ul>
         <li id="race">Race</li>
@@ -29,8 +27,7 @@ const Shoes = {
 };
 
 const Tops = {
-  template:
-  `<div>
+  template: `<div>
     <h1>Tops</h1>
     <ul>
       <li id="long-sleeve">
@@ -80,12 +77,13 @@ const router = new VueRouter({
     if (to.hash) {
       return { selector: to.hash };
     } else {
-      return { x: 0, y: 0};
+      return { x: 0, y: 0 };
     }
   },
   routes,
 });
 
+// eslint-disable-next-line
 new Vue({
   el: '#app',
   router,

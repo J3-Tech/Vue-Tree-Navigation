@@ -11,7 +11,7 @@ describe('NavigationToggle ', () => {
     });
 
     expect(wrapper.html()).toMatchSnapshot();
-  }),
+  });
 
   context('with `isClosed` property equal to true', () => {
     it('assigns `closed` class to outer span', () => {

@@ -15,13 +15,12 @@ export default {
 
   computed: {
     classes() {
-      return { 'closed': this.isClosed };
+      return { closed: this.isClosed };
     },
   },
 };
 </script>
 
 <style lang="scss">
-  @import './assets/_base.scss';
+@import './assets/_base.scss';
 </style>
-
