@@ -30,8 +30,7 @@
     "lint": "npm run lint:js & npm run lint:scss",
     "prettier-list": "prettier --list-different '**/*.{js,vue}' --ignore-path .eslintignore",
     "prettier": "prettier --write '**/*.{js,vue}' --ignore-path .eslintignore",
-    "test": "jest",
-    "test:verbose": "jest --verbose"
+    "unit": "jest"
   },
   "dependencies": {
     "vue": "^2.5.11"
