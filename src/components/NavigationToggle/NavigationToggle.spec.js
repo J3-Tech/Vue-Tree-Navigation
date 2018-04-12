@@ -1,6 +1,6 @@
 import { mount } from 'vue-test-utils';
 
-import NavigationToggle from '../NavigationToggle';
+import NavigationToggle from './NavigationToggle';
 
 describe('NavigationToggle ', () => {
   it('renders', () => {

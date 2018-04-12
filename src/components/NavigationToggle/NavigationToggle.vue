@@ -19,8 +19,8 @@ export default {
     },
   },
 };
-</script>
+</script>+
 
 <style lang="scss">
-@import './assets/_base.scss';
+@import './NavigationToggle.scss';
 </style>

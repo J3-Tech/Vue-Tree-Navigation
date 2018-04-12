@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeNavigation renders 1`] = `
+<div class="tree-navigation">
+  <ul>
+    <li>
+      <a href="#/home" class="router-link">Home</a>
+    </li>
+    <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+      <a href="#/products" class="router-link">Products</a>
+      <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+        <a href="#/products/shoes" class="router-link">Running shoes</a>
+        <li>
+          <a href="#/products/shoes#race" class="router-link">Race</a>
+        </li>
+        <li>
+          <a href="#/products/shoes#road" class="router-link">Road</a>
+        </li>
+        <li>
+          <a href="#/products/shoes#trail" class="router-link">Trail</a>
+        </li>
+      </ul>
+      <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+        <a href="#/products/clothing" class="router-link">Running clothing</a>
+        <li>
+          <a href="#/products/clothing/jackets" class="router-link">Jackets</a>
+        </li>
+        <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+          <a href="#/products/clothing/tops" class="router-link">Tops</a>
+          <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span>
+            <a href="#/products/clothing/tops#long-sleeve" class="router-link">Long Sleeve</a>
+            <li>
+              <a href="#/products/clothing/tops#summer" class="router-link">For summer</a>
+            </li>
+            <li>
+              <a href="#/products/clothing/tops#winter" class="router-link">For winter</a>
+            </li>
+          </ul>
+          <li>
+            <a href="#/products/clothing/tops#short-sleeve" class="router-link">Short Sleeve</a>
+          </li>
+          <li>
+            <a href="#/products/clothing/tops#sleeveless" class="router-link">Sleeveless</a>
+          </li>
+        </ul>
+      </ul>
+    </ul>
+    <ul class="navigation-list closed"><span class="navigation-toggle closed"><span class="navigation-toggle-icon"></span></span> About
+      <li>Company</li>
+      <li>
+        <a href="#contact" class="">Contact</a>
+      </li>
+      <li>
+        <a href="#blog" class="">Blog</a>
+      </li>
+    </ul>
+  </ul>
+</div>
+`;
