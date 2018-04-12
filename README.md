@@ -7,9 +7,12 @@ Vue.js 2 tree navigation
 ## Developers
 
 ```console
+$ yarn dev
+
+$ yarn build
+
+$ yarn prettier
 $ yarn lint
 $ yarn test
 $ yarn test:verbose
-$ yarn dev
-$ yarn build
 ```
