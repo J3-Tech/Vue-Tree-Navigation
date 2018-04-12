@@ -13,6 +13,7 @@ $ yarn build
 
 $ yarn prettier
 $ yarn lint
-$ yarn test
-$ yarn test:verbose
+
+$ yarn unit
+$ yarn unit --verbose
 ```
