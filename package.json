@@ -84,7 +84,6 @@
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     },
-    "mapCoverage": true,
     "moduleNameMapper": {
       "\\.(scss)$": "identity-obj-proxy"
     },
