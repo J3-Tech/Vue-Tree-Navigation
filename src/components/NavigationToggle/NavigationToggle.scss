@@ -1,20 +1,20 @@
-.navigation-toggle {
+.NavigationToggle {
   position: relative;
   top:      -3px;
   padding:  6px;
   cursor:   pointer;
 
-  .navigation-toggle-icon {
+  &__icon {
     display:      inline-block;
     padding:      3px;
     border:       solid #000;
     border-width: 0 2px 2px 0;
     transform:    rotate(45deg);
   }
+}
 
-  &.closed {
-    .navigation-toggle-icon {
-      transform: rotate(-45deg);
-    }
+.NavigationToggle--closed {
+  .NavigationToggle__icon {
+    transform: rotate(-45deg);
   }
 }

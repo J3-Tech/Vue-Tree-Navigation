@@ -3,35 +3,37 @@ import { mount } from 'vue-test-utils';
 import NavigationToggle from './NavigationToggle';
 
 describe('NavigationToggle ', () => {
-  it('renders', () => {
+  it('isVueInstance', () => {
     const wrapper = mount(NavigationToggle, {
       propsData: {
         isClosed: true,
       },
     });
 
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.isVueInstance()).toBe(true);
   });
 
-  context('with `isClosed` property equal to true', () => {
-    it('assigns `closed` class to outer span', () => {
+  context('when closed', () => {
+    it('is assigned closed class', () => {
       const wrapper = mount(NavigationToggle, {
         propsData: {
           isClosed: true,
         },
       });
 
-      expect(wrapper.classes()).toContain('closed');
+      expect(wrapper.classes()).toContain('NavigationToggle--closed');
     });
   });
 
-  context('with `isClosed` property equal to false', () => {
-    const wrapper = mount(NavigationToggle, {
-      propsData: {
-        isClosed: false,
-      },
-    });
+  context('when opened', () => {
+    it('is not assigned closed class', () => {
+      const wrapper = mount(NavigationToggle, {
+        propsData: {
+          isClosed: false,
+        },
+      });
 
-    expect(wrapper.classes()).not.toContain('closed');
+      expect(wrapper.classes()).not.toContain('NavigationToggle--closed');
+    });
   });
 });

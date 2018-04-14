@@ -1,6 +1,8 @@
 <template>
-  <span class="navigation-toggle" :class="classes">
-    <span class="navigation-toggle-icon"></span>
+  <span
+    class="NavigationToggle"
+    :class="classes">
+    <span class="NavigationToggle__icon"></span>
   </span>
 </template>
 
@@ -15,11 +17,11 @@ export default {
 
   computed: {
     classes() {
-      return { closed: this.isClosed };
+      return { 'NavigationToggle--closed': this.isClosed };
     },
   },
 };
-</script>+
+</script>
 
 <style lang="scss">
 @import './NavigationToggle.scss';
