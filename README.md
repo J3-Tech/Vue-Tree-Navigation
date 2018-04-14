@@ -25,6 +25,7 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
               { name: 'Phone', element: 'phone' }               // #/about/contact#phone
             ]},
           ]},
+          { name: 'Github', external: 'https://github.com' },   // https://github.com
         ],
       };
     },

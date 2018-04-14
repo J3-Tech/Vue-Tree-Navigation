@@ -5,6 +5,7 @@ import {
   PATH_TYPE_NONE,
   PATH_TYPE_ELEMENT,
   PATH_TYPE_ROUTE,
+  PATH_TYPE_EXTERNAL,
 } from '../../config';
 
 /**
@@ -62,13 +63,25 @@ function sanitizeElement(element) {
 function getItemMetadata(item, parent) {
   const element = sanitizeElement(item.element);
   const route = sanitizeRoute(item.route);
+  const external = item.external;
 
   // item is its own parent
   if (parent === undefined) {
-    if (element === undefined && route === undefined) {
+    if (
+      element === undefined &&
+      route === undefined &&
+      external === undefined
+    ) {
       return {
         path: undefined,
         pathType: PATH_TYPE_NONE,
+      };
+    }
+
+    if (external !== undefined) {
+      return {
+        path: external,
+        pathType: PATH_TYPE_EXTERNAL,
       };
     }
 
@@ -85,6 +98,14 @@ function getItemMetadata(item, parent) {
         pathType: PATH_TYPE_ELEMENT,
       };
     }
+  }
+
+  // route -> external
+  if (parent.meta.pathType === PATH_TYPE_ROUTE && external !== undefined) {
+    return {
+      path: external,
+      pathType: PATH_TYPE_EXTERNAL,
+    };
   }
 
   // route -> route
@@ -111,13 +132,22 @@ function getItemMetadata(item, parent) {
   if (
     parent.meta.pathType === PATH_TYPE_ROUTE &&
     element === undefined &&
-    route === undefined
+    route === undefined &&
+    external === undefined
   ) {
     const parentPath = removeElementFromPath(parent.meta.path);
 
     return {
       path: parentPath,
       pathType: PATH_TYPE_ROUTE,
+    };
+  }
+
+  // element -> external
+  if (parent.meta.pathType === PATH_TYPE_ELEMENT && external !== undefined) {
+    return {
+      path: external,
+      pathType: PATH_TYPE_EXTERNAL,
     };
   }
 
@@ -132,7 +162,7 @@ function getItemMetadata(item, parent) {
   // element -> element
   if (parent.meta.pathType === PATH_TYPE_ELEMENT && element !== undefined) {
     return {
-      path: element, // TODO: clever join
+      path: element,
       pathType: PATH_TYPE_ELEMENT,
     };
   }
@@ -141,11 +171,20 @@ function getItemMetadata(item, parent) {
   if (
     parent.meta.pathType === PATH_TYPE_ELEMENT &&
     element === undefined &&
-    route === undefined
+    route === undefined &&
+    external === undefined
   ) {
     return {
       path: undefined,
       pathType: PATH_TYPE_NONE,
+    };
+  }
+
+  // label -> external
+  if (parent.meta.pathType === PATH_TYPE_NONE && external !== undefined) {
+    return {
+      path: external,
+      pathType: PATH_TYPE_EXTERNAL,
     };
   }
 
@@ -170,6 +209,43 @@ function getItemMetadata(item, parent) {
     parent.meta.pathType === PATH_TYPE_NONE &&
     element === undefined &&
     route === undefined
+  ) {
+    return {
+      path: undefined,
+      pathType: PATH_TYPE_NONE,
+    };
+  }
+
+  // external -> external
+  if (parent.meta.pathType === PATH_TYPE_EXTERNAL && external !== undefined) {
+    return {
+      path: external,
+      pathType: PATH_TYPE_EXTERNAL,
+    };
+  }
+
+  // external -> route
+  if (parent.meta.pathType === PATH_TYPE_EXTERNAL && route !== undefined) {
+    return {
+      path: route,
+      pathType: PATH_TYPE_ROUTE,
+    };
+  }
+
+  // external -> element
+  if (parent.meta.pathType === PATH_TYPE_EXTERNAL && element !== undefined) {
+    return {
+      path: element,
+      pathType: PATH_TYPE_ELEMENT,
+    };
+  }
+
+  // external -> label
+  if (
+    parent.meta.pathType === PATH_TYPE_EXTERNAL &&
+    element === undefined &&
+    route === undefined &&
+    external === undefined
   ) {
     return {
       path: undefined,

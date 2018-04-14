@@ -13,6 +13,11 @@
       v-if="showHyperLink"
       :href="item.meta.path">{{ item.name }}</a>
 
+    <a
+      v-if="showExternalHyperLink"
+      :href="item.meta.path"
+      target="_blank">{{ item.name }}</a>
+
     <router-link
       v-if="showRouterLink"
       class="router-link"
@@ -25,6 +30,7 @@ import {
   PATH_TYPE_NONE,
   PATH_TYPE_ELEMENT,
   PATH_TYPE_ROUTE,
+  PATH_TYPE_EXTERNAL,
 } from '../../config';
 
 export default {
@@ -38,6 +44,9 @@ export default {
     },
     showHyperLink() {
       return this.item.meta.pathType === PATH_TYPE_ELEMENT;
+    },
+    showExternalHyperLink() {
+      return this.item.meta.pathType === PATH_TYPE_EXTERNAL;
     },
     showRouterLink() {
       return this.item.meta.pathType === PATH_TYPE_ROUTE;
