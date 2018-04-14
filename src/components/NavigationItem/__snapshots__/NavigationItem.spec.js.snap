@@ -1,24 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavigationItem  for item with path type element renders hyperlink with a correct value and location 1`] = `
-<div class="NavigationItem">
-  <!---->
-  <a href="#contact">Contact</a>
-  <!---->
-</div>
-`;
+exports[`NavigationItem  for item with path type element renders hyperlink with a correct value and location 1`] = `<span class="NavigationItem"><!----> <a href="#contact">Contact</a> <!----></span>`;
 
 exports[`NavigationItem  for item with path type none renders span containing the item name 1`] = `
-<div class="NavigationItem"><span>Contact</span>
-  <!---->
-  <!---->
-</div>
+<span class="NavigationItem"><span>Contact</span>
+<!---->
+<!---->
+</span>
 `;
 
-exports[`NavigationItem  for item with path type route renders router link with a correct value and location 1`] = `
-<div class="NavigationItem">
-  <!---->
-  <!---->
-  <router-link to="/about" class="router-link">About</router-link>
-</div>
-`;
+exports[`NavigationItem  for item with path type route renders router link with a correct value and location 1`] = `<span class="NavigationItem"><!----> <!----> <router-link to="/about" class="router-link">About</router-link></span>`;
