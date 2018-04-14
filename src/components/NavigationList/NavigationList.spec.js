@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils';
+import { mount, shallow } from 'vue-test-utils';
 
 import { PATH_TYPE_NONE } from '../../config';
 import NavigationList from './NavigationList';
@@ -62,6 +62,70 @@ describe('NavigationList ', () => {
       });
 
       expect(wrapper.classes()).not.toContain('NavigationList--closed');
+    });
+  });
+
+  context('when a group is opened', () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = mount(NavigationList, {
+        propsData: {
+          level: 1,
+          defaultOpenLevel: 2,
+          parentItem,
+        },
+      });
+
+      expect(wrapper.classes()).not.toContain('NavigationList--closed');
+    });
+
+    context('when toggle clicked', () => {
+      it('assigns closed class', () => {
+        wrapper.find('.NavigationToggle').trigger('click');
+
+        expect(wrapper.classes()).toContain('NavigationList--closed');
+      });
+    });
+
+    context('when item clicked', () => {
+      it('does not assign closed class', () => {
+        wrapper.find('.NavigationItem').trigger('click');
+
+        expect(wrapper.classes()).not.toContain('NavigationList--closed');
+      });
+    });
+  });
+
+  context('when a group is closed', () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = mount(NavigationList, {
+        propsData: {
+          level: 2,
+          defaultOpenLevel: 1,
+          parentItem,
+        },
+      });
+
+      expect(wrapper.classes()).toContain('NavigationList--closed');
+    });
+
+    context('when toggle clicked', () => {
+      it('removes closed class', () => {
+        wrapper.find('.NavigationToggle').trigger('click');
+
+        expect(wrapper.classes()).not.toContain('NavigationList--closed');
+      });
+    });
+
+    context('when item clicked', () => {
+      it('removes closed class', () => {
+        wrapper.find('.NavigationItem').trigger('click');
+
+        expect(wrapper.classes()).not.toContain('NavigationList--closed');
+      });
     });
   });
 });

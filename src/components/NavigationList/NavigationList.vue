@@ -1,8 +1,14 @@
 <template>
-  <ul class="NavigationList" :class="classes">
-    <li @click="toggle">
-      <NavigationToggle :isClosed="closed" />
-      <NavigationItem :item="parentItem" />
+  <ul 
+    class="NavigationList"
+    :class="classes">
+    <li>
+      <NavigationToggle
+        :isClosed="closed"
+        @click.native="onToggleClick" />
+      <NavigationItem
+        :item="parentItem"
+        @click.native="onItemClick" />
     </li>
 
     <!-- child items goes here -->
@@ -52,8 +58,13 @@ export default {
   },
 
   methods: {
-    toggle() {
+    onToggleClick() {
       this.closed = !this.closed;
+    },
+    onItemClick() {
+      if (this.closed === true) {
+        this.closed = false;
+      }
     },
   },
 
