@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import TreeNavigation from '../src/components/TreeNavigation';
+import TreeNavigation from '../src/index';
 
 export default {
   data() {
