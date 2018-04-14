@@ -4,6 +4,7 @@ import {
   PATH_TYPE_NONE,
   PATH_TYPE_ELEMENT,
   PATH_TYPE_ROUTE,
+  PATH_TYPE_EXTERNAL,
 } from '../../config';
 
 describe('TreeNavigation', () => {
@@ -99,6 +100,21 @@ describe('TreeNavigation', () => {
           });
         });
 
+        context('with external item', () => {
+          it('returns correct metadata', () => {
+            const item = {
+              external: 'https://github.com',
+            };
+
+            const expected = {
+              path: 'https://github.com',
+              pathType: PATH_TYPE_EXTERNAL,
+            };
+
+            expect(utils.getItemMetadata(item)).toEqual(expected);
+          });
+        });
+
         context('with route item', () => {
           it('returns correct metadata', () => {
             const item = {
@@ -127,6 +143,28 @@ describe('TreeNavigation', () => {
 
             expect(utils.getItemMetadata(item)).toEqual(expected);
           });
+        });
+      });
+
+      context('with route parent and external item', () => {
+        it('returns correct metadata', () => {
+          const parent = {
+            meta: {
+              path: '/home',
+              pathType: PATH_TYPE_ROUTE,
+            },
+          };
+
+          const item = {
+            external: 'https://github.com',
+          };
+
+          const expected = {
+            path: 'https://github.com',
+            pathType: PATH_TYPE_EXTERNAL,
+          };
+
+          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -190,6 +228,28 @@ describe('TreeNavigation', () => {
           const expected = {
             path: '/home',
             pathType: PATH_TYPE_ROUTE,
+          };
+
+          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+        });
+      });
+
+      context('with element parent and external item', () => {
+        it('returns correct metadata', () => {
+          const parent = {
+            meta: {
+              path: '#element',
+              pathType: PATH_TYPE_ELEMENT,
+            },
+          };
+
+          const item = {
+            external: 'https://github.com',
+          };
+
+          const expected = {
+            path: 'https://github.com',
+            pathType: PATH_TYPE_EXTERNAL,
           };
 
           expect(utils.getItemMetadata(item, parent)).toEqual(expected);
@@ -262,6 +322,28 @@ describe('TreeNavigation', () => {
         });
       });
 
+      context('with label parent and external item', () => {
+        it('returns correct metadata', () => {
+          const parent = {
+            meta: {
+              path: undefined,
+              pathType: PATH_TYPE_NONE,
+            },
+          };
+
+          const item = {
+            external: 'https://github.com',
+          };
+
+          const expected = {
+            path: 'https://github.com',
+            pathType: PATH_TYPE_EXTERNAL,
+          };
+
+          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+        });
+      });
+
       context('with label parent and route item', () => {
         it('returns correct metadata', () => {
           const parent = {
@@ -327,6 +409,94 @@ describe('TreeNavigation', () => {
           expect(utils.getItemMetadata(item, parent)).toEqual(expected);
         });
       });
+
+      context('with external parent and external item', () => {
+        it('returns correct metadata', () => {
+          const parent = {
+            meta: {
+              path: 'https://github.com',
+              pathType: PATH_TYPE_EXTERNAL,
+            },
+          };
+
+          const item = {
+            external: 'https://slack.com',
+          };
+
+          const expected = {
+            path: 'https://slack.com',
+            pathType: PATH_TYPE_EXTERNAL,
+          };
+
+          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+        });
+      });
+
+      context('with external parent and route item', () => {
+        it('returns correct metadata', () => {
+          const parent = {
+            meta: {
+              path: 'https://github.com',
+              pathType: PATH_TYPE_EXTERNAL,
+            },
+          };
+
+          const item = {
+            route: 'route',
+          };
+
+          const expected = {
+            path: '/route',
+            pathType: PATH_TYPE_ROUTE,
+          };
+
+          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+        });
+      });
+
+      context('with external parent and element item', () => {
+        it('returns correct metadata', () => {
+          const parent = {
+            meta: {
+              path: 'https://github.com',
+              pathType: PATH_TYPE_EXTERNAL,
+            },
+          };
+
+          const item = {
+            element: 'element',
+          };
+
+          const expected = {
+            path: '#element',
+            pathType: PATH_TYPE_ELEMENT,
+          };
+
+          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+        });
+      });
+
+      context('with external parent and label item', () => {
+        it('returns correct metadata', () => {
+          const parent = {
+            meta: {
+              path: 'https://github.com',
+              pathType: PATH_TYPE_EXTERNAL,
+            },
+          };
+
+          const item = {
+            name: 'Contact',
+          };
+
+          const expected = {
+            path: undefined,
+            pathType: PATH_TYPE_NONE,
+          };
+
+          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+        });
+      });
     });
 
     describe('insertMetadataToItems', () => {
@@ -356,6 +526,7 @@ describe('TreeNavigation', () => {
                 name: 'Label 1',
                 children: [
                   { name: 'Element 3', element: 'element-3' },
+                  { name: 'Github', external: 'https://github.com' },
                   {
                     name: 'Label 2',
                     children: [
@@ -447,6 +618,14 @@ describe('TreeNavigation', () => {
                     meta: {
                       path: '/route-2#element-3',
                       pathType: PATH_TYPE_ROUTE,
+                    },
+                  },
+                  {
+                    name: 'Github',
+                    external: 'https://github.com',
+                    meta: {
+                      path: 'https://github.com',
+                      pathType: PATH_TYPE_EXTERNAL,
                     },
                   },
                   {
