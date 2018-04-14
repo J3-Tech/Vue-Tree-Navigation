@@ -1,12 +1,16 @@
 <template>
   <ul class="navigation-list" :class="classes">
     <navigation-toggle :isClosed="closed" @click.native="toggle"></navigation-toggle>
+    <NavigationItem :item="parentItem" />
+
+    <!-- child items goes here -->
     <slot></slot>
   </ul>
 </template>
 
 <script>
 import NavigationToggle from '../NavigationToggle/NavigationToggle.vue';
+import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
 export default {
   data() {
@@ -22,6 +26,10 @@ export default {
     },
     defaultOpenLevel: {
       type: Number,
+      required: true,
+    },
+    parentItem: {
+      type: Object,
       required: true,
     },
   },
@@ -46,6 +54,7 @@ export default {
 
   components: {
     'navigation-toggle': NavigationToggle,
+    NavigationItem,
   },
 };
 </script>

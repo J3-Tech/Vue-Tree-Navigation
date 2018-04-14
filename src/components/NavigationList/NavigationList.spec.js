@@ -1,6 +1,14 @@
 import { mount } from 'vue-test-utils';
 
+import { PATH_TYPE_NONE } from '../../config';
 import NavigationList from './NavigationList';
+
+const parentItem = {
+  name: 'Contact',
+  meta: {
+    pathType: PATH_TYPE_NONE,
+  },
+};
 
 describe('NavigationList ', () => {
   it('renders', () => {
@@ -8,6 +16,7 @@ describe('NavigationList ', () => {
       propsData: {
         level: 2,
         defaultOpenLevel: 3,
+        parentItem,
       },
     });
 
@@ -20,6 +29,7 @@ describe('NavigationList ', () => {
         propsData: {
           level: 3,
           defaultOpenLevel: 2,
+          parentItem,
         },
       });
 
@@ -33,6 +43,7 @@ describe('NavigationList ', () => {
         propsData: {
           level: 3,
           defaultOpenLevel: 3,
+          parentItem,
         },
       });
 
@@ -46,6 +57,7 @@ describe('NavigationList ', () => {
         propsData: {
           level: 2,
           defaultOpenLevel: 3,
+          parentItem,
         },
       });
 
