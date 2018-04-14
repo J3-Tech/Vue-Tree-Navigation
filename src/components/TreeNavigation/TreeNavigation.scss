@@ -1,20 +1,15 @@
 .TreeNavigation {
   display: inline-block;
+  padding: 0;
+  margin:  0;
 
   ul {
-    padding-left:    15px;
-    font-weight:     bold;
-    line-height:     30px;
-    text-align:      left;
+    padding:         0;
+    margin:          0;
     list-style-type: none;
-
-    li {
-      padding-left: 40px;
-      font-weight:  normal;
-    }
   }
 
-  & > ul {
-    padding-left: 0;
+  ul ul li:not(:first-child) {
+    padding-left: 20px;
   }
 }

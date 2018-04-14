@@ -1,8 +1,10 @@
 <template>
   <span
     class="NavigationToggle"
-    :class="classes">
-    <span class="NavigationToggle__icon"></span>
+    :class="{ 'NavigationToggle--closed': this.isClosed }">
+    <span
+      class="NavigationToggle__icon"
+      :class="{ 'NavigationToggle__icon--closed': this.isClosed }"></span>
   </span>
 </template>
 
@@ -12,12 +14,6 @@ export default {
     isClosed: {
       type: Boolean,
       required: true,
-    },
-  },
-
-  computed: {
-    classes() {
-      return { 'NavigationToggle--closed': this.isClosed };
     },
   },
 };
