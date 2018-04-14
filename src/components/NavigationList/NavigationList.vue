@@ -1,7 +1,9 @@
 <template>
   <ul class="navigation-list" :class="classes">
-    <navigation-toggle :isClosed="closed" @click.native="toggle"></navigation-toggle>
-    <NavigationItem :item="parentItem" />
+    <div @click="toggle">
+      <navigation-toggle :isClosed="closed"></navigation-toggle>
+      <NavigationItem :item="parentItem" />
+    </div>
 
     <!-- child items goes here -->
     <slot></slot>
