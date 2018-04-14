@@ -6,7 +6,7 @@
  */
 
 <template>
-  <div class="NavigationItem">
+  <span class="NavigationItem">
     <span v-if="showText">{{ item.name }}</span>
 
     <a
@@ -17,7 +17,7 @@
       v-if="showRouterLink"
       class="router-link"
       :to="item.meta.path">{{ item.name }}</router-link>
-  </div>
+  </span>
 </template>
 
 <script>
