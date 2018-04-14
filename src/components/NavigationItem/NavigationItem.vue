@@ -21,8 +21,11 @@
 </template>
 
 <script>
-import pathTypes from '../../pathTypes';
-const { PATH_TYPE_NONE, PATH_TYPE_ELEMENT, PATH_TYPE_ROUTE } = pathTypes;
+import {
+  PATH_TYPE_NONE,
+  PATH_TYPE_ELEMENT,
+  PATH_TYPE_ROUTE,
+} from '../../config';
 
 export default {
   props: {

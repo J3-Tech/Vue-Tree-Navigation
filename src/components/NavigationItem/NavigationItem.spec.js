@@ -1,9 +1,11 @@
 import { shallow } from 'vue-test-utils';
 
-import pathTypes from '../../pathTypes';
+import {
+  PATH_TYPE_NONE,
+  PATH_TYPE_ELEMENT,
+  PATH_TYPE_ROUTE,
+} from '../../config';
 import NavigationItem from './NavigationItem';
-
-const { PATH_TYPE_NONE, PATH_TYPE_ELEMENT, PATH_TYPE_ROUTE } = pathTypes;
 
 const textItem = {
   name: 'Contact',
