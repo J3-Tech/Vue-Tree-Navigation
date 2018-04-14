@@ -1,5 +1,5 @@
 <template>
-  <ul class="navigation-list" :class="classes">
+  <ul class="NavigationList" :class="classes">
     <div @click="toggle">
       <navigation-toggle :isClosed="closed"></navigation-toggle>
       <NavigationItem :item="parentItem" />
