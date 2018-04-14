@@ -38,7 +38,7 @@ export default {
 
   computed: {
     classes() {
-      return { closed: this.closed };
+      return { 'NavigationList--closed': this.closed };
     },
   },
 

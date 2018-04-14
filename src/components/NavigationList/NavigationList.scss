@@ -1,11 +1,9 @@
-.NavigationList {
-  &.closed {
-    li {
-      display: none;
-    }
+.NavigationList--closed {
+  li {
+    display: none;
+  }
 
-    ul {
-      display: none;
-    }
+  ul {
+    display: none;
   }
 }

@@ -103,7 +103,7 @@ describe('TreeNavigation', () => {
 
   describe('lists', () => {
     context('with level deeper than default open level', () => {
-      it('are assigned `closed` class', () => {
+      it('are assigned closed class', () => {
         const wrapper = mount(TreeNavigation, {
           propsData: {
             items,
@@ -113,18 +113,18 @@ describe('TreeNavigation', () => {
 
         // level 3 list
         expect(wrapper.find('div > ul > ul > ul > ul').classes()).toContain(
-          'closed'
+          'NavigationList--closed'
         );
 
         // level 4 list
         expect(
           wrapper.find('div > ul > ul > ul > ul > ul').classes()
-        ).toContain('closed');
+        ).toContain('NavigationList--closed');
       });
     });
 
     context('with level less than or equal to default open level', () => {
-      it('are not assigned `closed` class', () => {
+      it('are not assigned closed class', () => {
         const wrapper = mount(TreeNavigation, {
           propsData: {
             items,
@@ -133,14 +133,18 @@ describe('TreeNavigation', () => {
         });
 
         // level 0 list
-        expect(wrapper.find('div > ul').classes()).not.toContain('closed');
+        expect(wrapper.find('div > ul').classes()).not.toContain(
+          'NavigationList--closed'
+        );
 
         // level 1 list
-        expect(wrapper.find('div > ul > ul').classes()).not.toContain('closed');
+        expect(wrapper.find('div > ul > ul').classes()).not.toContain(
+          'NavigationList--closed'
+        );
 
         // level 2 list
         expect(wrapper.find('div > ul > ul > ul').classes()).not.toContain(
-          'closed'
+          'NavigationList--closed'
         );
       });
     });
