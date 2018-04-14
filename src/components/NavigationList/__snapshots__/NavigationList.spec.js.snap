@@ -2,5 +2,9 @@
 
 exports[`NavigationList  renders 1`] = `
 <ul class="navigation-list"><span class="navigation-toggle"><span class="navigation-toggle-icon"></span></span>
+  <div class="NavigationItem"><span>Contact</span>
+    <!---->
+    <!---->
+  </div>
 </ul>
 `;

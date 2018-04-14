@@ -202,12 +202,6 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
   const children = [];
 
   items.forEach(item => {
-    const navItem = createElement(NavigationItem, {
-      props: {
-        item,
-      },
-    });
-
     if (item.hasOwnProperty('children')) {
       children.push(
         createElement(
@@ -216,10 +210,10 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
             props: {
               level,
               defaultOpenLevel,
+              parentItem: item,
             },
           },
           [
-            navItem,
             ...generateLevel(
               createElement,
               item.children,
@@ -230,6 +224,12 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
         )
       );
     } else {
+      const navItem = createElement(NavigationItem, {
+        props: {
+          item,
+        },
+      });
+
       children.push(createElement('li', [navItem]));
     }
   });
