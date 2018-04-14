@@ -1,7 +1,7 @@
 .NavigationToggle {
   position: relative;
   top:      -3px;
-  padding:  6px;
+  padding:  5px 5px 5px 3px;
   cursor:   pointer;
 
   &__icon {
@@ -11,10 +11,8 @@
     border-width: 0 2px 2px 0;
     transform:    rotate(45deg);
   }
-}
 
-.NavigationToggle--closed {
-  .NavigationToggle__icon {
+  &__icon--closed {
     transform: rotate(-45deg);
   }
 }
