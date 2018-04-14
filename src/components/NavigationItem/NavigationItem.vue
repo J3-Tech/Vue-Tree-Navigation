@@ -45,3 +45,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import './NavigationItem.scss';
+</style>
