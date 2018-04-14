@@ -1,13 +1,11 @@
 import utils from './utils';
 
-require('./TreeNavigation.scss');
+import './TreeNavigation.scss';
 
 const TreeNavigation = {
-  name: 'vue-tree-navigation',
-
   data() {
     return {
-      classes: ['tree-navigation'],
+      classes: ['TreeNavigation'],
     };
   },
 

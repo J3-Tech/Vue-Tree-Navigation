@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TreeNavigation renders 1`] = `
-<div class="tree-navigation">
+<div class="TreeNavigation">
   <ul>
     <li><span class="NavigationItem"><!----> <!----> <a href="#/home" class="router-link">Home</a></span></li>
     <ul class="NavigationList NavigationList--closed">
