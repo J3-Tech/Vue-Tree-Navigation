@@ -4,20 +4,20 @@ exports[`TreeNavigation renders 1`] = `
 <div class="TreeNavigation">
   <ul>
     <li><span class="NavigationItem"><!----> <!----> <a href="#/home" class="router-link">Home</a></span></li>
-    <ul class="NavigationList NavigationList--closed">
+    <ul class="NavigationList NavigationList--closed NavigationList--level-1">
       <div><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="#/products" class="router-link">Products</a></span></div>
-      <ul class="NavigationList NavigationList--closed">
+      <ul class="NavigationList NavigationList--closed NavigationList--level-2">
         <div><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="#/products/shoes" class="router-link">Running shoes</a></span></div>
         <li><span class="NavigationItem"><!----> <!----> <a href="#/products/shoes#race" class="router-link">Race</a></span></li>
         <li><span class="NavigationItem"><!----> <!----> <a href="#/products/shoes#road" class="router-link">Road</a></span></li>
         <li><span class="NavigationItem"><!----> <!----> <a href="#/products/shoes#trail" class="router-link">Trail</a></span></li>
       </ul>
-      <ul class="NavigationList NavigationList--closed">
+      <ul class="NavigationList NavigationList--closed NavigationList--level-2">
         <div><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="#/products/clothing" class="router-link">Running clothing</a></span></div>
         <li><span class="NavigationItem"><!----> <!----> <a href="#/products/clothing/jackets" class="router-link">Jackets</a></span></li>
-        <ul class="NavigationList NavigationList--closed">
+        <ul class="NavigationList NavigationList--closed NavigationList--level-3">
           <div><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="#/products/clothing/tops" class="router-link">Tops</a></span></div>
-          <ul class="NavigationList NavigationList--closed">
+          <ul class="NavigationList NavigationList--closed NavigationList--level-4">
             <div><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="#/products/clothing/tops#long-sleeve" class="router-link">Long Sleeve</a></span></div>
             <li><span class="NavigationItem"><!----> <!----> <a href="#/products/clothing/tops#summer" class="router-link">For summer</a></span></li>
             <li><span class="NavigationItem"><!----> <!----> <a href="#/products/clothing/tops#winter" class="router-link">For winter</a></span></li>
@@ -27,7 +27,7 @@ exports[`TreeNavigation renders 1`] = `
         </ul>
       </ul>
     </ul>
-    <ul class="NavigationList NavigationList--closed">
+    <ul class="NavigationList NavigationList--closed NavigationList--level-1">
       <div><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><span>About</span>
         <!---->
         <!---->
