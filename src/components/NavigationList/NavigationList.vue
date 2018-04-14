@@ -1,9 +1,9 @@
 <template>
   <ul class="NavigationList" :class="classes">
-    <div @click="toggle">
+    <li @click="toggle">
       <NavigationToggle :isClosed="closed" />
       <NavigationItem :item="parentItem" />
-    </div>
+    </li>
 
     <!-- child items goes here -->
     <slot></slot>
@@ -40,7 +40,7 @@ export default {
     classes() {
       return {
         'NavigationList--closed': this.closed,
-        [`NavigationList--level-${this.level}`]: true  
+        [`NavigationList--level-${this.level}`]: true,
       };
     },
   },

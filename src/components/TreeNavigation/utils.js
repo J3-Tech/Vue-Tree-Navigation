@@ -203,26 +203,26 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
 
   items.forEach(item => {
     if (item.hasOwnProperty('children')) {
-      children.push(
-        createElement(
-          NavigationList,
-          {
-            props: {
-              level,
-              defaultOpenLevel,
-              parentItem: item,
-            },
+      const navList = createElement(
+        NavigationList,
+        {
+          props: {
+            level,
+            defaultOpenLevel,
+            parentItem: item,
           },
-          [
-            ...generateLevel(
-              createElement,
-              item.children,
-              level + 1,
-              defaultOpenLevel
-            ),
-          ]
-        )
+        },
+        [
+          ...generateLevel(
+            createElement,
+            item.children,
+            level + 1,
+            defaultOpenLevel
+          ),
+        ]
       );
+
+      children.push(createElement('li', [navList]));
     } else {
       const navItem = createElement(NavigationItem, {
         props: {

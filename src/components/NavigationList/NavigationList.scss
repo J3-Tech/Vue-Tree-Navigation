@@ -1,6 +1,5 @@
 .NavigationList--closed {
-  ul,
-  li {
+  & > li:not(:first-child) {
     display: none;
   }
 }

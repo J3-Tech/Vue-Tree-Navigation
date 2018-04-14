@@ -3,12 +3,6 @@ import utils from './utils';
 import './TreeNavigation.scss';
 
 const TreeNavigation = {
-  data() {
-    return {
-      classes: ['TreeNavigation'],
-    };
-  },
-
   props: {
     items: {
       type: Array,
@@ -35,6 +29,9 @@ const TreeNavigation = {
     const level = 1;
     const tree = createElement(
       'ul',
+      {
+        class: ['NavigationList', 'NavigationList--level-0'],
+      },
       utils.generateLevel(
         createElement,
         self.itemsWithMetadata,
@@ -46,7 +43,7 @@ const TreeNavigation = {
     const wrapper = createElement(
       'div',
       {
-        class: self.classes,
+        class: 'TreeNavigation',
       },
       [tree]
     );
