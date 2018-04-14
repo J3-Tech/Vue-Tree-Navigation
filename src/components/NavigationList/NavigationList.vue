@@ -1,7 +1,7 @@
 <template>
   <ul class="NavigationList" :class="classes">
     <div @click="toggle">
-      <navigation-toggle :isClosed="closed"></navigation-toggle>
+      <NavigationToggle :isClosed="closed" />
       <NavigationItem :item="parentItem" />
     </div>
 
@@ -55,8 +55,8 @@ export default {
   },
 
   components: {
-    'navigation-toggle': NavigationToggle,
     NavigationItem,
+    NavigationToggle,
   },
 };
 </script>
