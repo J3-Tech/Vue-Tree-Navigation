@@ -4,11 +4,7 @@ import NavigationToggle from './NavigationToggle';
 
 describe('NavigationToggle ', () => {
   it('isVueInstance', () => {
-    const wrapper = mount(NavigationToggle, {
-      propsData: {
-        isClosed: true,
-      },
-    });
+    const wrapper = mount(NavigationToggle);
 
     expect(wrapper.isVueInstance()).toBe(true);
   });
@@ -17,7 +13,7 @@ describe('NavigationToggle ', () => {
     it('is assigned closed class', () => {
       const wrapper = mount(NavigationToggle, {
         propsData: {
-          isClosed: true,
+          open: false,
         },
       });
 
@@ -29,7 +25,7 @@ describe('NavigationToggle ', () => {
     it('is not assigned closed class', () => {
       const wrapper = mount(NavigationToggle, {
         propsData: {
-          isClosed: false,
+          open: true,
         },
       });
 
