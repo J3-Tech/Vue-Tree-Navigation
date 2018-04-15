@@ -13,13 +13,24 @@ import {
  * of the path and then remove it.
  */
 export const removeElementFromPath = path => {
-  const hashPos = path.indexOf('#');
+  let hashPos;
 
-  if (hashPos === -1) {
-    return path;
+  while (hashPos !== -1) {
+    hashPos = path.lastIndexOf('#');
+
+    if (hashPos === -1) {
+      return path;
+    }
+
+    // do not cut of router url
+    if (hashPos === path.indexOf('#/')) {
+      return path;
+    }
+
+    path = path.slice(0, hashPos);
   }
 
-  return path.slice(0, hashPos);
+  return path;
 };
 
 /**
