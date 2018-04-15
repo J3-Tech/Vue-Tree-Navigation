@@ -12,7 +12,7 @@ import {
  * Check if there is an element appended to the end
  * of the path and then remove it.
  */
-function removeElementFromPath(path) {
+export const removeElementFromPath = path => {
   const hashPos = path.indexOf('#');
 
   if (hashPos === -1) {
@@ -20,13 +20,13 @@ function removeElementFromPath(path) {
   }
 
   return path.slice(0, hashPos);
-}
+};
 
 /**
  * First character should be backslash.
  * Last character shouldn't be backslash.
  */
-function sanitizeRoute(route) {
+export const sanitizeRoute = route => {
   if (route === undefined) {
     return;
   }
@@ -40,12 +40,12 @@ function sanitizeRoute(route) {
   }
 
   return route;
-}
+};
 
 /**
  * First character should be #.
  */
-function sanitizeElement(element) {
+export const sanitizeElement = element => {
   if (element === undefined) {
     return;
   }
@@ -55,12 +55,12 @@ function sanitizeElement(element) {
   }
 
   return element;
-}
+};
 
 /**
  * Return item metadata object: { path: ..., pathType: ... }
  */
-function getItemMetadata(item, parent) {
+export const getItemMetadata = (item, parent) => {
   const element = sanitizeElement(item.element);
   const route = sanitizeRoute(item.route);
   const external = item.external;
@@ -252,13 +252,13 @@ function getItemMetadata(item, parent) {
       pathType: PATH_TYPE_NONE,
     };
   }
-}
+};
 
 /**
  * Recursive function.
  * Insert metadata containing the navigation path and its type to each item.
  **/
-function insertMetadataToItems(items, parent) {
+export const insertMetadataToItems = (items, parent) => {
   items.forEach(item => {
     item.meta = getItemMetadata(item, parent);
 
@@ -268,13 +268,18 @@ function insertMetadataToItems(items, parent) {
   });
 
   return items;
-}
+};
 
 /**
  * Recursive function.
  * One call generates one level of the tree.
  */
-function generateLevel(createElement, items, level, defaultOpenLevel) {
+export const generateLevel = (
+  createElement,
+  items,
+  level,
+  defaultOpenLevel
+) => {
   const children = [];
 
   items.forEach(item => {
@@ -311,13 +316,4 @@ function generateLevel(createElement, items, level, defaultOpenLevel) {
   });
 
   return children;
-}
-
-export default {
-  sanitizeRoute,
-  sanitizeElement,
-  removeElementFromPath,
-  getItemMetadata,
-  insertMetadataToItems,
-  generateLevel,
 };
