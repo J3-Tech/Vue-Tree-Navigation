@@ -22,6 +22,19 @@ describe('NavigationList ', () => {
     expect(wrapper.isVueInstance()).toBe(true);
   });
 
+  context('with level 2', () => {
+    it('assigns a correct level class', () => {
+      const wrapper = shallow(NavigationList, {
+        propsData: {
+          level: 2,
+          parentItem,
+        },
+      });
+
+      expect(wrapper.classes()).toContain('NavigationList--level-2');
+    });
+  });
+
   context('when closed', () => {
     let wrapper;
 
