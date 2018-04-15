@@ -87,6 +87,32 @@ describe('TreeNavigation', () => {
           );
         });
       });
+
+      context('with path containing # in the beginning of route', () => {
+        it('returns original path', () => {
+          expect(removeElementFromPath('#/path')).toBe('#/path');
+        });
+      });
+
+      context(
+        'with path containing # in the beginning of route and element on its end',
+        () => {
+          it('cuts off element', () => {
+            expect(removeElementFromPath('#/path#element')).toBe('#/path');
+          });
+        }
+      );
+
+      context(
+        'with path containing # in the beginning of route and two element on its end',
+        () => {
+          it('cuts off all elements', () => {
+            expect(removeElementFromPath('#/path#element-1#element-2')).toBe(
+              '#/path'
+            );
+          });
+        }
+      );
     });
 
     describe('getItemMetadata', () => {
