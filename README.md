@@ -1,5 +1,7 @@
 # vue-tree-navigation
 
+[![Coverage Status](https://coveralls.io/repos/github/MisRob/vue-tree-navigation/badge.svg?branch=dev)](https://coveralls.io/github/MisRob/vue-tree-navigation?branch=dev)
+
 > Vue.js 2 tree navigation with vue-router support
 
 For more information see [documentation/demo](https://vue-tree-navigation.misrob.cz)

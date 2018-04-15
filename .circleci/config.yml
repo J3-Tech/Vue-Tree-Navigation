@@ -21,4 +21,4 @@ jobs:
 
       - run: yarn prettier-list
       - run: yarn lint
-      - run: yarn unit
+      - run: yarn unit-ci
