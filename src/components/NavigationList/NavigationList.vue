@@ -4,7 +4,7 @@
     :class="classes">
     <li>
       <NavigationToggle
-        :isClosed="!open"
+        :open="open"
         @click.native="onToggleClick" />
       <NavigationItem
         :item="parentItem"
