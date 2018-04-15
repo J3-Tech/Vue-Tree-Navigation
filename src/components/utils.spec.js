@@ -1,4 +1,10 @@
-import utils from './utils';
+import {
+  sanitizeRoute,
+  sanitizeElement,
+  removeElementFromPath,
+  getItemMetadata,
+  insertMetadataToItems,
+} from './utils';
 
 import {
   PATH_TYPE_NONE,
@@ -12,25 +18,25 @@ describe('TreeNavigation', () => {
     describe('sanitizeRoute', () => {
       context('with undefined route', () => {
         it('returns undefined', () => {
-          expect(utils.sanitizeRoute(undefined)).toBe(undefined);
+          expect(sanitizeRoute(undefined)).toBe(undefined);
         });
       });
 
       context('with route with backlash at the first position', () => {
         it('returns original route', () => {
-          expect(utils.sanitizeRoute('/route')).toBe('/route');
+          expect(sanitizeRoute('/route')).toBe('/route');
         });
       });
 
       context('with route without backlash at the first position', () => {
         it('adds backslash to the first position', () => {
-          expect(utils.sanitizeRoute('route')).toBe('/route');
+          expect(sanitizeRoute('route')).toBe('/route');
         });
       });
 
       context('with route with backlash at the last position', () => {
         it('removes backslash from the last position', () => {
-          expect(utils.sanitizeRoute('route/')).toBe('/route');
+          expect(sanitizeRoute('route/')).toBe('/route');
         });
       });
     });
@@ -38,18 +44,18 @@ describe('TreeNavigation', () => {
     describe('sanitizeElement', () => {
       context('with undefined element', () => {
         it('returns undefined', () => {
-          expect(utils.sanitizeElement(undefined)).toBe(undefined);
+          expect(sanitizeElement(undefined)).toBe(undefined);
         });
       });
 
       context('with element with hash at the first position', () => {
         it('returns original element', () => {
-          expect(utils.sanitizeElement('#element')).toBe('#element');
+          expect(sanitizeElement('#element')).toBe('#element');
         });
 
         context('with element without hash at the first position', () => {
           it('adds hash to the first position', () => {
-            expect(utils.sanitizeElement('element')).toBe('#element');
+            expect(sanitizeElement('element')).toBe('#element');
           });
         });
       });
@@ -58,25 +64,25 @@ describe('TreeNavigation', () => {
     describe('removeElementFromPath', () => {
       context('with empty path', () => {
         it('returns empty path', () => {
-          expect(utils.removeElementFromPath('')).toBe('');
+          expect(removeElementFromPath('')).toBe('');
         });
       });
 
       context('with path without element', () => {
         it('returns original path', () => {
-          expect(utils.removeElementFromPath('/path')).toBe('/path');
+          expect(removeElementFromPath('/path')).toBe('/path');
         });
       });
 
       context('with path containing an element', () => {
         it('returns original path', () => {
-          expect(utils.removeElementFromPath('/path#element')).toBe('/path');
+          expect(removeElementFromPath('/path#element')).toBe('/path');
         });
       });
 
       context('with path containing more elements', () => {
         it('returns original path', () => {
-          expect(utils.removeElementFromPath('/path#element-1#element-2')).toBe(
+          expect(removeElementFromPath('/path#element-1#element-2')).toBe(
             '/path'
           );
         });
@@ -96,7 +102,7 @@ describe('TreeNavigation', () => {
               pathType: PATH_TYPE_NONE,
             };
 
-            expect(utils.getItemMetadata(item)).toEqual(expected);
+            expect(getItemMetadata(item)).toEqual(expected);
           });
         });
 
@@ -111,7 +117,7 @@ describe('TreeNavigation', () => {
               pathType: PATH_TYPE_EXTERNAL,
             };
 
-            expect(utils.getItemMetadata(item)).toEqual(expected);
+            expect(getItemMetadata(item)).toEqual(expected);
           });
         });
 
@@ -126,7 +132,7 @@ describe('TreeNavigation', () => {
               pathType: PATH_TYPE_ROUTE,
             };
 
-            expect(utils.getItemMetadata(item)).toEqual(expected);
+            expect(getItemMetadata(item)).toEqual(expected);
           });
         });
 
@@ -141,7 +147,7 @@ describe('TreeNavigation', () => {
               pathType: PATH_TYPE_ELEMENT,
             };
 
-            expect(utils.getItemMetadata(item)).toEqual(expected);
+            expect(getItemMetadata(item)).toEqual(expected);
           });
         });
       });
@@ -164,7 +170,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_EXTERNAL,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -186,7 +192,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ROUTE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -208,7 +214,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ROUTE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -230,7 +236,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ROUTE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -252,7 +258,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_EXTERNAL,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -274,7 +280,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ROUTE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -296,7 +302,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ELEMENT,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -318,7 +324,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_NONE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -340,7 +346,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_EXTERNAL,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -362,7 +368,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ROUTE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -384,7 +390,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ELEMENT,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -406,7 +412,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_NONE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -428,7 +434,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_EXTERNAL,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -450,7 +456,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ROUTE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -472,7 +478,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_ELEMENT,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
 
@@ -494,7 +500,7 @@ describe('TreeNavigation', () => {
             pathType: PATH_TYPE_NONE,
           };
 
-          expect(utils.getItemMetadata(item, parent)).toEqual(expected);
+          expect(getItemMetadata(item, parent)).toEqual(expected);
         });
       });
     });
@@ -711,7 +717,7 @@ describe('TreeNavigation', () => {
           },
         ];
 
-        utils.insertMetadataToItems(items);
+        insertMetadataToItems(items);
         expect(items).toEqual(expected);
       });
     });
