@@ -33,7 +33,7 @@ export default {
               route: 'shoes',
               children: [
                 { name: 'Race', element: 'race' },
-                { name: 'Road' },
+                { name: 'Road', element: 'road' },
                 { name: 'Trail', element: 'trail' },
               ],
             },

@@ -12,6 +12,7 @@ import {
   sanitizeElement,
   sanitizeRoute,
   removeElementFromPath,
+  getRelativeUrl,
 } from '../utils';
 
 /**
@@ -28,14 +29,12 @@ export const generateLevel = (
 
   items.forEach(item => {
     if (item.hasOwnProperty('children')) {
-      let open = defaultOpenLevel >= level;
-
       const navList = createElement(
         NavigationList,
         {
           props: {
             level,
-            open,
+            open: renderListAsOpen(item, level, defaultOpenLevel),
             parentItem: item,
           },
         },
@@ -62,6 +61,39 @@ export const generateLevel = (
   });
 
   return children;
+};
+
+/**
+ * List should be opened in case its level is less than or equal to default
+ * open level or if it contains child which URL is a part of an active URL.
+ */
+export const renderListAsOpen = (parentItem, level, defaultOpenLevel) => {
+  if (defaultOpenLevel >= level) {
+    return true;
+  }
+
+  const currentUrl = getRelativeUrl(
+    window.location.href,
+    window.location.origin
+  );
+
+  for (let i = 0; i < parentItem.children.length; i++) {
+    let child = parentItem.children[i];
+
+    if (child.meta.path !== undefined) {
+      let childUrl = child.meta.path;
+
+      if (!childUrl.startsWith('#')) {
+        childUrl = removeElementFromPath(childUrl);
+      }
+
+      if (currentUrl.startsWith(childUrl)) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 };
 
 /**

@@ -1,5 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TreeNavigation lists containing a child with an URL being part of a current URL are rendered as open 1`] = `
+<div class="TreeNavigation">
+  <ul class="NavigationList NavigationList--level-0">
+    <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/home" class="router-link">Home</router-link></span></li>
+    <li>
+      <ul class="NavigationList NavigationList--level-1">
+        <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products" class="router-link">Products</router-link></span></li>
+        <li>
+          <ul class="NavigationList NavigationList--closed NavigationList--level-2">
+            <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/shoes" class="router-link">Running shoes</router-link></span></li>
+            <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/shoes#race" class="router-link">Race</router-link></span></li>
+            <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/shoes#road" class="router-link">Road</router-link></span></li>
+            <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/shoes#trail" class="router-link">Trail</router-link></span></li>
+          </ul>
+        </li>
+        <li>
+          <ul class="NavigationList NavigationList--level-2">
+            <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/clothing" class="router-link">Running clothing</router-link></span></li>
+            <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/clothing/jackets" class="router-link">Jackets</router-link></span></li>
+            <li>
+              <ul class="NavigationList NavigationList--level-3">
+                <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/clothing/tops" class="router-link">Tops</router-link></span></li>
+                <li>
+                  <ul class="NavigationList NavigationList--level-4">
+                    <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/clothing/tops#long-sleeve" class="router-link">Long Sleeve</router-link></span></li>
+                    <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/clothing/tops#summer" class="router-link">For summer</router-link></span></li>
+                    <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/clothing/tops#winter" class="router-link">For winter</router-link></span></li>
+                  </ul>
+                </li>
+                <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/clothing/tops#short-sleeve" class="router-link">Short Sleeve</router-link></span></li>
+                <li><span class="NavigationItem"><!----> <!----> <!----> <router-link to="/products/clothing/tops#sleeveless" class="router-link">Sleeveless</router-link></span></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <ul class="NavigationList NavigationList--closed NavigationList--level-1">
+        <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><span>About</span>
+          <!---->
+          <!---->
+          <!---->
+          </span>
+        </li>
+        <li><span class="NavigationItem"><span>Company</span>
+          <!---->
+          <!---->
+          <!---->
+          </span>
+        </li>
+        <li><span class="NavigationItem"><!----> <a href="#contact">Contact</a> <!----> <!----></span></li>
+        <li><span class="NavigationItem"><!----> <a href="#blog">Blog</a> <!----> <!----></span></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;
+
 exports[`TreeNavigation renders 1`] = `
 <div class="TreeNavigation">
   <ul class="NavigationList NavigationList--level-0">

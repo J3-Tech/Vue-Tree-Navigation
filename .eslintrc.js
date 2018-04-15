@@ -11,5 +11,6 @@ module.exports = {
   plugins: ['html'],
   globals: {
     context: true,
+    jsdom: true,
   },
 };
