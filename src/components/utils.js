@@ -57,3 +57,19 @@ export const sanitizeElement = element => {
 
   return element;
 };
+
+/**
+ * Remove domain and router's `/#` if present.
+ */
+export const getRelativeUrl = (url, origin) => {
+  if (origin[origin.length - 1] === '/') {
+    origin = origin.slice(0, -1);
+  }
+  let relativeUrl = url.replace(origin, '');
+
+  if (relativeUrl.startsWith('/#')) {
+    relativeUrl = relativeUrl.substring(2);
+  }
+
+  return sanitizeRoute(relativeUrl);
+};
