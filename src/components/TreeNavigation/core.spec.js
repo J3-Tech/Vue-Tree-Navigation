@@ -5,7 +5,11 @@ import {
   PATH_TYPE_EXTERNAL,
 } from '../../config';
 
-import { getItemMetadata, insertMetadataToItems } from './core';
+import {
+  getItemMetadata,
+  insertMetadataToItems,
+  renderListAsOpen,
+} from './core';
 
 describe('TreeNavigation', () => {
   describe('core', () => {
@@ -422,6 +426,99 @@ describe('TreeNavigation', () => {
 
           expect(getItemMetadata(item, parent)).toEqual(expected);
         });
+      });
+    });
+
+    describe('renderListAsOpen', () => {
+      let item, level, defaultOpenLevel;
+
+      beforeAll(() => {
+        jsdom.reconfigure({
+          url: 'https://mypage.com/products/shoes',
+        });
+      });
+
+      beforeEach(() => {
+        item = {};
+        defaultOpenLevel = 2;
+      });
+
+      context('when level less than default open level', () => {
+        it('returns true', () => {
+          level = 1;
+
+          expect(renderListAsOpen(item, level, defaultOpenLevel)).toBe(true);
+        });
+      });
+
+      context('when level equal to default open level', () => {
+        it('returns true', () => {
+          level = 2;
+
+          expect(renderListAsOpen(item, level, defaultOpenLevel)).toBe(true);
+        });
+      });
+
+      context('when level greater than default open level', () => {
+        beforeEach(() => {
+          level = 3;
+        });
+
+        context(
+          'when item has at least one child which URL is child of a current URL',
+          () => {
+            beforeEach(() => {
+              item.children = [
+                {
+                  name: 'About',
+                  meta: {
+                    path: '/about',
+                  },
+                },
+                {
+                  name: 'Products',
+                  meta: {
+                    path: '/products',
+                  },
+                },
+              ];
+            });
+
+            it('returns true', () => {
+              expect(renderListAsOpen(item, level, defaultOpenLevel)).toBe(
+                true
+              );
+            });
+          }
+        );
+
+        context(
+          'when item has no child which URL is child of a current URL',
+          () => {
+            beforeEach(() => {
+              item.children = [
+                {
+                  name: 'About',
+                  meta: {
+                    path: '/about',
+                  },
+                },
+                {
+                  name: 'Contact',
+                  meta: {
+                    path: '/contact',
+                  },
+                },
+              ];
+            });
+
+            it('returns false', () => {
+              expect(renderListAsOpen(item, level, defaultOpenLevel)).toBe(
+                false
+              );
+            });
+          }
+        );
       });
     });
 

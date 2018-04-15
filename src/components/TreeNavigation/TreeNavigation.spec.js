@@ -143,5 +143,29 @@ describe('TreeNavigation', () => {
         ).not.toContain('NavigationList--closed');
       });
     });
+
+    context(
+      'containing a child with an URL being part of a current URL',
+      () => {
+        let wrapper;
+
+        beforeAll(() => {
+          jsdom.reconfigure({
+            url: 'https://mypage.com/products/clothing/tops#summer',
+          });
+
+          wrapper = mount(TreeNavigation, {
+            propsData: {
+              items,
+              defaultOpenLevel: 0,
+            },
+          });
+        });
+
+        it('are rendered as open', () => {
+          expect(wrapper.html()).toMatchSnapshot();
+        });
+      }
+    );
   });
 });

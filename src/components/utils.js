@@ -19,8 +19,6 @@ export const removeElementFromPath = path => {
 
     path = path.slice(0, hashPos);
   }
-
-  return path;
 };
 
 /**
