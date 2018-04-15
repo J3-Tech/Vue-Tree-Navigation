@@ -1,12 +1,12 @@
-import NavigationList from '../NavigationList/NavigationList.vue';
-import NavigationItem from '../NavigationItem/NavigationItem.vue';
+import NavigationList from './NavigationList/NavigationList.vue';
+import NavigationItem from './NavigationItem/NavigationItem.vue';
 
 import {
   PATH_TYPE_NONE,
   PATH_TYPE_ELEMENT,
   PATH_TYPE_ROUTE,
   PATH_TYPE_EXTERNAL,
-} from '../../config';
+} from '../config';
 
 /**
  * Check if there is an element appended to the end

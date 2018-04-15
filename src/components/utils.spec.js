@@ -5,7 +5,7 @@ import {
   PATH_TYPE_ELEMENT,
   PATH_TYPE_ROUTE,
   PATH_TYPE_EXTERNAL,
-} from '../../config';
+} from '../config';
 
 describe('TreeNavigation', () => {
   describe('utils', () => {
