@@ -4,7 +4,7 @@
     :class="classes">
     <li>
       <NavigationToggle
-        :open="open"
+        :open="isOpen"
         @click.native="onToggleClick" />
       <NavigationItem
         :item="parentItem"
@@ -21,6 +21,11 @@ import NavigationToggle from '../NavigationToggle/NavigationToggle.vue';
 import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
 export default {
+  data() {
+    return {
+      isOpen: this.open,
+    };
+  },
   props: {
     level: {
       type: Number,
@@ -40,7 +45,7 @@ export default {
   computed: {
     classes() {
       return {
-        'NavigationList--closed': !this.open,
+        'NavigationList--closed': !this.isOpen,
         [`NavigationList--level-${this.level}`]: true,
       };
     },
@@ -48,11 +53,11 @@ export default {
 
   methods: {
     onToggleClick() {
-      this.open = !this.open;
+      this.isOpen = !this.isOpen;
     },
     onItemClick() {
-      if (this.open === false) {
-        this.open = true;
+      if (this.isOpen === false) {
+        this.isOpen = true;
       }
     },
   },
