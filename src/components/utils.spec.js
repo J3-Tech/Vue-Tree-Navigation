@@ -1,4 +1,9 @@
-import { removeElementFromPath, sanitizeRoute, sanitizeElement } from './utils';
+import {
+  removeElementFromPath,
+  sanitizeRoute,
+  sanitizeElement,
+  getRelativeUrl,
+} from './utils';
 
 describe('utils', () => {
   describe('sanitizeRoute', () => {
@@ -99,5 +104,30 @@ describe('utils', () => {
         });
       }
     );
+  });
+
+  describe('getRelativeUrl', () => {
+    context('for empty url and origin', () => {
+      it('returns an empty url', () => {
+        expect(getRelativeUrl('', '')).toBe('');
+      });
+    });
+
+    it('returns a correct url', () => {
+      expect(
+        getRelativeUrl('https://github.com/route', 'https://github.com')
+      ).toBe('/route');
+      expect(
+        getRelativeUrl('https://github.com/route', 'https://github.com/')
+      ).toBe('/route');
+    });
+
+    context("when router's /# included in url", () => {
+      it('returns a correct url', () => {
+        expect(
+          getRelativeUrl('https://github.com/#/route', 'https://github.com')
+        ).toBe('/route');
+      });
+    });
   });
 });
