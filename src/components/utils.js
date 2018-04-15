@@ -295,12 +295,14 @@ export const generateLevel = (
 
   items.forEach(item => {
     if (item.hasOwnProperty('children')) {
+      let open = defaultOpenLevel >= level;
+
       const navList = createElement(
         NavigationList,
         {
           props: {
             level,
-            defaultOpenLevel,
+            open,
             parentItem: item,
           },
         },
