@@ -75,13 +75,13 @@ describe('TreeNavigation', () => {
       });
 
       context('with path containing an element', () => {
-        it('returns original path', () => {
+        it('cuts off the element', () => {
           expect(removeElementFromPath('/path#element')).toBe('/path');
         });
       });
 
       context('with path containing more elements', () => {
-        it('returns original path', () => {
+        it('cuts off all elements', () => {
           expect(removeElementFromPath('/path#element-1#element-2')).toBe(
             '/path'
           );
