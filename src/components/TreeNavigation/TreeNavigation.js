@@ -1,4 +1,4 @@
-import { insertMetadataToItems, generateLevel } from '../utils';
+import { insertMetadataToItems, generateLevel } from './core';
 
 import './TreeNavigation.scss';
 
