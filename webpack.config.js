@@ -75,14 +75,11 @@ module.exports = {
 if (process.env.NODE_ENV === 'production') {
   module.exports.mode = 'production';
 
-  module.exports.entry = {
-    index: './src/index.js',
-    'vue-tree-navigation': './src/plugin.js',
-  };
+  module.exports.entry = './src/index.js';
 
   module.exports.output = {
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].js',
+    filename: 'index.js',
     library: 'VueTreeNavigation',
     libraryTarget: 'umd',
   };
