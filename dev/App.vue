@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" />
+    <vue-tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" />
 
     <hr>
     <h2>Router View</h2>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import TreeNavigation from '../src/index';
+import TreeNavigation from '../src/components/TreeNavigation/TreeNavigation';
 
 export default {
   data() {
@@ -76,7 +76,7 @@ export default {
     };
   },
   components: {
-    'tree-navigation': TreeNavigation,
+    'vue-tree-navigation': TreeNavigation,
   },
 };
 </script>
