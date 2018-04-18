@@ -55,30 +55,6 @@ describe('NavigationItem ', () => {
     });
   });
 
-  context('for element item', () => {
-    it('renders hyperlink with a correct value and location', () => {
-      const wrapper = shallow(NavigationItem, {
-        propsData: {
-          item: elementItem,
-        },
-      });
-
-      expect(wrapper.html()).toMatchSnapshot();
-    });
-  });
-
-  context('for route item', () => {
-    it('renders router link with a correct value and location', () => {
-      const wrapper = shallow(NavigationItem, {
-        propsData: {
-          item: routeItem,
-        },
-      });
-
-      expect(wrapper.html()).toMatchSnapshot();
-    });
-  });
-
   context('for external', () => {
     it('renders hyperlink with a correct value, location and target blank', () => {
       const wrapper = shallow(NavigationItem, {
@@ -90,4 +66,94 @@ describe('NavigationItem ', () => {
       expect(wrapper.html()).toMatchSnapshot();
     });
   });
+
+  context('with router', () => {
+    context('for element item', () => {
+      let wrapper
+
+      beforeEach(() => {
+        wrapper = shallow(NavigationItem, {
+          propsData: {
+            item: elementItem,
+          },
+          mocks: {
+            $router: {}
+          }
+        });
+      })
+
+      it('doesn\'t render a hyperlink', () => {
+        expect(wrapper.contains('a')).toBe(false);
+      });
+
+      it('renders a router link with a correct location and text', () => {
+        expect(wrapper.html()).toMatchSnapshot();
+      });
+    });
+  
+    context('for route item', () => {
+      let wrapper
+      
+      beforeEach(() => {
+        wrapper = shallow(NavigationItem, {
+          propsData: {
+            item: routeItem,
+          },
+          mocks: {
+            $router: {}
+          }
+        });
+      })
+
+      it('doesn\'t render a hyperlink', () => {
+        expect(wrapper.contains('a')).toBe(false);
+      });
+
+      it('renders a router link with a correct location and text', () => {
+        expect(wrapper.html()).toMatchSnapshot();
+      });
+    });
+  })
+
+  context('without router', () => {
+    context('for element item', () => {
+      let wrapper
+
+      beforeEach(() => {
+        wrapper = shallow(NavigationItem, {
+          propsData: {
+            item: elementItem,
+          }
+        });
+      })
+
+      it('doesn\'t render a router link', () => {
+        expect(wrapper.contains('router-link')).toBe(false);
+      });
+
+      it('renders a hyperlink with a correct location and text', () => {
+        expect(wrapper.html()).toMatchSnapshot();
+      });
+    });
+  
+    context('for route item', () => {
+      let wrapper
+      
+      beforeEach(() => {
+        wrapper = shallow(NavigationItem, {
+          propsData: {
+            item: routeItem,
+          }
+        });
+      })
+
+      it('doesn\'t render a router link', () => {
+        expect(wrapper.contains('router-link')).toBe(false);
+      });
+
+      it('renders a hyperlink with a correct location and text', () => {
+        expect(wrapper.html()).toMatchSnapshot();
+      });
+    });
+  })
 });

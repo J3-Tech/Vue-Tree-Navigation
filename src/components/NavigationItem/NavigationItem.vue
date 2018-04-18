@@ -43,15 +43,21 @@ export default {
       return this.item.meta.pathType === PATH_TYPE_NONE;
     },
     showHyperLink() {
-      return this.item.meta.pathType === PATH_TYPE_ELEMENT;
+      return this.showLink && this.$router === undefined;
     },
     showExternalHyperLink() {
       return this.item.meta.pathType === PATH_TYPE_EXTERNAL;
     },
     showRouterLink() {
-      return this.item.meta.pathType === PATH_TYPE_ROUTE;
+      return this.showLink && this.$router !== undefined;
     },
-  },
+    showLink() {
+      return (
+        this.item.meta.pathType === PATH_TYPE_ROUTE ||
+        this.item.meta.pathType === PATH_TYPE_ELEMENT
+      );
+    },
+  }
 };
 </script>
 
