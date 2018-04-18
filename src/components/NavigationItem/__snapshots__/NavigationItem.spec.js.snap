@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavigationItem  for element item renders hyperlink with a correct value and location 1`] = `<span class="NavigationItem"><!----> <a href="#contact">Contact</a> <!----> <!----></span>`;
-
 exports[`NavigationItem  for external renders hyperlink with a correct value, location and target blank 1`] = `<span class="NavigationItem"><!----> <!----> <a href="http://github.com" target="_blank">Github</a> <!----></span>`;
 
 exports[`NavigationItem  for label item renders span containing the item name 1`] = `
@@ -12,4 +10,10 @@ exports[`NavigationItem  for label item renders span containing the item name 1`
 </span>
 `;
 
-exports[`NavigationItem  for route item renders router link with a correct value and location 1`] = `<span class="NavigationItem"><!----> <!----> <!----> <router-link to="/about" class="router-link">About</router-link></span>`;
+exports[`NavigationItem  with router for element item renders a router link with a correct location and text 1`] = `<span class="NavigationItem"><!----> <!----> <!----> <router-link to="#contact" class="router-link">Contact</router-link></span>`;
+
+exports[`NavigationItem  with router for route item renders a router link with a correct location and text 1`] = `<span class="NavigationItem"><!----> <!----> <!----> <router-link to="/about" class="router-link">About</router-link></span>`;
+
+exports[`NavigationItem  without router for element item renders a hyperlink with a correct location and text 1`] = `<span class="NavigationItem"><!----> <a href="#contact">Contact</a> <!----> <!----></span>`;
+
+exports[`NavigationItem  without router for route item renders a hyperlink with a correct location and text 1`] = `<span class="NavigationItem"><!----> <a href="/about">About</a> <!----> <!----></span>`;
