@@ -42,7 +42,7 @@ You can visit this [codepen](https://codepen.io/MisRob/pen/ZxNGrd) for a simple 
 ### Include with a script tag
 
 ```html
-<script src="https://unpkg.com/vue-tree-navigation@2.1.2/dist/vue-tree-navigation.js"></script>
+<script src="https://unpkg.com/vue-tree-navigation@3.0.0/dist/vue-tree-navigation.js"></script>
 
 <script>
   Vue.use(VueTreeNavigation)
