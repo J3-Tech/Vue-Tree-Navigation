@@ -79,7 +79,7 @@ if (process.env.NODE_ENV === 'production') {
 
   module.exports.output = {
     path: path.resolve(__dirname, './dist'),
-    filename: 'index.js',
+    filename: 'vue-tree-navigation.js',
     library: 'VueTreeNavigation',
     libraryTarget: 'umd',
   };
