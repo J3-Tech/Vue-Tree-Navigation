@@ -25,7 +25,7 @@ exports[`TreeNavigation lists containing a child with an URL being part of a cur
                 <li>
                   <ul class="NavigationLevel NavigationLevel--level-4">
                     <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <a href="/products/clothing/tops#long-sleeve">Long Sleeve</a> <!----> <!----></span></li>
-                    <li><span class="NavigationItem"><!----> <a href="/products/clothing/tops#summer">For summer</a> <!----> <!----></span></li>
+                    <li><span class="NavigationItem NavigationItem--active"><!----> <a href="/products/clothing/tops#summer">For summer</a> <!----> <!----></span></li>
                     <li><span class="NavigationItem"><!----> <a href="/products/clothing/tops#winter">For winter</a> <!----> <!----></span></li>
                   </ul>
                 </li>

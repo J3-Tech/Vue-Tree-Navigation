@@ -6,7 +6,9 @@
  */
 
 <template>
-  <span class="NavigationItem">
+  <span
+    class="NavigationItem"
+    :class="classes">
     <span v-if="showText">{{ item.name }}</span>
 
     <a
@@ -56,6 +58,22 @@ export default {
         this.item.meta.pathType === PATH_TYPE_ROUTE ||
         this.item.meta.pathType === PATH_TYPE_ELEMENT
       );
+    },
+    isActive() {
+      if (this.item.meta.path === undefined) {
+        return false;
+      }
+
+      if (this.$route) {
+        return this.$route.path + this.$route.hash === this.item.meta.path;
+      }
+
+      return window.location.href.endsWith(this.item.meta.path);
+    },
+    classes() {
+      return {
+        'NavigationItem--active': this.isActive,
+      };
     },
   },
 };
