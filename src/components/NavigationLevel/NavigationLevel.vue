@@ -1,6 +1,6 @@
 <template>
   <ul 
-    class="NavigationList"
+    class="NavigationLevel"
     :class="classes">
     <li>
       <NavigationToggle
@@ -45,8 +45,8 @@ export default {
   computed: {
     classes() {
       return {
-        'NavigationList--closed': !this.isOpen,
-        [`NavigationList--level-${this.level}`]: true,
+        'NavigationLevel--closed': !this.isOpen,
+        [`NavigationLevel--level-${this.level}`]: true,
       };
     },
   },
@@ -70,5 +70,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './NavigationList.scss';
+@import './NavigationLevel.scss';
 </style>

@@ -57,7 +57,7 @@ export default {
         this.item.meta.pathType === PATH_TYPE_ELEMENT
       );
     },
-  }
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 import { mount, shallow } from 'vue-test-utils';
 
 import { PATH_TYPE_NONE } from '../../config';
-import NavigationList from './NavigationList';
+import NavigationLevel from './NavigationLevel';
 
 const parentItem = {
   name: 'Contact',
@@ -10,9 +10,9 @@ const parentItem = {
   },
 };
 
-describe('NavigationList ', () => {
+describe('NavigationLevel ', () => {
   it('is Vue instance', () => {
-    const wrapper = shallow(NavigationList, {
+    const wrapper = shallow(NavigationLevel, {
       propsData: {
         level: 2,
         parentItem,
@@ -24,14 +24,14 @@ describe('NavigationList ', () => {
 
   context('with level 2', () => {
     it('assigns a correct level class', () => {
-      const wrapper = shallow(NavigationList, {
+      const wrapper = shallow(NavigationLevel, {
         propsData: {
           level: 2,
           parentItem,
         },
       });
 
-      expect(wrapper.classes()).toContain('NavigationList--level-2');
+      expect(wrapper.classes()).toContain('NavigationLevel--level-2');
     });
   });
 
@@ -39,7 +39,7 @@ describe('NavigationList ', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = mount(NavigationList, {
+      wrapper = mount(NavigationLevel, {
         propsData: {
           level: 2,
           open: false,
@@ -49,14 +49,14 @@ describe('NavigationList ', () => {
     });
 
     it('contains closed class', () => {
-      expect(wrapper.classes()).toContain('NavigationList--closed');
+      expect(wrapper.classes()).toContain('NavigationLevel--closed');
     });
 
     context('when toggle clicked', () => {
       it('removes closed class', () => {
         wrapper.find('.NavigationToggle').trigger('click');
 
-        expect(wrapper.classes()).not.toContain('NavigationList--closed');
+        expect(wrapper.classes()).not.toContain('NavigationLevel--closed');
       });
     });
 
@@ -64,7 +64,7 @@ describe('NavigationList ', () => {
       it('removes closed class', () => {
         wrapper.find('.NavigationItem').trigger('click');
 
-        expect(wrapper.classes()).not.toContain('NavigationList--closed');
+        expect(wrapper.classes()).not.toContain('NavigationLevel--closed');
       });
     });
   });
@@ -73,7 +73,7 @@ describe('NavigationList ', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = mount(NavigationList, {
+      wrapper = mount(NavigationLevel, {
         propsData: {
           level: 2,
           open: true,
@@ -83,14 +83,14 @@ describe('NavigationList ', () => {
     });
 
     it('does not contain closed class', () => {
-      expect(wrapper.classes()).not.toContain('NavigationList--closed');
+      expect(wrapper.classes()).not.toContain('NavigationLevel--closed');
     });
 
     context('when toggle clicked', () => {
       it('contains closed class', () => {
         wrapper.find('.NavigationToggle').trigger('click');
 
-        expect(wrapper.classes()).toContain('NavigationList--closed');
+        expect(wrapper.classes()).toContain('NavigationLevel--closed');
       });
     });
 
@@ -98,7 +98,7 @@ describe('NavigationList ', () => {
       it('does not contain closed class', () => {
         wrapper.find('.NavigationItem').trigger('click');
 
-        expect(wrapper.classes()).not.toContain('NavigationList--closed');
+        expect(wrapper.classes()).not.toContain('NavigationLevel--closed');
       });
     });
   });

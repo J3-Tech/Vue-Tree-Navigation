@@ -69,7 +69,7 @@ describe('NavigationItem ', () => {
 
   context('with router', () => {
     context('for element item', () => {
-      let wrapper
+      let wrapper;
 
       beforeEach(() => {
         wrapper = shallow(NavigationItem, {
@@ -77,12 +77,12 @@ describe('NavigationItem ', () => {
             item: elementItem,
           },
           mocks: {
-            $router: {}
-          }
+            $router: {},
+          },
         });
-      })
+      });
 
-      it('doesn\'t render a hyperlink', () => {
+      it("doesn't render a hyperlink", () => {
         expect(wrapper.contains('a')).toBe(false);
       });
 
@@ -90,22 +90,22 @@ describe('NavigationItem ', () => {
         expect(wrapper.html()).toMatchSnapshot();
       });
     });
-  
+
     context('for route item', () => {
-      let wrapper
-      
+      let wrapper;
+
       beforeEach(() => {
         wrapper = shallow(NavigationItem, {
           propsData: {
             item: routeItem,
           },
           mocks: {
-            $router: {}
-          }
+            $router: {},
+          },
         });
-      })
+      });
 
-      it('doesn\'t render a hyperlink', () => {
+      it("doesn't render a hyperlink", () => {
         expect(wrapper.contains('a')).toBe(false);
       });
 
@@ -113,21 +113,21 @@ describe('NavigationItem ', () => {
         expect(wrapper.html()).toMatchSnapshot();
       });
     });
-  })
+  });
 
   context('without router', () => {
     context('for element item', () => {
-      let wrapper
+      let wrapper;
 
       beforeEach(() => {
         wrapper = shallow(NavigationItem, {
           propsData: {
             item: elementItem,
-          }
+          },
         });
-      })
+      });
 
-      it('doesn\'t render a router link', () => {
+      it("doesn't render a router link", () => {
         expect(wrapper.contains('router-link')).toBe(false);
       });
 
@@ -135,19 +135,19 @@ describe('NavigationItem ', () => {
         expect(wrapper.html()).toMatchSnapshot();
       });
     });
-  
+
     context('for route item', () => {
-      let wrapper
-      
+      let wrapper;
+
       beforeEach(() => {
         wrapper = shallow(NavigationItem, {
           propsData: {
             item: routeItem,
-          }
+          },
         });
-      })
+      });
 
-      it('doesn\'t render a router link', () => {
+      it("doesn't render a router link", () => {
         expect(wrapper.contains('router-link')).toBe(false);
       });
 
@@ -155,5 +155,5 @@ describe('NavigationItem ', () => {
         expect(wrapper.html()).toMatchSnapshot();
       });
     });
-  })
+  });
 });

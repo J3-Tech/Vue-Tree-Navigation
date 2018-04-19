@@ -30,7 +30,7 @@ const TreeNavigation = {
     const tree = createElement(
       'ul',
       {
-        class: ['NavigationList', 'NavigationList--level-0'],
+        class: ['NavigationLevel', 'NavigationLevel--level-0'],
       },
       generateLevel(
         createElement,
