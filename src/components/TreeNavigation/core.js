@@ -79,35 +79,35 @@ export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
     window.location.origin
   );
 
-  if (parentItem.meta.path !== undefined) {
-    let parentUrl = parentItem.meta.path;
-
-    if (!parentUrl.startsWith('/#')) {
-      parentUrl = removeElementFromPath(parentUrl);
-    }
-
-    if (currentUrl.startsWith(parentUrl)) {
-      return true;
-    }
+  if (isItemUrlChildOfCurrentUrl(parentItem, currentUrl) === true) {
+    return true;
   }
 
   for (let i = 0; i < parentItem.children.length; i++) {
     let child = parentItem.children[i];
 
-    if (child.meta.path !== undefined) {
-      let childUrl = child.meta.path;
-
-      if (!childUrl.startsWith('/#')) {
-        childUrl = removeElementFromPath(childUrl);
-      }
-
-      if (currentUrl.startsWith(childUrl)) {
-        return true;
-      }
+    if (isItemUrlChildOfCurrentUrl(child, currentUrl) === true) {
+      return true;
     }
   }
 
   return false;
+};
+
+export const isItemUrlChildOfCurrentUrl = (item, currentUrl) => {
+  if (item.meta.path !== undefined) {
+    let itemUrl = item.meta.path;
+
+    if (!itemUrl.startsWith('/#')) {
+      itemUrl = removeElementFromPath(itemUrl);
+    }
+
+    if (currentUrl.startsWith(itemUrl)) {
+      return true;
+    }
+
+    return false;
+  }
 };
 
 /**
