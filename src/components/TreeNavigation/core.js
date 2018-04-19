@@ -34,7 +34,7 @@ export const generateLevel = (
         {
           props: {
             level,
-            open: renderListAsOpen(item, level, defaultOpenLevel),
+            open: renderLevelAsOpen(item, level, defaultOpenLevel),
             parentItem: item,
           },
         },
@@ -64,10 +64,11 @@ export const generateLevel = (
 };
 
 /**
- * List should be opened in case its level is less than or equal to default
- * open level or if it contains child which URL is a part of an active URL.
+ * Level should be opened in following cases
+ * - level is less than or equal to default open level
+ * - it contains child which URL is a part of an active URL
  */
-export const renderListAsOpen = (parentItem, level, defaultOpenLevel) => {
+export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
   if (defaultOpenLevel >= level) {
     return true;
   }

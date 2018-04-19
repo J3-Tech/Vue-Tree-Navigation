@@ -8,7 +8,7 @@ import {
 import {
   getItemMetadata,
   insertMetadataToItems,
-  renderListAsOpen,
+  renderLevelAsOpen,
 } from './core';
 
 describe('TreeNavigation', () => {
@@ -429,7 +429,7 @@ describe('TreeNavigation', () => {
       });
     });
 
-    describe('renderListAsOpen', () => {
+    describe('renderLevelAsOpen', () => {
       let item, level, defaultOpenLevel;
 
       beforeAll(() => {
@@ -447,7 +447,7 @@ describe('TreeNavigation', () => {
         it('returns true', () => {
           level = 1;
 
-          expect(renderListAsOpen(item, level, defaultOpenLevel)).toBe(true);
+          expect(renderLevelAsOpen(item, level, defaultOpenLevel)).toBe(true);
         });
       });
 
@@ -455,7 +455,7 @@ describe('TreeNavigation', () => {
         it('returns true', () => {
           level = 2;
 
-          expect(renderListAsOpen(item, level, defaultOpenLevel)).toBe(true);
+          expect(renderLevelAsOpen(item, level, defaultOpenLevel)).toBe(true);
         });
       });
 
@@ -485,7 +485,7 @@ describe('TreeNavigation', () => {
             });
 
             it('returns true', () => {
-              expect(renderListAsOpen(item, level, defaultOpenLevel)).toBe(
+              expect(renderLevelAsOpen(item, level, defaultOpenLevel)).toBe(
                 true
               );
             });
@@ -513,7 +513,7 @@ describe('TreeNavigation', () => {
             });
 
             it('returns false', () => {
-              expect(renderListAsOpen(item, level, defaultOpenLevel)).toBe(
+              expect(renderLevelAsOpen(item, level, defaultOpenLevel)).toBe(
                 false
               );
             });
