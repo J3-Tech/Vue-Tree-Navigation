@@ -439,7 +439,9 @@ describe('TreeNavigation', () => {
       });
 
       beforeEach(() => {
-        item = {};
+        item = {
+          meta: {},
+        };
         defaultOpenLevel = 2;
       });
 
@@ -462,6 +464,16 @@ describe('TreeNavigation', () => {
       context('when level greater than default open level', () => {
         beforeEach(() => {
           level = 3;
+        });
+
+        context("when item's URL is a child of a current URL", () => {
+          beforeEach(() => {
+            item.meta.path = '/products';
+          });
+
+          it('returns true', () => {
+            expect(renderLevelAsOpen(item, level, defaultOpenLevel)).toBe(true);
+          });
         });
 
         context(
