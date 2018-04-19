@@ -51,8 +51,8 @@ exports[`TreeNavigation lists containing a child with an URL being part of a cur
           <!---->
           </span>
         </li>
-        <li><span class="NavigationItem"><!----> <a href="#contact">Contact</a> <!----> <!----></span></li>
-        <li><span class="NavigationItem"><!----> <a href="#blog">Blog</a> <!----> <!----></span></li>
+        <li><span class="NavigationItem"><!----> <a href="/#contact">Contact</a> <!----> <!----></span></li>
+        <li><span class="NavigationItem"><!----> <a href="/#blog">Blog</a> <!----> <!----></span></li>
       </ul>
     </li>
   </ul>

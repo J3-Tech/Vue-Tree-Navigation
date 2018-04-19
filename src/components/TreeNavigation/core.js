@@ -83,7 +83,7 @@ export const renderListAsOpen = (parentItem, level, defaultOpenLevel) => {
     if (child.meta.path !== undefined) {
       let childUrl = child.meta.path;
 
-      if (!childUrl.startsWith('#')) {
+      if (!childUrl.startsWith('/#')) {
         childUrl = removeElementFromPath(childUrl);
       }
 
@@ -254,7 +254,7 @@ export const getItemMetadata = (item, parent) => {
   // label -> element
   if (parent.meta.pathType === PATH_TYPE_NONE && element !== undefined) {
     return {
-      path: element,
+      path: '/' + element,
       pathType: PATH_TYPE_ELEMENT,
     };
   }

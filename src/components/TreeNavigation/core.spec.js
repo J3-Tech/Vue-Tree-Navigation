@@ -310,7 +310,7 @@ describe('TreeNavigation', () => {
           };
 
           const expected = {
-            path: '#element',
+            path: '/#element',
             pathType: PATH_TYPE_ELEMENT,
           };
 
@@ -705,7 +705,7 @@ describe('TreeNavigation', () => {
               {
                 name: 'Element 6',
                 element: 'element-6',
-                meta: { path: '#element-6', pathType: PATH_TYPE_ELEMENT },
+                meta: { path: '/#element-6', pathType: PATH_TYPE_ELEMENT },
               },
             ],
           },
