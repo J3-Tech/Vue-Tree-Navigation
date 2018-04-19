@@ -111,12 +111,12 @@ describe('TreeNavigation', () => {
           },
         });
 
-        expect(wrapper.find('.NavigationList--level-3').classes()).toContain(
-          'NavigationList--closed'
+        expect(wrapper.find('.NavigationLevel--level-3').classes()).toContain(
+          'NavigationLevel--closed'
         );
 
-        expect(wrapper.find('.NavigationList--level-4').classes()).toContain(
-          'NavigationList--closed'
+        expect(wrapper.find('.NavigationLevel--level-4').classes()).toContain(
+          'NavigationLevel--closed'
         );
       });
     });
@@ -131,16 +131,16 @@ describe('TreeNavigation', () => {
         });
 
         expect(
-          wrapper.find('.NavigationList--level-0').classes()
-        ).not.toContain('NavigationList--closed');
+          wrapper.find('.NavigationLevel--level-0').classes()
+        ).not.toContain('NavigationLevel--closed');
 
         expect(
-          wrapper.find('.NavigationList--level-1').classes()
-        ).not.toContain('NavigationList--closed');
+          wrapper.find('.NavigationLevel--level-1').classes()
+        ).not.toContain('NavigationLevel--closed');
 
         expect(
-          wrapper.find('.NavigationList--level-2').classes()
-        ).not.toContain('NavigationList--closed');
+          wrapper.find('.NavigationLevel--level-2').classes()
+        ).not.toContain('NavigationLevel--closed');
       });
     });
 

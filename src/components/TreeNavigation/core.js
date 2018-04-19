@@ -1,4 +1,4 @@
-import NavigationList from '../NavigationList/NavigationList.vue';
+import NavigationLevel from '../NavigationLevel/NavigationLevel.vue';
 import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
 import {
@@ -29,8 +29,8 @@ export const generateLevel = (
 
   items.forEach(item => {
     if (item.hasOwnProperty('children')) {
-      const navList = createElement(
-        NavigationList,
+      const navLevel = createElement(
+        NavigationLevel,
         {
           props: {
             level,
@@ -48,7 +48,7 @@ export const generateLevel = (
         ]
       );
 
-      children.push(createElement('li', [navList]));
+      children.push(createElement('li', [navLevel]));
     } else {
       const navItem = createElement(NavigationItem, {
         props: {
