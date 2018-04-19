@@ -66,7 +66,8 @@ export const generateLevel = (
 /**
  * Level should be opened in following cases
  * - level is less than or equal to default open level
- * - it contains child which URL is a part of an active URL
+ * - its URL is a part of an active URL
+ * - it contains a child which URL is a part of an active URL
  */
 export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
   if (defaultOpenLevel >= level) {
@@ -77,6 +78,18 @@ export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
     window.location.href,
     window.location.origin
   );
+
+  if (parentItem.meta.path !== undefined) {
+    let parentUrl = parentItem.meta.path;
+
+    if (!parentUrl.startsWith('/#')) {
+      parentUrl = removeElementFromPath(parentUrl);
+    }
+
+    if (currentUrl.startsWith(parentUrl)) {
+      return true;
+    }
+  }
 
   for (let i = 0; i < parentItem.children.length; i++) {
     let child = parentItem.children[i];
