@@ -4,6 +4,16 @@
 
 For more information see [documentation/demo](https://vue-tree-navigation.misrob.cz)
 
+## Features
+
+- unlimited number of levels
+- optional [vue-router](https://router.vuejs.org/en/) support
+- a possibility to define a default open level
+- auto-open a level when a corresponding URL visited
+- focused on core functionality, only necessary styles included
+- elements are provided with meaningful classes to make customizations easier (for example `NavigationItem--active`, `NavigationLevel--level-1`, `NavigationLevel--closed`)
+- external URLs support
+
 ## Example
 
 ```html
@@ -35,7 +45,7 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
 
 ## Demo
 
-You can visit this [codepen](https://codepen.io/MisRob/pen/ZxNGrd) for a simple demo. Please see [documentation/demo](https://vue-tree-navigation.misrob.cz) for more examples including vue-router.
+You can visit this [codepen](https://codepen.io/MisRob/pen/ZxNGrd) for a simple demo. Please see [documentation/demo](https://vue-tree-navigation.misrob.cz) for more examples including vue-router and styling.
 
 ## Installation
 
