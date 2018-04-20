@@ -3,20 +3,25 @@
     class="NavigationItem"
     :class="classes">
 
-    <span v-if="showText">{{ item.name }}</span>
+    <span
+      v-if="showLabel"
+      class="NavigationItem__label">{{ item.name }}</span>
 
     <router-link
       v-if="showRouterLink"
-      :to="item.meta.path">{{ item.name }}</router-link>
+      :to="item.meta.path"
+      class="NavigationItem__router-link">{{ item.name }}</router-link>
 
     <a
       v-if="showHyperLink"
-      :href="item.meta.path">{{ item.name }}</a>
+      :href="item.meta.path"
+      class="NavigationItem__link">{{ item.name }}</a>
 
     <a
       v-if="showExternalHyperLink"
       :href="item.meta.path"
-      target="_blank">{{ item.name }}</a>
+      target="_blank"
+      class="NavigationItem__external-link">{{ item.name }}</a>
   </span>
 </template>
 
@@ -34,7 +39,7 @@ export default {
     required: true,
   },
   computed: {
-    showText() {
+    showLabel() {
       return this.item.meta.pathType === PATH_TYPE_NONE;
     },
     showRouterLink() {
