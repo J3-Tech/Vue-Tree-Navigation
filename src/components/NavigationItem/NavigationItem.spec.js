@@ -108,16 +108,42 @@ describe('NavigationItem ', () => {
         expect(wrapper.find('a').classes()).toContain('NavigationItem__link');
       });
     });
+
+    context('for an active item', () => {
+      let wrapper;
+
+      beforeEach(() => {
+        jsdom.reconfigure({
+          url: 'https://mypage.com/#contact',
+        });
+
+        wrapper = shallow(NavigationItem, {
+          propsData: {
+            item: elementItem,
+          },
+        });
+      });
+
+      afterEach(() => {
+        jsdom.reconfigure({
+          url: 'https://mypage.com',
+        });
+      });
+
+      it('assigns active class', () => {
+        expect(wrapper.classes()).toContain('NavigationItem--active');
+      });
+    });
   });
 
   context('with router', () => {
     let localVue;
     let router;
 
-    beforeAll(() => {
+    beforeEach(() => {
       localVue = createLocalVue();
       localVue.use(VueRouter);
-      router = new VueRouter({});
+      router = new VueRouter();
     });
 
     context('for an element item', () => {
@@ -165,6 +191,29 @@ describe('NavigationItem ', () => {
         expect(wrapper.find('a').classes()).toContain(
           'NavigationItem__router-link'
         );
+      });
+    });
+
+    context('for an active item', () => {
+      let wrapper;
+
+      beforeEach(() => {
+        router.push({
+          path: '/',
+          hash: '#contact',
+        });
+
+        wrapper = mount(NavigationItem, {
+          localVue,
+          router,
+          propsData: {
+            item: elementItem,
+          },
+        });
+      });
+
+      it('assigns active class', () => {
+        expect(wrapper.classes()).toContain('NavigationItem--active');
       });
     });
   });
