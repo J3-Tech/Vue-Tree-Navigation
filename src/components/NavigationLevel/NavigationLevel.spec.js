@@ -1,4 +1,4 @@
-import { mount, shallow } from 'vue-test-utils';
+import { mount, shallow } from '@vue/test-utils';
 
 import { PATH_TYPE_NONE } from '../../config';
 import NavigationLevel from './NavigationLevel';
