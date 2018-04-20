@@ -438,6 +438,12 @@ describe('TreeNavigation', () => {
         });
       });
 
+      afterAll(() => {
+        jsdom.reconfigure({
+          url: 'https://mypage.com',
+        });
+      });
+
       beforeEach(() => {
         item = {
           meta: {},
