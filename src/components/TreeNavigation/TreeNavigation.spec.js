@@ -1,4 +1,4 @@
-import { createLocalVue, mount } from 'vue-test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 
 import TreeNavigation from './TreeNavigation';
