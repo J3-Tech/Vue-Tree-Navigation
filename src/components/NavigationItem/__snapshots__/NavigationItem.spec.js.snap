@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavigationItem  for a text item renders a span containing the item name 1`] = `
-<span class="NavigationItem"><span>Contact</span>
+<span class="NavigationItem"><span class="NavigationItem__label">Contact</span>
 <!---->
 <!---->
 <!---->
 </span>
 `;
 
-exports[`NavigationItem  for an external item renders a hyperlink with a correct value, a location and blank target 1`] = `<span class="NavigationItem"><!----> <!----> <!----> <a href="http://github.com" target="_blank">Github</a></span>`;
+exports[`NavigationItem  for an external item renders a hyperlink with a correct value, a location and blank target 1`] = `<span class="NavigationItem"><!----> <!----> <!----> <a href="http://github.com" target="_blank" class="NavigationItem__external-link">Github</a></span>`;
 
-exports[`NavigationItem  with router for an element item renders a router link with a correct location and text 1`] = `<span class="NavigationItem"><!----> <router-link to="/#contact">Contact</router-link> <!----> <!----></span>`;
+exports[`NavigationItem  with router for an element item renders a router link with a correct location and text 1`] = `<span class="NavigationItem"><!----> <router-link to="/#contact" class="NavigationItem__router-link">Contact</router-link> <!----> <!----></span>`;
 
-exports[`NavigationItem  with router for route item renders a router link with a correct location and text 1`] = `<span class="NavigationItem"><!----> <router-link to="/about">About</router-link> <!----> <!----></span>`;
+exports[`NavigationItem  with router for route item renders a router link with a correct location and text 1`] = `<span class="NavigationItem"><!----> <router-link to="/about" class="NavigationItem__router-link">About</router-link> <!----> <!----></span>`;
 
-exports[`NavigationItem  without router for element item renders a hyperlink with a correct location and text 1`] = `<span class="NavigationItem"><!----> <!----> <a href="/#contact">Contact</a> <!----></span>`;
+exports[`NavigationItem  without router for element item renders a hyperlink with a correct location and text 1`] = `<span class="NavigationItem"><!----> <!----> <a href="/#contact" class="NavigationItem__link">Contact</a> <!----></span>`;
 
-exports[`NavigationItem  without router for route item renders a hyperlink with a correct location and text 1`] = `<span class="NavigationItem"><!----> <!----> <a href="/about">About</a> <!----></span>`;
+exports[`NavigationItem  without router for route item renders a hyperlink with a correct location and text 1`] = `<span class="NavigationItem"><!----> <!----> <a href="/about" class="NavigationItem__link">About</a> <!----></span>`;
