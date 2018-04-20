@@ -3,34 +3,34 @@
 exports[`TreeNavigation lists containing a child with an URL being part of a current URL are rendered as open 1`] = `
 <div class="TreeNavigation">
   <ul class="NavigationLevel NavigationLevel--level-0">
-    <li><span class="NavigationItem"><!----> <a href="/home">Home</a> <!----> <!----></span></li>
+    <li><span class="NavigationItem"><!----> <!----> <a href="/home">Home</a> <!----></span></li>
     <li>
       <ul class="NavigationLevel NavigationLevel--level-1">
-        <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <a href="/products">Products</a> <!----> <!----></span></li>
+        <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="/products">Products</a> <!----></span></li>
         <li>
           <ul class="NavigationLevel NavigationLevel--closed NavigationLevel--level-2">
-            <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <a href="/products/shoes">Running shoes</a> <!----> <!----></span></li>
-            <li><span class="NavigationItem"><!----> <a href="/products/shoes#race">Race</a> <!----> <!----></span></li>
-            <li><span class="NavigationItem"><!----> <a href="/products/shoes#road">Road</a> <!----> <!----></span></li>
-            <li><span class="NavigationItem"><!----> <a href="/products/shoes#trail">Trail</a> <!----> <!----></span></li>
+            <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <!----> <a href="/products/shoes">Running shoes</a> <!----></span></li>
+            <li><span class="NavigationItem"><!----> <!----> <a href="/products/shoes#race">Race</a> <!----></span></li>
+            <li><span class="NavigationItem"><!----> <!----> <a href="/products/shoes#road">Road</a> <!----></span></li>
+            <li><span class="NavigationItem"><!----> <!----> <a href="/products/shoes#trail">Trail</a> <!----></span></li>
           </ul>
         </li>
         <li>
           <ul class="NavigationLevel NavigationLevel--level-2">
-            <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <a href="/products/clothing">Running clothing</a> <!----> <!----></span></li>
-            <li><span class="NavigationItem"><!----> <a href="/products/clothing/jackets">Jackets</a> <!----> <!----></span></li>
+            <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="/products/clothing">Running clothing</a> <!----></span></li>
+            <li><span class="NavigationItem"><!----> <!----> <a href="/products/clothing/jackets">Jackets</a> <!----></span></li>
             <li>
               <ul class="NavigationLevel NavigationLevel--level-3">
-                <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <a href="/products/clothing/tops">Tops</a> <!----> <!----></span></li>
+                <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="/products/clothing/tops">Tops</a> <!----></span></li>
                 <li>
                   <ul class="NavigationLevel NavigationLevel--level-4">
-                    <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <a href="/products/clothing/tops#long-sleeve">Long Sleeve</a> <!----> <!----></span></li>
-                    <li><span class="NavigationItem NavigationItem--active"><!----> <a href="/products/clothing/tops#summer">For summer</a> <!----> <!----></span></li>
-                    <li><span class="NavigationItem"><!----> <a href="/products/clothing/tops#winter">For winter</a> <!----> <!----></span></li>
+                    <li><span class="NavigationToggle"><span class="NavigationToggle__icon"></span></span> <span class="NavigationItem"><!----> <!----> <a href="/products/clothing/tops#long-sleeve">Long Sleeve</a> <!----></span></li>
+                    <li><span class="NavigationItem NavigationItem--active"><!----> <!----> <a href="/products/clothing/tops#summer">For summer</a> <!----></span></li>
+                    <li><span class="NavigationItem"><!----> <!----> <a href="/products/clothing/tops#winter">For winter</a> <!----></span></li>
                   </ul>
                 </li>
-                <li><span class="NavigationItem"><!----> <a href="/products/clothing/tops#short-sleeve">Short Sleeve</a> <!----> <!----></span></li>
-                <li><span class="NavigationItem"><!----> <a href="/products/clothing/tops#sleeveless">Sleeveless</a> <!----> <!----></span></li>
+                <li><span class="NavigationItem"><!----> <!----> <a href="/products/clothing/tops#short-sleeve">Short Sleeve</a> <!----></span></li>
+                <li><span class="NavigationItem"><!----> <!----> <a href="/products/clothing/tops#sleeveless">Sleeveless</a> <!----></span></li>
               </ul>
             </li>
           </ul>
@@ -51,8 +51,8 @@ exports[`TreeNavigation lists containing a child with an URL being part of a cur
           <!---->
           </span>
         </li>
-        <li><span class="NavigationItem"><!----> <a href="/#contact">Contact</a> <!----> <!----></span></li>
-        <li><span class="NavigationItem"><!----> <a href="/#blog">Blog</a> <!----> <!----></span></li>
+        <li><span class="NavigationItem"><!----> <!----> <a href="/#contact">Contact</a> <!----></span></li>
+        <li><span class="NavigationItem"><!----> <!----> <a href="/#blog">Blog</a> <!----></span></li>
       </ul>
     </li>
   </ul>
@@ -62,34 +62,34 @@ exports[`TreeNavigation lists containing a child with an URL being part of a cur
 exports[`TreeNavigation renders 1`] = `
 <div class="TreeNavigation">
   <ul class="NavigationLevel NavigationLevel--level-0">
-    <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/home" class="router-link">Home</a></span></li>
+    <li><span class="NavigationItem"><!----> <a href="#/home" class="">Home</a> <!----> <!----></span></li>
     <li>
       <ul class="NavigationLevel NavigationLevel--closed NavigationLevel--level-1">
-        <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <a href="#/products" class="router-link">Products</a></span></li>
+        <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <a href="#/products" class="">Products</a> <!----> <!----></span></li>
         <li>
           <ul class="NavigationLevel NavigationLevel--closed NavigationLevel--level-2">
-            <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/shoes" class="router-link">Running shoes</a></span></li>
-            <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/shoes#race" class="router-link">Race</a></span></li>
-            <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/shoes#road" class="router-link">Road</a></span></li>
-            <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/shoes#trail" class="router-link">Trail</a></span></li>
+            <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <a href="#/products/shoes" class="">Running shoes</a> <!----> <!----></span></li>
+            <li><span class="NavigationItem"><!----> <a href="#/products/shoes#race" class="">Race</a> <!----> <!----></span></li>
+            <li><span class="NavigationItem"><!----> <a href="#/products/shoes#road" class="">Road</a> <!----> <!----></span></li>
+            <li><span class="NavigationItem"><!----> <a href="#/products/shoes#trail" class="">Trail</a> <!----> <!----></span></li>
           </ul>
         </li>
         <li>
           <ul class="NavigationLevel NavigationLevel--closed NavigationLevel--level-2">
-            <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/clothing" class="router-link">Running clothing</a></span></li>
-            <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/clothing/jackets" class="router-link">Jackets</a></span></li>
+            <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <a href="#/products/clothing" class="">Running clothing</a> <!----> <!----></span></li>
+            <li><span class="NavigationItem"><!----> <a href="#/products/clothing/jackets" class="">Jackets</a> <!----> <!----></span></li>
             <li>
               <ul class="NavigationLevel NavigationLevel--closed NavigationLevel--level-3">
-                <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/clothing/tops" class="router-link">Tops</a></span></li>
+                <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <a href="#/products/clothing/tops" class="">Tops</a> <!----> <!----></span></li>
                 <li>
                   <ul class="NavigationLevel NavigationLevel--closed NavigationLevel--level-4">
-                    <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/clothing/tops#long-sleeve" class="router-link">Long Sleeve</a></span></li>
-                    <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/clothing/tops#summer" class="router-link">For summer</a></span></li>
-                    <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/clothing/tops#winter" class="router-link">For winter</a></span></li>
+                    <li><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><!----> <a href="#/products/clothing/tops#long-sleeve" class="">Long Sleeve</a> <!----> <!----></span></li>
+                    <li><span class="NavigationItem"><!----> <a href="#/products/clothing/tops#summer" class="">For summer</a> <!----> <!----></span></li>
+                    <li><span class="NavigationItem"><!----> <a href="#/products/clothing/tops#winter" class="">For winter</a> <!----> <!----></span></li>
                   </ul>
                 </li>
-                <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/clothing/tops#short-sleeve" class="router-link">Short Sleeve</a></span></li>
-                <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/products/clothing/tops#sleeveless" class="router-link">Sleeveless</a></span></li>
+                <li><span class="NavigationItem"><!----> <a href="#/products/clothing/tops#short-sleeve" class="">Short Sleeve</a> <!----> <!----></span></li>
+                <li><span class="NavigationItem"><!----> <a href="#/products/clothing/tops#sleeveless" class="">Sleeveless</a> <!----> <!----></span></li>
               </ul>
             </li>
           </ul>
@@ -110,8 +110,8 @@ exports[`TreeNavigation renders 1`] = `
           <!---->
           </span>
         </li>
-        <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/#contact" class="router-link">Contact</a></span></li>
-        <li><span class="NavigationItem"><!----> <!----> <!----> <a href="#/#blog" class="router-link">Blog</a></span></li>
+        <li><span class="NavigationItem"><!----> <a href="#/#contact" class="">Contact</a> <!----> <!----></span></li>
+        <li><span class="NavigationItem"><!----> <a href="#/#blog" class="">Blog</a> <!----> <!----></span></li>
       </ul>
     </li>
   </ul>

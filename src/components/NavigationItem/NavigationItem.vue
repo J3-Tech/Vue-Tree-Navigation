@@ -1,15 +1,13 @@
-/**
- * Return a navigation item - a hyperlink, a router link, or a text.
- * Return only item name in case it is neither the route nor the element.
- * Return a router link in case the item is route.
- * Return a hyperlink in case the item is element.
- */
-
 <template>
   <span
     class="NavigationItem"
     :class="classes">
+
     <span v-if="showText">{{ item.name }}</span>
+
+    <router-link
+      v-if="showRouterLink"
+      :to="item.meta.path">{{ item.name }}</router-link>
 
     <a
       v-if="showHyperLink"
@@ -19,11 +17,6 @@
       v-if="showExternalHyperLink"
       :href="item.meta.path"
       target="_blank">{{ item.name }}</a>
-
-    <router-link
-      v-if="showRouterLink"
-      class="router-link"
-      :to="item.meta.path">{{ item.name }}</router-link>
   </span>
 </template>
 
@@ -44,14 +37,14 @@ export default {
     showText() {
       return this.item.meta.pathType === PATH_TYPE_NONE;
     },
+    showRouterLink() {
+      return this.showLink && this.$router !== undefined;
+    },
     showHyperLink() {
       return this.showLink && this.$router === undefined;
     },
     showExternalHyperLink() {
       return this.item.meta.pathType === PATH_TYPE_EXTERNAL;
-    },
-    showRouterLink() {
-      return this.showLink && this.$router !== undefined;
     },
     showLink() {
       return (

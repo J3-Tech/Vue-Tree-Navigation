@@ -20,7 +20,7 @@ const elementItem = {
   element: 'contact',
   meta: {
     pathType: PATH_TYPE_ELEMENT,
-    path: '#contact',
+    path: '/#contact',
   },
 };
 
@@ -43,8 +43,8 @@ const externalItem = {
 };
 
 describe('NavigationItem ', () => {
-  context('for label item', () => {
-    it('renders span containing the item name', () => {
+  context('for a text item', () => {
+    it('renders a span containing the item name', () => {
       const wrapper = shallow(NavigationItem, {
         propsData: {
           item: textItem,
@@ -55,8 +55,8 @@ describe('NavigationItem ', () => {
     });
   });
 
-  context('for external', () => {
-    it('renders hyperlink with a correct value, location and target blank', () => {
+  context('for an external item', () => {
+    it('renders a hyperlink with a correct value, a location and blank target', () => {
       const wrapper = shallow(NavigationItem, {
         propsData: {
           item: externalItem,
@@ -68,7 +68,7 @@ describe('NavigationItem ', () => {
   });
 
   context('with router', () => {
-    context('for element item', () => {
+    context('for an element item', () => {
       let wrapper;
 
       beforeEach(() => {
