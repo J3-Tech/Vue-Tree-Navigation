@@ -9,10 +9,10 @@ import {
 } from '../../config';
 
 import {
+  getRelativeUrl,
   sanitizeElement,
   sanitizeRoute,
   removeElementFromPath,
-  getRelativeUrl,
 } from '../utils';
 
 /**
@@ -33,9 +33,9 @@ export const generateLevel = (
         NavigationLevel,
         {
           props: {
+            parentItem: item,
             level,
             open: renderLevelAsOpen(item, level, defaultOpenLevel),
-            parentItem: item,
           },
         },
         [

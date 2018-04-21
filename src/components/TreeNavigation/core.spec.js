@@ -14,8 +14,8 @@ import {
 describe('TreeNavigation', () => {
   describe('core', () => {
     describe('getItemMetadata', () => {
-      context('without parent', () => {
-        context('with simple value item', () => {
+      context('without a parent', () => {
+        context('with a label item', () => {
           it('returns correct metadata', () => {
             const item = {
               name: 'item',
@@ -30,8 +30,8 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with external item', () => {
-          it('returns correct metadata', () => {
+        context('with an external item', () => {
+          it('returns a correct metadata', () => {
             const item = {
               external: 'https://github.com',
             };
@@ -45,8 +45,8 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with route item', () => {
-          it('returns correct metadata', () => {
+        context('with a route item', () => {
+          it('returns a correct metadata', () => {
             const item = {
               route: 'route',
             };
@@ -60,8 +60,8 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with element item', () => {
-          it('returns correct metadata', () => {
+        context('with an element item', () => {
+          it('returns a correct metadata', () => {
             const item = {
               element: 'element',
             };
@@ -76,8 +76,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with route parent and external item', () => {
-        it('returns correct metadata', () => {
+      context('with a route parent and an external item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: '/home',
@@ -98,8 +98,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with route parent and route item', () => {
-        it('returns correct metadata', () => {
+      context('with a route parent and a route item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: '/home',
@@ -120,8 +120,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with route parent and element item', () => {
-        it('returns correct metadata', () => {
+      context('with a route parent and an element item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: '/home',
@@ -142,8 +142,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with route parent and simple value item', () => {
-        it('returns correct metadata', () => {
+      context('with a route parent and a label item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: '/home',
@@ -164,8 +164,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with element parent and external item', () => {
-        it('returns correct metadata', () => {
+      context('with an element parent and an external item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: '#element',
@@ -186,8 +186,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with element parent and route item', () => {
-        it('returns correct metadata', () => {
+      context('with an element parent and a route item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: '#element',
@@ -208,8 +208,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with element parent and element item', () => {
-        it('returns correct metadata', () => {
+      context('with an element parent and an element item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: '#parent',
@@ -230,8 +230,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with element parent and simple value item', () => {
-        it('returns correct metadata', () => {
+      context('with an element parent and a label item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: '#element',
@@ -252,8 +252,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with label parent and external item', () => {
-        it('returns correct metadata', () => {
+      context('with a label parent and an external item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: undefined,
@@ -274,8 +274,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with label parent and route item', () => {
-        it('returns correct metadata', () => {
+      context('with a label parent and a route item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: undefined,
@@ -296,8 +296,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with label parent and element item', () => {
-        it('returns correct metadata', () => {
+      context('with a label parent and an element item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: undefined,
@@ -318,8 +318,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with label parent and label item', () => {
-        it('returns correct metadata', () => {
+      context('with a label parent and a label item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: undefined,
@@ -340,8 +340,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with external parent and external item', () => {
-        it('returns correct metadata', () => {
+      context('with an external parent and an external item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: 'https://github.com',
@@ -362,8 +362,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with external parent and route item', () => {
-        it('returns correct metadata', () => {
+      context('with an external parent and a route item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: 'https://github.com',
@@ -384,8 +384,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with external parent and element item', () => {
-        it('returns correct metadata', () => {
+      context('with an external parent and an element item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: 'https://github.com',
@@ -406,8 +406,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with external parent and label item', () => {
-        it('returns correct metadata', () => {
+      context('with an external parent and a label item', () => {
+        it('returns a correct metadata', () => {
           const parent = {
             meta: {
               path: 'https://github.com',
@@ -451,7 +451,7 @@ describe('TreeNavigation', () => {
         defaultOpenLevel = 2;
       });
 
-      context('when level less than default open level', () => {
+      context('when a level is less than a default open level', () => {
         it('returns true', () => {
           level = 1;
 
@@ -459,7 +459,7 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('when level equal to default open level', () => {
+      context('when a level is equal to a default open level', () => {
         it('returns true', () => {
           level = 2;
 
@@ -467,12 +467,12 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('when level greater than default open level', () => {
+      context('when a level greater than a default open level', () => {
         beforeEach(() => {
           level = 3;
         });
 
-        context("when item's URL is a child of a current URL", () => {
+        context("when an item's URL is a child of a current URL", () => {
           beforeEach(() => {
             item.meta.path = '/products';
           });
@@ -483,7 +483,7 @@ describe('TreeNavigation', () => {
         });
 
         context(
-          'when item has at least one child which URL is child of a current URL',
+          'when an item has at least one child which URL is a child of a current URL',
           () => {
             beforeEach(() => {
               item.children = [
@@ -511,7 +511,7 @@ describe('TreeNavigation', () => {
         );
 
         context(
-          'when item has no child which URL is child of a current URL',
+          'when an item has no child which URL is a child of a current URL',
           () => {
             beforeEach(() => {
               item.children = [
@@ -541,7 +541,7 @@ describe('TreeNavigation', () => {
     });
 
     describe('insertMetadataToItems', () => {
-      it('inserts correct metadata to each item', () => {
+      it('inserts a correct metadata to each item', () => {
         // it's a little bit wild structure :) but I try to simulate
         // all possible relations between parents and childs to test corner
         // cases
