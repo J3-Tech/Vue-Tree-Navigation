@@ -1,6 +1,21 @@
 /**
- * Check if there is an element appended to the end
- * of the path and then remove it.
+ * Remove a domain and router's `/#` from URL.
+ */
+export const getRelativeUrl = (url, origin) => {
+  if (origin[origin.length - 1] === '/') {
+    origin = origin.slice(0, -1);
+  }
+  let relativeUrl = url.replace(origin, '');
+
+  if (relativeUrl.startsWith('/#')) {
+    relativeUrl = relativeUrl.substring(2);
+  }
+
+  return sanitizeRoute(relativeUrl);
+};
+
+/**
+ * Remove an element appended to the end of a path.
  */
 export const removeElementFromPath = path => {
   let hashPos;
@@ -22,6 +37,21 @@ export const removeElementFromPath = path => {
 };
 
 /**
+ * First character should be #.
+ */
+export const sanitizeElement = element => {
+  if (element === undefined) {
+    return;
+  }
+
+  if (element[0] !== '#') {
+    element = '#' + element;
+  }
+
+  return element;
+};
+
+/**
  * First character should be backslash.
  * Last character shouldn't be backslash.
  */
@@ -39,35 +69,4 @@ export const sanitizeRoute = route => {
   }
 
   return route;
-};
-
-/**
- * First character should be #.
- */
-export const sanitizeElement = element => {
-  if (element === undefined) {
-    return;
-  }
-
-  if (element[0] !== '#') {
-    element = '#' + element;
-  }
-
-  return element;
-};
-
-/**
- * Remove domain and router's `/#` if present.
- */
-export const getRelativeUrl = (url, origin) => {
-  if (origin[origin.length - 1] === '/') {
-    origin = origin.slice(0, -1);
-  }
-  let relativeUrl = url.replace(origin, '');
-
-  if (relativeUrl.startsWith('/#')) {
-    relativeUrl = relativeUrl.substring(2);
-  }
-
-  return sanitizeRoute(relativeUrl);
 };
