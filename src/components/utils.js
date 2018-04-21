@@ -2,14 +2,12 @@
  * Remove a domain and router's `/#` from URL.
  */
 export const getRelativeUrl = (url, origin) => {
+  let relativeUrl = url.replace('/#/', '/');
+
   if (origin[origin.length - 1] === '/') {
     origin = origin.slice(0, -1);
   }
-  let relativeUrl = url.replace(origin, '');
-
-  if (relativeUrl.startsWith('/#')) {
-    relativeUrl = relativeUrl.substring(2);
-  }
+  relativeUrl = relativeUrl.replace(origin, '');
 
   return sanitizeRoute(relativeUrl);
 };

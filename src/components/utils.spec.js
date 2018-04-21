@@ -13,20 +13,64 @@ describe('utils', () => {
       });
     });
 
-    it('returns a correct URL', () => {
-      expect(
-        getRelativeUrl('https://github.com/route#element', 'https://github.com')
-      ).toBe('/route#element');
-      expect(
-        getRelativeUrl('https://github.com/route#element', 'https://github.com/')
-      ).toBe('/route#element');
+    context('with URL without a router hash', () => {
+      context('for a path without an element', () => {
+        it('returns a correct URL', () => {
+          expect(
+            getRelativeUrl('https://github.com/path', 'https://github.com')
+          ).toBe('/path');
+        });
+      });
+
+      context('for path containing an element', () => {
+        it('returns a correct URL', () => {
+          expect(
+            getRelativeUrl(
+              'https://github.com/path#element',
+              'https://github.com'
+            )
+          ).toBe('/path#element');
+        });
+      });
+
+      context('for a path with an element only', () => {
+        it('returns a correct URL', () => {
+          expect(
+            getRelativeUrl('https://github.com/#element', 'https://github.com')
+          ).toBe('/#element');
+        });
+      });
     });
 
-    context("when router's /# is included in URL", () => {
-      it('returns a correct URL', () => {
-        expect(
-          getRelativeUrl('https://github.com/#/route#element', 'https://github.com')
-        ).toBe('/route#element');
+    context('with URL containing a router hash', () => {
+      context('for a path without an element', () => {
+        it('returns a correct URL', () => {
+          expect(
+            getRelativeUrl('https://github.com/#/path', 'https://github.com')
+          ).toBe('/path');
+        });
+      });
+
+      context('for path containing an element', () => {
+        it('returns a correct URL', () => {
+          expect(
+            getRelativeUrl(
+              'https://github.com/#/path#element',
+              'https://github.com'
+            )
+          ).toBe('/path#element');
+        });
+      });
+
+      context('for a path with an element only', () => {
+        it('returns a correct URL', () => {
+          expect(
+            getRelativeUrl(
+              'https://github.com/#/#element',
+              'https://github.com'
+            )
+          ).toBe('/#element');
+        });
       });
     });
   });
