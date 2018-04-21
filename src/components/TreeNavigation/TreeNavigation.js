@@ -29,9 +29,6 @@ const TreeNavigation = {
     const level = 1;
     const tree = createElement(
       'ul',
-      {
-        class: ['NavigationLevel', 'NavigationLevel--level-0'],
-      },
       generateLevel(
         createElement,
         self.itemsWithMetadata,
@@ -40,15 +37,23 @@ const TreeNavigation = {
       )
     );
 
-    const wrapper = createElement(
+    const level0 = createElement(
       'div',
       {
-        class: 'TreeNavigation',
+        class: ['NavigationLevel', 'NavigationLevel--level-0'],
       },
       [tree]
     );
 
-    return wrapper;
+    const treeNavigation = createElement(
+      'div',
+      {
+        class: 'TreeNavigation',
+      },
+      [level0]
+    );
+
+    return treeNavigation;
   },
 };
 

@@ -1,19 +1,20 @@
 <template>
-  <ul 
+  <div 
     class="NavigationLevel"
     :class="classes">
-    <li>
+    <div class="NavigationLevel__parent">
       <NavigationToggle
         :open="isOpen"
         @click.native="onToggleClick" />
       <NavigationItem
         :item="parentItem"
         @click.native="onItemClick" />
-    </li>
+    </div>
 
-    <!-- child items goes here -->
-    <slot></slot>
-  </ul>
+    <ul class="NavigationLevel__children">
+      <slot></slot>
+    </ul>
+  </div>
 </template>
 
 <script>
