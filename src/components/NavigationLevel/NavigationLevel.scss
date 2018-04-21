@@ -1,5 +1,7 @@
-.NavigationLevel--closed {
-  & > ul {
-    display: none;
+.NavigationLevel {
+  &--closed {
+    ul {
+      display: none;
+    }
   }
 }

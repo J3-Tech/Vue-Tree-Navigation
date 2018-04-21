@@ -87,7 +87,7 @@ describe('NavigationLevel ', () => {
     });
 
     context('when toggle clicked', () => {
-      it('contains closed class', () => {
+      it('adds closed class', () => {
         wrapper.find('.NavigationToggle').trigger('click');
 
         expect(wrapper.classes()).toContain('NavigationLevel--closed');
@@ -95,7 +95,7 @@ describe('NavigationLevel ', () => {
     });
 
     context('when item clicked', () => {
-      it('does not contain closed class', () => {
+      it('does not add closed class', () => {
         wrapper.find('.NavigationItem').trigger('click');
 
         expect(wrapper.classes()).not.toContain('NavigationLevel--closed');
