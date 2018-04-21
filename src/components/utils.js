@@ -1,5 +1,6 @@
 /**
- * Check if a parent URL contains an URL.
+ * Check if a parent URL starts with another URL.
+ * Ignore elements.
  */
 export const containsUrl = (parentUrl, url) => {
   if (!url.startsWith('/#')) {

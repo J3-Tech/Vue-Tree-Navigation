@@ -1,4 +1,7 @@
+import each from 'jest-each';
+
 import {
+  containsUrl,
   getRelativeUrl,
   removeElementFromPath,
   sanitizeElement,
@@ -6,6 +9,25 @@ import {
 } from './utils';
 
 describe('utils', () => {
+  describe('containsUrl', () => {
+    each([
+      [true, '/path', '/path'],
+      [true, '/path#element', '/path'],
+      [true, '/path/another_path', '/path'],
+      [false, '/another_path', '/path'],
+      [false, '/', '/path'],
+    ]).it(
+      'returns %s for parent URL %s and URL %s',
+      (expected, parentUrl, url) => {
+        expect(containsUrl(parentUrl, url)).toBe(expected);
+      }
+    );
+
+    it('ignores an element', () => {
+      expect(containsUrl('/path', '/path#element')).toBe(true);
+    });
+  });
+
   describe('getRelativeUrl', () => {
     context('for an empty URL and origin', () => {
       it('returns an empty URL', () => {
