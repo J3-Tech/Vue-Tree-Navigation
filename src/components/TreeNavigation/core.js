@@ -9,6 +9,7 @@ import {
 } from '../../config';
 
 import {
+  containsUrl,
   getRelativeUrl,
   sanitizeElement,
   sanitizeRoute,
@@ -79,35 +80,25 @@ export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
     window.location.origin
   );
 
-  if (isItemUrlChildOfCurrentUrl(parentItem, currentUrl) === true) {
+  if (
+    parentItem.meta.path !== undefined &&
+    containsUrl(currentUrl, parentItem.meta.path) === true
+  ) {
     return true;
   }
 
   for (let i = 0; i < parentItem.children.length; i++) {
     let child = parentItem.children[i];
 
-    if (isItemUrlChildOfCurrentUrl(child, currentUrl) === true) {
+    if (
+      child.meta.path !== undefined &&
+      containsUrl(currentUrl, child.meta.path) === true
+    ) {
       return true;
     }
   }
 
   return false;
-};
-
-export const isItemUrlChildOfCurrentUrl = (item, currentUrl) => {
-  if (item.meta.path !== undefined) {
-    let itemUrl = item.meta.path;
-
-    if (!itemUrl.startsWith('/#')) {
-      itemUrl = removeElementFromPath(itemUrl);
-    }
-
-    if (currentUrl.startsWith(itemUrl)) {
-      return true;
-    }
-
-    return false;
-  }
 };
 
 /**
