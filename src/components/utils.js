@@ -1,20 +1,4 @@
 /**
- * Check if a parent URL starts with another URL.
- * Ignore elements.
- */
-export const containsUrl = (parentUrl, url) => {
-  if (!url.startsWith('/#')) {
-    url = removeElementFromPath(url);
-  }
-
-  if (parentUrl.startsWith(url)) {
-    return true;
-  }
-
-  return false;
-};
-
-/**
  * Remove a domain and router's `/#` from URL.
  */
 export const getRelativeUrl = (url, origin) => {
@@ -83,4 +67,20 @@ export const sanitizeRoute = route => {
   }
 
   return route;
+};
+
+/**
+ * Check if a parent URL starts with another URL.
+ * Ignore elements.
+ */
+export const startsWithUrl = (parentUrl, url) => {
+  if (!url.startsWith('/#')) {
+    url = removeElementFromPath(url);
+  }
+
+  if (parentUrl.startsWith(url)) {
+    return true;
+  }
+
+  return false;
 };

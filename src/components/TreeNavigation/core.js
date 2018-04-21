@@ -9,10 +9,10 @@ import {
 } from '../../config';
 
 import {
-  containsUrl,
   getRelativeUrl,
   sanitizeElement,
   sanitizeRoute,
+  startsWithUrl,
   removeElementFromPath,
 } from '../utils';
 
@@ -82,7 +82,7 @@ export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
 
   if (
     parentItem.meta.path !== undefined &&
-    containsUrl(currentUrl, parentItem.meta.path) === true
+    startsWithUrl(currentUrl, parentItem.meta.path) === true
   ) {
     return true;
   }
@@ -92,7 +92,7 @@ export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
 
     if (
       child.meta.path !== undefined &&
-      containsUrl(currentUrl, child.meta.path) === true
+      startsWithUrl(currentUrl, child.meta.path) === true
     ) {
       return true;
     }
