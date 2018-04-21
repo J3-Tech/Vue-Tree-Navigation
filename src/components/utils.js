@@ -1,4 +1,19 @@
 /**
+ * Check if a parent URL contains an URL.
+ */
+export const containsUrl = (parentUrl, url) => {
+  if (!url.startsWith('/#')) {
+    url = removeElementFromPath(url);
+  }
+
+  if (parentUrl.startsWith(url)) {
+    return true;
+  }
+
+  return false;
+};
+
+/**
  * Remove a domain and router's `/#` from URL.
  */
 export const getRelativeUrl = (url, origin) => {
