@@ -14,6 +14,7 @@ describe('utils', () => {
       [true, '/path', '/path'],
       [true, '/path#element', '/path'],
       [true, '/path/another_path', '/path'],
+      [true, '/#element', '/#element'],
       [false, '/another_path', '/path'],
       [false, '/', '/path'],
     ]).it(
