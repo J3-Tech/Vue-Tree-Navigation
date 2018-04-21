@@ -1,5 +1,5 @@
 .NavigationLevel--closed {
-  & > li:not(:first-child) {
+  & > ul {
     display: none;
   }
 }
