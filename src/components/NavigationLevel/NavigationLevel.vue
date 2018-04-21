@@ -28,6 +28,10 @@ export default {
     };
   },
   props: {
+    parentItem: {
+      type: Object,
+      required: true,
+    },
     level: {
       type: Number,
       required: true,
@@ -37,12 +41,7 @@ export default {
       required: false,
       default: false,
     },
-    parentItem: {
-      type: Object,
-      required: true,
-    },
   },
-
   computed: {
     classes() {
       return {
@@ -51,7 +50,6 @@ export default {
       };
     },
   },
-
   methods: {
     onToggleClick() {
       this.isOpen = !this.isOpen;
@@ -62,7 +60,6 @@ export default {
       }
     },
   },
-
   components: {
     NavigationItem,
     NavigationToggle,
