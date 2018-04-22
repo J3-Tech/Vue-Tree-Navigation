@@ -1,6 +1,6 @@
 {
   "name": "vue-tree-navigation",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "Vue.js 2 tree navigation",
   "keywords": [
     "tree",
@@ -8,7 +8,8 @@
     "vue",
     "vuejs",
     "component",
-    "plugin"
+    "plugin",
+    "menu"
   ],
   "homepage": "https://github.com/MisRob/vue-tree-navigation",
   "bugs": "https://github.com/MisRob/vue-tree-navigation/issues",
