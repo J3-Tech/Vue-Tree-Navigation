@@ -45,16 +45,6 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
 
 ## Installation
 
-### Include with a script tag
-
-```html
-<script src="https://unpkg.com/vue-tree-navigation@3.0.0/dist/vue-tree-navigation.js"></script>
-
-<script>
-  Vue.use(VueTreeNavigation)
-</script>
-```
-
 ### NPM
 
 ```console
@@ -67,6 +57,37 @@ $ npm install vue-tree-navigation
 import VueTreeNavigation from 'vue-tree-navigation';
 
 Vue.use(VueTreeNavigation);
+```
+
+### Include with a script tag
+
+```html
+<script src="https://unpkg.com/vue-tree-navigation@3.0.0/dist/vue-tree-navigation.js"></script>
+
+<script>
+  Vue.use(VueTreeNavigation)
+</script>
+```
+
+*Example*
+
+```html
+<div id="app">
+  <vue-tree-navigation :items="items" :defaultOpenLevel="1" />
+</div>
+
+<script>
+  Vue.use(VueTreeNavigation)
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      items: [
+        ...
+      ],
+    }
+  })
+</script>
 ```
 
 ## Requirements
