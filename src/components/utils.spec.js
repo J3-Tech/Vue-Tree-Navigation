@@ -30,71 +30,17 @@ describe('utils', () => {
   });
 
   describe('getRelativeUrl', () => {
-    context('for an empty URL and origin', () => {
-      it('returns an empty URL', () => {
-        expect(getRelativeUrl('', '')).toBe('');
-      });
-    });
-
-    context('with URL without a router hash', () => {
-      context('for a path without an element', () => {
-        it('returns a correct URL', () => {
-          expect(
-            getRelativeUrl('https://github.com/path', 'https://github.com')
-          ).toBe('/path');
-        });
-      });
-
-      context('for path containing an element', () => {
-        it('returns a correct URL', () => {
-          expect(
-            getRelativeUrl(
-              'https://github.com/path#element',
-              'https://github.com'
-            )
-          ).toBe('/path#element');
-        });
-      });
-
-      context('for a path with an element only', () => {
-        it('returns a correct URL', () => {
-          expect(
-            getRelativeUrl('https://github.com/#element', 'https://github.com')
-          ).toBe('/#element');
-        });
-      });
-    });
-
-    context('with URL containing a router hash', () => {
-      context('for a path without an element', () => {
-        it('returns a correct URL', () => {
-          expect(
-            getRelativeUrl('https://github.com/#/path', 'https://github.com')
-          ).toBe('/path');
-        });
-      });
-
-      context('for path containing an element', () => {
-        it('returns a correct URL', () => {
-          expect(
-            getRelativeUrl(
-              'https://github.com/#/path#element',
-              'https://github.com'
-            )
-          ).toBe('/path#element');
-        });
-      });
-
-      context('for a path with an element only', () => {
-        it('returns a correct URL', () => {
-          expect(
-            getRelativeUrl(
-              'https://github.com/#/#element',
-              'https://github.com'
-            )
-          ).toBe('/#element');
-        });
-      });
+    each([
+      ['', '', ''],
+      ['/path', 'http://site.io/path', 'http://site.io'],
+      ['/path', 'http://site.io/path', 'http://site.io/'],
+      ['/path#element', 'http://site.io/path#element', 'http://site.io'],
+      ['/#element', 'http://site.io/#element', 'http://site.io'],
+      ['/path', 'http://site.io/#/path', 'http://site.io'],
+      ['/path#element', 'http://site.io/#/path#element', 'http://site.io'],
+      ['/#element', 'http://site.io/#/#element', 'http://site.io'],
+    ]).it('returns %s for URL %s and origin %s', (expected, url, origin) => {
+      expect(getRelativeUrl(url, origin)).toBe(expected);
     });
   });
 
