@@ -38,8 +38,8 @@ export const removeElementFromPath = path => {
  * First character should be #.
  */
 export const sanitizeElement = element => {
-  if (element === undefined) {
-    return;
+  if (element === undefined || element === '') {
+    return element;
   }
 
   if (element[0] !== '#') {
