@@ -80,7 +80,7 @@ describe('TreeNavigation', () => {
   let localVue;
   let router;
 
-  beforeAll(() => {
+  beforeEach(() => {
     localVue = createLocalVue();
     localVue.use(VueRouter);
     router = new VueRouter({
@@ -97,75 +97,84 @@ describe('TreeNavigation', () => {
       },
     });
 
-    // link targets are dummy # right now
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  describe('lists', () => {
-    context('with level deeper than default open level', () => {
-      it('are assigned closed class', () => {
-        const wrapper = mount(TreeNavigation, {
-          propsData: {
-            items,
-            defaultOpenLevel: 2,
-          },
-        });
-
-        expect(wrapper.find('.NavigationLevel--level-3').classes()).toContain(
-          'NavigationLevel--closed'
-        );
-
-        expect(wrapper.find('.NavigationLevel--level-4').classes()).toContain(
-          'NavigationLevel--closed'
-        );
+  context('levels with level deeper than default open level', () => {
+    it('are assigned closed class', () => {
+      const wrapper = mount(TreeNavigation, {
+        localVue,
+        router,
+        propsData: {
+          items,
+          defaultOpenLevel: 2,
+        },
       });
+
+      expect(wrapper.find('.NavigationLevel--level-3').classes()).toContain(
+        'NavigationLevel--closed'
+      );
+
+      expect(wrapper.find('.NavigationLevel--level-4').classes()).toContain(
+        'NavigationLevel--closed'
+      );
     });
-
-    context('with level less than or equal to default open level', () => {
-      it('are not assigned closed class', () => {
-        const wrapper = mount(TreeNavigation, {
-          propsData: {
-            items,
-            defaultOpenLevel: 2,
-          },
-        });
-
-        expect(
-          wrapper.find('.NavigationLevel--level-0').classes()
-        ).not.toContain('NavigationLevel--closed');
-
-        expect(
-          wrapper.find('.NavigationLevel--level-1').classes()
-        ).not.toContain('NavigationLevel--closed');
-
-        expect(
-          wrapper.find('.NavigationLevel--level-2').classes()
-        ).not.toContain('NavigationLevel--closed');
-      });
-    });
-
-    context(
-      'containing a child with an URL being part of a current URL',
-      () => {
-        let wrapper;
-
-        beforeAll(() => {
-          jsdom.reconfigure({
-            url: 'https://mypage.com/products/clothing/tops#summer',
-          });
-
-          wrapper = mount(TreeNavigation, {
-            propsData: {
-              items,
-              defaultOpenLevel: 0,
-            },
-          });
-        });
-
-        it('are rendered as open', () => {
-          expect(wrapper.html()).toMatchSnapshot();
-        });
-      }
-    );
   });
+
+  context('levels with level less than or equal to default open level', () => {
+    it('are not assigned closed class', () => {
+      const wrapper = mount(TreeNavigation, {
+        localVue,
+        router,
+        propsData: {
+          items,
+          defaultOpenLevel: 2,
+        },
+      });
+
+      expect(wrapper.find('.NavigationLevel--level-0').classes()).not.toContain(
+        'NavigationLevel--closed'
+      );
+
+      expect(wrapper.find('.NavigationLevel--level-1').classes()).not.toContain(
+        'NavigationLevel--closed'
+      );
+
+      expect(wrapper.find('.NavigationLevel--level-2').classes()).not.toContain(
+        'NavigationLevel--closed'
+      );
+    });
+  });
+
+  context(
+    'level containing a child with an URL being part of a current URL',
+    () => {
+      let wrapper;
+
+      beforeEach(() => {
+        jsdom.reconfigure({
+          url: 'https://mypage.com/products/clothing/tops#summer',
+        });
+
+        wrapper = mount(TreeNavigation, {
+          localVue,
+          router,
+          propsData: {
+            items,
+            defaultOpenLevel: 0,
+          },
+        });
+      });
+
+      afterAll(() => {
+        jsdom.reconfigure({
+          url: 'https://mypage.com',
+        });
+      });
+
+      it('is rendered as open', () => {
+        expect(wrapper.html()).toMatchSnapshot();
+      });
+    }
+  );
 });
