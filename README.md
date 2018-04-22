@@ -7,7 +7,7 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
 ## Features
 
 - unlimited number of levels
-- optional [vue-router](https://router.vuejs.org/en/) support
+- optional [vue-router](https://router.vuejs.org/en/) support (v2.0.0 or higher)
 - a possibility to define a default open level
 - auto-open a level when a corresponding URL visited
 - focused on core functionality, only necessary styles included
