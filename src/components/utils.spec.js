@@ -59,6 +59,7 @@ describe('utils', () => {
   describe('sanitizeElement', () => {
     each([
       [undefined, undefined],
+      ['', ''],
       ['#element', '#element'],
       ['#element', 'element'],
     ]).it('returns %s for path %s', (expected, element) => {
