@@ -6,7 +6,7 @@ import NavigationItem from './NavigationItem';
 const textItem = {
   name: 'Contact',
   meta: {
-    path: '',
+    target: '',
   },
 };
 
@@ -14,7 +14,6 @@ const elementItem = {
   name: 'Contact',
   element: 'contact',
   meta: {
-    path: '',
     target: '/#contact',
   },
 };
@@ -23,7 +22,6 @@ const routeItem = {
   name: 'About',
   route: 'about',
   meta: {
-    path: '/about',
     target: '/about',
   },
 };
@@ -32,7 +30,6 @@ const externalItem = {
   name: 'Github',
   external: 'http://github.com',
   meta: {
-    path: '',
     target: 'http://github.com',
   },
 };
