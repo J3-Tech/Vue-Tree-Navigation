@@ -9,29 +9,23 @@
 
     <router-link
       v-if="showRouterLink"
-      :to="item.meta.path"
+      :to="item.meta.target"
       class="NavigationItem__router-link">{{ item.name }}</router-link>
 
     <a
       v-if="showHyperLink"
-      :href="item.meta.path"
+      :href="item.meta.target"
       class="NavigationItem__link">{{ item.name }}</a>
 
     <a
       v-if="showExternalHyperLink"
-      :href="item.meta.path"
+      :href="item.meta.target"
       target="_blank"
       class="NavigationItem__external-link">{{ item.name }}</a>
   </span>
 </template>
 
 <script>
-import {
-  PATH_TYPE_NONE,
-  PATH_TYPE_ELEMENT,
-  PATH_TYPE_ROUTE,
-} from '../../config';
-
 export default {
   props: {
     item: Object,
@@ -39,7 +33,11 @@ export default {
   },
   computed: {
     showLabel() {
-      return this.item.meta.pathType === PATH_TYPE_NONE;
+      return (
+        this.item.route === undefined &&
+        this.item.element === undefined &&
+        this.item.external === undefined
+      );
     },
     showRouterLink() {
       return this.showLink && this.$router !== undefined;
@@ -51,21 +49,18 @@ export default {
       return this.item.external !== undefined;
     },
     showLink() {
-      return (
-        this.item.meta.pathType === PATH_TYPE_ROUTE ||
-        this.item.meta.pathType === PATH_TYPE_ELEMENT
-      );
+      return this.item.route !== undefined || this.item.element !== undefined;
     },
     isActive() {
-      if (this.item.meta.path === undefined) {
+      if (this.item.meta.target === '') {
         return false;
       }
 
       if (this.$route) {
-        return this.$route.path + this.$route.hash === this.item.meta.path;
+        return this.$route.path + this.$route.hash === this.item.meta.target;
       }
 
-      return window.location.href.endsWith(this.item.meta.path);
+      return window.location.href.endsWith(this.item.meta.target);
     },
     classes() {
       return {

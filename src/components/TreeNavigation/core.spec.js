@@ -1,11 +1,4 @@
 import {
-  PATH_TYPE_NONE,
-  PATH_TYPE_ELEMENT,
-  PATH_TYPE_ROUTE,
-  PATH_TYPE_EXTERNAL,
-} from '../../config';
-
-import {
   getItemMetadata,
   insertMetadataToItems,
   renderLevelAsOpen,
@@ -22,8 +15,8 @@ describe('TreeNavigation', () => {
             };
 
             const expected = {
-              path: undefined,
-              pathType: PATH_TYPE_NONE,
+              path: '',
+              target: '',
             };
 
             expect(getItemMetadata(item)).toEqual(expected);
@@ -37,8 +30,8 @@ describe('TreeNavigation', () => {
             };
 
             const expected = {
-              path: 'https://github.com',
-              pathType: PATH_TYPE_EXTERNAL,
+              path: '',
+              target: 'https://github.com',
             };
 
             expect(getItemMetadata(item)).toEqual(expected);
@@ -53,7 +46,7 @@ describe('TreeNavigation', () => {
 
             const expected = {
               path: '/route',
-              pathType: PATH_TYPE_ROUTE,
+              target: '/route',
             };
 
             expect(getItemMetadata(item)).toEqual(expected);
@@ -67,8 +60,8 @@ describe('TreeNavigation', () => {
             };
 
             const expected = {
-              path: '/#element',
-              pathType: PATH_TYPE_ELEMENT,
+              path: '',
+              target: '/#element',
             };
 
             expect(getItemMetadata(item)).toEqual(expected);
@@ -76,355 +69,93 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with a route parent and an external item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
+      context('with a parent', () => {
+        context('with a label item', () => {
+          it('returns correct metadata', () => {
+            const parent = {
+              meta: {
+                path: '/home',
+                target: '/home#element',
+              },
+            };
+
+            const item = {
+              name: 'item',
+            };
+
+            const expected = {
               path: '/home',
-              pathType: PATH_TYPE_ROUTE,
-            },
-          };
+              target: '',
+            };
 
-          const item = {
-            external: 'https://github.com',
-          };
-
-          const expected = {
-            path: '/home',
-            pathType: PATH_TYPE_ROUTE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
+            expect(getItemMetadata(item, parent)).toEqual(expected);
+          });
         });
-      });
 
-      context('with a route parent and a route item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
+        context('with an external item', () => {
+          it('returns a correct metadata', () => {
+            const parent = {
+              meta: {
+                path: '/home',
+                target: '/home#element',
+              },
+            };
+
+            const item = {
+              external: 'https://github.com',
+            };
+
+            const expected = {
               path: '/home',
-              pathType: PATH_TYPE_ROUTE,
-            },
-          };
+              target: 'https://github.com',
+            };
 
-          const item = {
-            route: 'product',
-          };
-
-          const expected = {
-            path: '/home/product',
-            pathType: PATH_TYPE_ROUTE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
+            expect(getItemMetadata(item, parent)).toEqual(expected);
+          });
         });
-      });
 
-      context('with a route parent and an element item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
+        context('with a route item', () => {
+          it('returns a correct metadata', () => {
+            const parent = {
+              meta: {
+                path: '/home',
+                target: '/home#element',
+              },
+            };
+
+            const item = {
+              route: 'route',
+            };
+
+            const expected = {
+              path: '/home/route',
+              target: '/home/route',
+            };
+
+            expect(getItemMetadata(item, parent)).toEqual(expected);
+          });
+        });
+
+        context('with an element item', () => {
+          it('returns a correct metadata', () => {
+            const parent = {
+              meta: {
+                path: '/home',
+                target: '/home#element',
+              },
+            };
+
+            const item = {
+              element: 'contact',
+            };
+
+            const expected = {
               path: '/home',
-              pathType: PATH_TYPE_ROUTE,
-            },
-          };
+              target: '/home#contact',
+            };
 
-          const item = {
-            element: 'about',
-          };
-
-          const expected = {
-            path: '/home#about',
-            pathType: PATH_TYPE_ROUTE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with a route parent and a label item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: '/home',
-              pathType: PATH_TYPE_ROUTE,
-            },
-          };
-
-          const item = {
-            name: 'item',
-          };
-
-          const expected = {
-            path: '/home',
-            pathType: PATH_TYPE_ROUTE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with an element parent and an external item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: '#element',
-              pathType: PATH_TYPE_ELEMENT,
-            },
-          };
-
-          const item = {
-            external: 'https://github.com',
-          };
-
-          const expected = {
-            path: 'https://github.com',
-            pathType: PATH_TYPE_EXTERNAL,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with an element parent and a route item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: '#element',
-              pathType: PATH_TYPE_ELEMENT,
-            },
-          };
-
-          const item = {
-            route: 'route',
-          };
-
-          const expected = {
-            path: '/route',
-            pathType: PATH_TYPE_ROUTE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with an element parent and an element item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: '#parent',
-              pathType: PATH_TYPE_ELEMENT,
-            },
-          };
-
-          const item = {
-            element: 'child',
-          };
-
-          const expected = {
-            path: '#child',
-            pathType: PATH_TYPE_ELEMENT,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with an element parent and a label item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: '#element',
-              pathType: PATH_TYPE_ELEMENT,
-            },
-          };
-
-          const item = {
-            name: 'item',
-          };
-
-          const expected = {
-            path: undefined,
-            pathType: PATH_TYPE_NONE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with a label parent and an external item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: undefined,
-              pathType: PATH_TYPE_NONE,
-            },
-          };
-
-          const item = {
-            external: 'https://github.com',
-          };
-
-          const expected = {
-            path: 'https://github.com',
-            pathType: PATH_TYPE_EXTERNAL,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with a label parent and a route item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: undefined,
-              pathType: PATH_TYPE_NONE,
-            },
-          };
-
-          const item = {
-            route: 'route',
-          };
-
-          const expected = {
-            path: '/route',
-            pathType: PATH_TYPE_ROUTE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with a label parent and an element item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: undefined,
-              pathType: PATH_TYPE_NONE,
-            },
-          };
-
-          const item = {
-            element: 'element',
-          };
-
-          const expected = {
-            path: '/#element',
-            pathType: PATH_TYPE_ELEMENT,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with a label parent and a label item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: undefined,
-              pathType: PATH_TYPE_NONE,
-            },
-          };
-
-          const item = {
-            name: 'item',
-          };
-
-          const expected = {
-            path: undefined,
-            pathType: PATH_TYPE_NONE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with an external parent and an external item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: 'https://github.com',
-              pathType: PATH_TYPE_EXTERNAL,
-            },
-          };
-
-          const item = {
-            external: 'https://slack.com',
-          };
-
-          const expected = {
-            path: 'https://slack.com',
-            pathType: PATH_TYPE_EXTERNAL,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with an external parent and a route item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: 'https://github.com',
-              pathType: PATH_TYPE_EXTERNAL,
-            },
-          };
-
-          const item = {
-            route: 'route',
-          };
-
-          const expected = {
-            path: '/route',
-            pathType: PATH_TYPE_ROUTE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with an external parent and an element item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: 'https://github.com',
-              pathType: PATH_TYPE_EXTERNAL,
-            },
-          };
-
-          const item = {
-            element: 'element',
-          };
-
-          const expected = {
-            path: '#element',
-            pathType: PATH_TYPE_ELEMENT,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
-        });
-      });
-
-      context('with an external parent and a label item', () => {
-        it('returns a correct metadata', () => {
-          const parent = {
-            meta: {
-              path: 'https://github.com',
-              pathType: PATH_TYPE_EXTERNAL,
-            },
-          };
-
-          const item = {
-            name: 'Contact',
-          };
-
-          const expected = {
-            path: undefined,
-            pathType: PATH_TYPE_NONE,
-          };
-
-          expect(getItemMetadata(item, parent)).toEqual(expected);
+            expect(getItemMetadata(item, parent)).toEqual(expected);
+          });
         });
       });
     });
@@ -446,7 +177,9 @@ describe('TreeNavigation', () => {
 
       beforeEach(() => {
         item = {
-          meta: {},
+          meta: {
+            target: '',
+          },
         };
         defaultOpenLevel = 2;
       });
@@ -474,7 +207,7 @@ describe('TreeNavigation', () => {
 
         context("when an item's URL is a child of a current URL", () => {
           beforeEach(() => {
-            item.meta.path = '/products';
+            item.meta.target = '/products';
           });
 
           it('returns true', () => {
@@ -490,13 +223,13 @@ describe('TreeNavigation', () => {
                 {
                   name: 'About',
                   meta: {
-                    path: '/about',
+                    target: '/about',
                   },
                 },
                 {
                   name: 'Products',
                   meta: {
-                    path: '/products',
+                    target: '/products',
                   },
                 },
               ];
@@ -518,13 +251,13 @@ describe('TreeNavigation', () => {
                 {
                   name: 'About',
                   meta: {
-                    path: '/about',
+                    target: '/about',
                   },
                 },
                 {
                   name: 'Contact',
                   meta: {
-                    path: '/contact',
+                    target: '/contact',
                   },
                 },
               ];
@@ -624,24 +357,27 @@ describe('TreeNavigation', () => {
           {
             name: 'Route 1',
             route: 'route-1',
-            meta: { path: '/route-1', pathType: PATH_TYPE_ROUTE },
+            meta: { path: '/route-1', target: '/route-1' },
           },
           {
             name: 'Route 2',
             route: 'route-2',
-            meta: { path: '/route-2', pathType: PATH_TYPE_ROUTE },
+            meta: { path: '/route-2', target: '/route-2' },
             children: [
               {
                 name: 'Route 2-I',
                 route: 'route-2-I',
-                meta: { path: '/route-2/route-2-I', pathType: PATH_TYPE_ROUTE },
+                meta: {
+                  path: '/route-2/route-2-I',
+                  target: '/route-2/route-2-I',
+                },
                 children: [
                   {
                     name: 'Element 1',
                     element: 'element-1',
                     meta: {
-                      path: '/route-2/route-2-I#element-1',
-                      pathType: PATH_TYPE_ROUTE,
+                      path: '/route-2/route-2-I',
+                      target: '/route-2/route-2-I#element-1',
                     },
                     children: [
                       {
@@ -649,7 +385,7 @@ describe('TreeNavigation', () => {
                         route: 'route-2-I-a',
                         meta: {
                           path: '/route-2/route-2-I/route-2-I-a',
-                          pathType: PATH_TYPE_ROUTE,
+                          target: '/route-2/route-2-I/route-2-I-a',
                         },
                       },
                     ],
@@ -658,22 +394,22 @@ describe('TreeNavigation', () => {
                     name: 'Element 2',
                     element: 'element-2',
                     meta: {
-                      path: '/route-2/route-2-I#element-2',
-                      pathType: PATH_TYPE_ROUTE,
+                      path: '/route-2/route-2-I',
+                      target: '/route-2/route-2-I#element-2',
                     },
                   },
                 ],
               },
               {
                 name: 'Label 1',
-                meta: { path: '/route-2', pathType: PATH_TYPE_ROUTE },
+                meta: { path: '/route-2', target: '' },
                 children: [
                   {
                     name: 'Element 3',
                     element: 'element-3',
                     meta: {
-                      path: '/route-2#element-3',
-                      pathType: PATH_TYPE_ROUTE,
+                      path: '/route-2',
+                      target: '/route-2#element-3',
                     },
                   },
                   {
@@ -681,19 +417,19 @@ describe('TreeNavigation', () => {
                     external: 'https://github.com',
                     meta: {
                       path: '/route-2',
-                      pathType: PATH_TYPE_ROUTE,
+                      target: 'https://github.com',
                     },
                   },
                   {
                     name: 'Label 2',
-                    meta: { path: '/route-2', pathType: PATH_TYPE_ROUTE },
+                    meta: { path: '/route-2', target: '' },
                     children: [
                       {
                         name: 'Element 4',
                         element: 'element-4',
                         meta: {
-                          path: '/route-2#element-4',
-                          pathType: PATH_TYPE_ROUTE,
+                          path: '/route-2',
+                          target: '/route-2#element-4',
                         },
                         children: [
                           {
@@ -701,15 +437,15 @@ describe('TreeNavigation', () => {
                             route: 'route-5',
                             meta: {
                               path: '/route-2/route-5',
-                              pathType: PATH_TYPE_ROUTE,
+                              target: '/route-2/route-5',
                             },
                           },
                           {
                             name: 'Element 5',
                             element: 'element-5',
                             meta: {
-                              path: '/route-2#element-5',
-                              pathType: PATH_TYPE_ROUTE,
+                              path: '/route-2',
+                              target: '/route-2#element-5',
                             },
                           },
                         ],
@@ -722,73 +458,73 @@ describe('TreeNavigation', () => {
           },
           {
             name: 'Label 3',
-            meta: { path: undefined, pathType: PATH_TYPE_NONE },
+            meta: { path: '', target: '' },
             children: [
               {
                 name: 'Route 6',
                 route: 'route-6',
-                meta: { path: '/route-6', pathType: PATH_TYPE_ROUTE },
+                meta: { path: '/route-6', target: '/route-6' },
               },
             ],
           },
           {
             name: 'Label 4',
-            meta: { path: undefined, pathType: PATH_TYPE_NONE },
+            meta: { path: '', target: '' },
             children: [
               {
                 name: 'Element 6',
                 element: 'element-6',
-                meta: { path: '/#element-6', pathType: PATH_TYPE_ELEMENT },
+                meta: { path: '', target: '/#element-6' },
               },
             ],
           },
           {
             name: 'Element 7',
             element: 'element-7',
-            meta: { path: '/#element-7', pathType: PATH_TYPE_ELEMENT },
+            meta: { path: '', target: '/#element-7' },
             children: [
               {
                 name: 'Label 5',
-                meta: { path: undefined, pathType: PATH_TYPE_NONE },
+                meta: { path: '', target: '' },
               },
             ],
           },
           {
             name: 'Element 8',
             element: 'element-8',
-            meta: { path: '/#element-8', pathType: PATH_TYPE_ELEMENT },
+            meta: { path: '', target: '/#element-8' },
             children: [
               {
                 name: 'Route 7',
                 route: 'route-7',
-                meta: { path: '/route-7', pathType: PATH_TYPE_ROUTE },
+                meta: { path: '/route-7', target: '/route-7' },
               },
             ],
           },
           {
             name: 'Route 8',
             route: 'route-8',
-            meta: { path: '/route-8', pathType: PATH_TYPE_ROUTE },
+            meta: { path: '/route-8', target: '/route-8' },
             children: [
               {
                 name: 'Bitbucket',
                 external: 'https://bitbucket.com',
-                meta: { path: '/route-8', pathType: PATH_TYPE_ROUTE },
+                meta: { path: '/route-8', target: 'https://bitbucket.com' },
                 children: [
                   {
                     name: 'Route 9',
                     route: 'route-9',
                     meta: {
                       path: '/route-8/route-9',
-                      pathType: PATH_TYPE_ROUTE,
+                      target: '/route-8/route-9',
                     },
                   },
                   {
                     name: 'Element 9',
                     element: 'element-9',
                     meta: {
-                      path: '/route-8#element-9',
-                      pathType: PATH_TYPE_ROUTE,
+                      path: '/route-8',
+                      target: '/route-8#element-9',
                     },
                   },
                 ],
@@ -798,7 +534,7 @@ describe('TreeNavigation', () => {
           {
             name: 'Codepen',
             external: 'https://codepen.io',
-            meta: { path: 'https://codepen.io', pathType: PATH_TYPE_EXTERNAL },
+            meta: { path: '', target: 'https://codepen.io' },
           },
         ];
 
