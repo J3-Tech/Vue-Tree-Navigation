@@ -15,6 +15,7 @@ describe('utils', () => {
       [true, '/path#element', '/path'],
       [true, '/path/another_path', '/path'],
       [true, '/#element', '/#element'],
+      [true, '/path', '/path#element'], // ignores an element
       [false, '/another_path', '/path'],
       [false, '/', '/path'],
     ]).it(
@@ -23,10 +24,6 @@ describe('utils', () => {
         expect(startsWithUrl(parentUrl, url)).toBe(expected);
       }
     );
-
-    it('ignores an element', () => {
-      expect(startsWithUrl('/path', '/path#element')).toBe(true);
-    });
   });
 
   describe('getRelativeUrl', () => {
