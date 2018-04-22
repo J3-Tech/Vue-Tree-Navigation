@@ -18,7 +18,7 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
+  "main": "dist/vue-tree-navigation.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/MisRob/vue-tree-navigation.git"
