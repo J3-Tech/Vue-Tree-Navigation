@@ -9,7 +9,7 @@ describe('TreeNavigation', () => {
     describe('getItemMetadata', () => {
       context('without a parent', () => {
         context('with a label item', () => {
-          it('returns correct metadata', () => {
+          it('returns a correct metadata', () => {
             const item = {
               name: 'item',
             };
@@ -200,7 +200,7 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('when a level greater than a default open level', () => {
+      context('when a level is greater than a default open level', () => {
         beforeEach(() => {
           level = 3;
         });
@@ -275,9 +275,6 @@ describe('TreeNavigation', () => {
 
     describe('insertMetadataToItems', () => {
       it('inserts a correct metadata to each item', () => {
-        // it's a little bit wild structure :) but I try to simulate
-        // all possible relations between parents and childs to test corner
-        // cases
         const items = [
           { name: 'Route 1', route: 'route-1' },
           {
