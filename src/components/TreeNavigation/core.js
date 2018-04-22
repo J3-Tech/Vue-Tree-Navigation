@@ -154,7 +154,7 @@ export const getItemMetadata = (item, parent) => {
 
     if (element !== undefined) {
       return {
-        path: element,
+        path: '/' + element,
         pathType: PATH_TYPE_ELEMENT,
       };
     }
