@@ -30,7 +30,6 @@ import {
   PATH_TYPE_NONE,
   PATH_TYPE_ELEMENT,
   PATH_TYPE_ROUTE,
-  PATH_TYPE_EXTERNAL,
 } from '../../config';
 
 export default {
@@ -49,7 +48,7 @@ export default {
       return this.showLink && this.$router === undefined;
     },
     showExternalHyperLink() {
-      return this.item.meta.pathType === PATH_TYPE_EXTERNAL;
+      return this.item.external !== undefined;
     },
     showLink() {
       return (

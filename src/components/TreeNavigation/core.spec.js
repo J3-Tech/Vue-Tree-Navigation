@@ -90,8 +90,8 @@ describe('TreeNavigation', () => {
           };
 
           const expected = {
-            path: 'https://github.com',
-            pathType: PATH_TYPE_EXTERNAL,
+            path: '/home',
+            pathType: PATH_TYPE_ROUTE,
           };
 
           expect(getItemMetadata(item, parent)).toEqual(expected);
@@ -603,6 +603,21 @@ describe('TreeNavigation', () => {
             element: 'element-8',
             children: [{ name: 'Route 7', route: 'route-7' }],
           },
+          {
+            name: 'Route 8',
+            route: 'route-8',
+            children: [
+              {
+                name: 'Bitbucket',
+                external: 'https://bitbucket.com',
+                children: [
+                  { name: 'Route 9', route: 'route-9' },
+                  { name: 'Element 9', element: 'element-9' },
+                ],
+              },
+            ],
+          },
+          { name: 'Codepen', external: 'https://codepen.io' },
         ];
 
         const expected = [
@@ -665,8 +680,8 @@ describe('TreeNavigation', () => {
                     name: 'Github',
                     external: 'https://github.com',
                     meta: {
-                      path: 'https://github.com',
-                      pathType: PATH_TYPE_EXTERNAL,
+                      path: '/route-2',
+                      pathType: PATH_TYPE_ROUTE,
                     },
                   },
                   {
@@ -749,6 +764,41 @@ describe('TreeNavigation', () => {
                 meta: { path: '/route-7', pathType: PATH_TYPE_ROUTE },
               },
             ],
+          },
+          {
+            name: 'Route 8',
+            route: 'route-8',
+            meta: { path: '/route-8', pathType: PATH_TYPE_ROUTE },
+            children: [
+              {
+                name: 'Bitbucket',
+                external: 'https://bitbucket.com',
+                meta: { path: '/route-8', pathType: PATH_TYPE_ROUTE },
+                children: [
+                  {
+                    name: 'Route 9',
+                    route: 'route-9',
+                    meta: {
+                      path: '/route-8/route-9',
+                      pathType: PATH_TYPE_ROUTE,
+                    },
+                  },
+                  {
+                    name: 'Element 9',
+                    element: 'element-9',
+                    meta: {
+                      path: '/route-8#element-9',
+                      pathType: PATH_TYPE_ROUTE,
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: 'Codepen',
+            external: 'https://codepen.io',
+            meta: { path: 'https://codepen.io', pathType: PATH_TYPE_EXTERNAL },
           },
         ];
 

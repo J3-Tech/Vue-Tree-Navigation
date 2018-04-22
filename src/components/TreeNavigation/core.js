@@ -162,9 +162,11 @@ export const getItemMetadata = (item, parent) => {
 
   // route -> external
   if (parent.meta.pathType === PATH_TYPE_ROUTE && external !== undefined) {
+    const parentPath = removeElementFromPath(parent.meta.path);
+
     return {
-      path: external,
-      pathType: PATH_TYPE_EXTERNAL,
+      path: parentPath,
+      pathType: PATH_TYPE_ROUTE,
     };
   }
 
