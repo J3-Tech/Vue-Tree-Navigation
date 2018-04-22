@@ -68,28 +68,14 @@ describe('utils', () => {
   });
 
   describe('sanitizeRoute', () => {
-    context('with undefined route', () => {
-      it('returns undefined', () => {
-        expect(sanitizeRoute(undefined)).toBe(undefined);
-      });
-    });
-
-    context('with a route with backlash at the first position', () => {
-      it('returns the original route', () => {
-        expect(sanitizeRoute('/route')).toBe('/route');
-      });
-    });
-
-    context('with a route without backlash at the first position', () => {
-      it('adds backslash to the first position', () => {
-        expect(sanitizeRoute('route')).toBe('/route');
-      });
-    });
-
-    context('with a route with backlash at the last position', () => {
-      it('removes backslash from the last position', () => {
-        expect(sanitizeRoute('route/')).toBe('/route');
-      });
+    each([
+      [undefined, undefined],
+      ['', ''],
+      ['/route', '/route'],
+      ['/route', 'route'],
+      ['/route', 'route/'],
+    ]).it('returns %s for path %s', (expected, route) => {
+      expect(sanitizeRoute(route)).toBe(expected);
     });
   });
 });
