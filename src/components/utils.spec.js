@@ -42,57 +42,18 @@ describe('utils', () => {
   });
 
   describe('removeElementFromPath', () => {
-    context('with an empty path', () => {
-      it('returns an empty path', () => {
-        expect(removeElementFromPath('')).toBe('');
-      });
+    each([
+      ['', ''],
+      ['/path', '/path'],
+      ['/path', '/path#element'],
+      ['/path', '/path#element-1#element-2'],
+      ['#/path', '#/path'],
+      ['#/path', '#/path#element'],
+      ['#/path', '#/path#element-1#element-2'],
+      ['/#/path', '/#/path#element'],
+    ]).it('returns %s for path %s', (expected, path) => {
+      expect(removeElementFromPath(path)).toBe(expected);
     });
-
-    context('with a path without an element', () => {
-      it('returns the original path', () => {
-        expect(removeElementFromPath('/path')).toBe('/path');
-      });
-    });
-
-    context('with a path containing an element', () => {
-      it('removes the element', () => {
-        expect(removeElementFromPath('/path#element')).toBe('/path');
-      });
-    });
-
-    context('with a path containing more elements', () => {
-      it('removes all elements', () => {
-        expect(removeElementFromPath('/path#element-1#element-2')).toBe(
-          '/path'
-        );
-      });
-    });
-
-    context('with a path containing # in the beginning of a route', () => {
-      it('returns the original path', () => {
-        expect(removeElementFromPath('#/path')).toBe('#/path');
-      });
-    });
-
-    context(
-      'with a path containing # in the beginning of route and an element on its end',
-      () => {
-        it('removes the element', () => {
-          expect(removeElementFromPath('#/path#element')).toBe('#/path');
-        });
-      }
-    );
-
-    context(
-      'with a path containing # in the beginning of route and two element on its end',
-      () => {
-        it('removes all elements', () => {
-          expect(removeElementFromPath('#/path#element-1#element-2')).toBe(
-            '#/path'
-          );
-        });
-      }
-    );
   });
 
   describe('sanitizeElement', () => {
