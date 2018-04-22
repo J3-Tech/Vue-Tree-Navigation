@@ -67,7 +67,7 @@ describe('TreeNavigation', () => {
             };
 
             const expected = {
-              path: '#element',
+              path: '/#element',
               pathType: PATH_TYPE_ELEMENT,
             };
 
@@ -730,7 +730,7 @@ describe('TreeNavigation', () => {
           {
             name: 'Element 7',
             element: 'element-7',
-            meta: { path: '#element-7', pathType: PATH_TYPE_ELEMENT },
+            meta: { path: '/#element-7', pathType: PATH_TYPE_ELEMENT },
             children: [
               {
                 name: 'Label 5',
@@ -741,7 +741,7 @@ describe('TreeNavigation', () => {
           {
             name: 'Element 8',
             element: 'element-8',
-            meta: { path: '#element-8', pathType: PATH_TYPE_ELEMENT },
+            meta: { path: '/#element-8', pathType: PATH_TYPE_ELEMENT },
             children: [
               {
                 name: 'Route 7',
