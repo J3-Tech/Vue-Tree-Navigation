@@ -11,7 +11,7 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
 - a possibility to define a default open level
 - auto-open a level when a corresponding URL visited
 - focused on core functionality, only necessary styles included
-- elements are provided with meaningful classes to make customizations easier (for example `NavigationItem--active`, `NavigationLevel--level-1`, `NavigationLevel--closed`)
+- elements are provided with meaningful classes to make customizations comfortable (for example `NavigationItem--active`, `NavigationLevel--level-1`, `NavigationLevel--closed`)
 - external URLs support
 
 ## Example
@@ -27,12 +27,12 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
       return {
         items: [
           { name: 'Products', children: [                       // category label
-            { name: 'Shoes', route: 'shoes' }                   // #/shoes
+            { name: 'Shoes', route: 'shoes' }                   // /shoes
           ]},
-          { name: 'About', route: 'about', children: [          // #/about
-            { name: 'Contact', route: 'contact', children: [    // #/about/contact       
-              { name: 'E-mail', element: 'email' },             // #/about/contact#email
-              { name: 'Phone', element: 'phone' }               // #/about/contact#phone
+          { name: 'About', route: 'about', children: [          // /about
+            { name: 'Contact', route: 'contact', children: [    // /about/contact       
+              { name: 'E-mail', element: 'email' },             // /about/contact#email
+              { name: 'Phone', element: 'phone' }               // /about/contact#phone
             ]},
           ]},
           { name: 'Github', external: 'https://github.com' },   // https://github.com
@@ -76,7 +76,6 @@ Vue.use(VueTreeNavigation);
 ## Requirements
 
 - [Vue.js](https://vuejs.org/)
-- [vue-router](https://router.vuejs.org/en/) (optional, only when you wish to use router links)
 
 ## Developers
 
