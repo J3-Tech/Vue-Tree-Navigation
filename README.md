@@ -43,10 +43,6 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
 </script>
 ```
 
-## Demo
-
-You can visit this [codepen](https://codepen.io/MisRob/pen/ZxNGrd) for a simple demo. Please see [documentation/demo](https://vue-tree-navigation.misrob.cz) for more examples including vue-router and styling.
-
 ## Installation
 
 ### Include with a script tag
