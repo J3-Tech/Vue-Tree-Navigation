@@ -4,9 +4,7 @@ import NavigationLevel from './NavigationLevel';
 
 const parentItem = {
   name: 'Contact',
-  meta: {
-    path: '',
-  },
+  meta: {},
 };
 
 describe('NavigationLevel ', () => {
