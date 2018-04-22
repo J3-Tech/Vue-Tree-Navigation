@@ -27,9 +27,27 @@
 
 <script>
 export default {
+  data() {
+    return {
+      active: false,
+    };
+  },
   props: {
     item: Object,
     required: true,
+  },
+  methods: {
+    isActive() {
+      if (this.item.meta.target === '') {
+        return false;
+      }
+
+      if (this.$route) {
+        return this.$route.path + this.$route.hash === this.item.meta.target;
+      }
+
+      return window.location.href.endsWith(this.item.meta.target);
+    },
   },
   computed: {
     showLabel() {
@@ -51,22 +69,28 @@ export default {
     showLink() {
       return this.item.route !== undefined || this.item.element !== undefined;
     },
-    isActive() {
-      if (this.item.meta.target === '') {
-        return false;
-      }
-
-      if (this.$route) {
-        return this.$route.path + this.$route.hash === this.item.meta.target;
-      }
-
-      return window.location.href.endsWith(this.item.meta.target);
-    },
     classes() {
       return {
-        'NavigationItem--active': this.isActive,
+        'NavigationItem--active': this.active,
       };
     },
+  },
+  watch: {
+    item() {
+      this.active = this.isActive();
+    },
+    $route() {
+      this.active = this.isActive();
+    },
+  },
+  mounted() {
+    this.active = this.isActive();
+
+    if (!this.$router) {
+      window.addEventListener('hashchange', () => {
+        this.active = this.isActive();
+      });
+    }
   },
 };
 </script>
