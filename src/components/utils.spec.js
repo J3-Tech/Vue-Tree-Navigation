@@ -57,22 +57,12 @@ describe('utils', () => {
   });
 
   describe('sanitizeElement', () => {
-    context('with undefined element', () => {
-      it('returns undefined', () => {
-        expect(sanitizeElement(undefined)).toBe(undefined);
-      });
-    });
-
-    context('with an element with hash at the first position', () => {
-      it('returns the original element', () => {
-        expect(sanitizeElement('#element')).toBe('#element');
-      });
-
-      context('with an element without hash at the first position', () => {
-        it('adds hash to the first position', () => {
-          expect(sanitizeElement('element')).toBe('#element');
-        });
-      });
+    each([
+      [undefined, undefined],
+      ['#element', '#element'],
+      ['#element', 'element'],
+    ]).it('returns %s for path %s', (expected, element) => {
+      expect(sanitizeElement(element)).toBe(expected);
     });
   });
 
