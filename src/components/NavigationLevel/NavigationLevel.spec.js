@@ -1,12 +1,11 @@
 import { mount, shallow } from '@vue/test-utils';
 
-import { PATH_TYPE_NONE } from '../../config';
 import NavigationLevel from './NavigationLevel';
 
 const parentItem = {
   name: 'Contact',
   meta: {
-    pathType: PATH_TYPE_NONE,
+    path: '',
   },
 };
 

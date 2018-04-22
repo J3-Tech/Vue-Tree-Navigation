@@ -1,18 +1,12 @@
 import { shallow, mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 
-import {
-  PATH_TYPE_NONE,
-  PATH_TYPE_ELEMENT,
-  PATH_TYPE_ROUTE,
-  PATH_TYPE_EXTERNAL,
-} from '../../config';
 import NavigationItem from './NavigationItem';
 
 const textItem = {
   name: 'Contact',
   meta: {
-    pathType: PATH_TYPE_NONE,
+    path: '',
   },
 };
 
@@ -20,8 +14,8 @@ const elementItem = {
   name: 'Contact',
   element: 'contact',
   meta: {
-    pathType: PATH_TYPE_ELEMENT,
-    path: '/#contact',
+    path: '',
+    target: '/#contact',
   },
 };
 
@@ -29,8 +23,8 @@ const routeItem = {
   name: 'About',
   route: 'about',
   meta: {
-    pathType: PATH_TYPE_ROUTE,
     path: '/about',
+    target: '/about',
   },
 };
 
@@ -38,8 +32,8 @@ const externalItem = {
   name: 'Github',
   external: 'http://github.com',
   meta: {
-    pathType: PATH_TYPE_EXTERNAL,
-    path: 'http://github.com',
+    path: '',
+    target: 'http://github.com',
   },
 };
 

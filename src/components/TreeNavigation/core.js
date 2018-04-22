@@ -2,18 +2,10 @@ import NavigationLevel from '../NavigationLevel/NavigationLevel.vue';
 import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
 import {
-  PATH_TYPE_NONE,
-  PATH_TYPE_ELEMENT,
-  PATH_TYPE_ROUTE,
-  PATH_TYPE_EXTERNAL,
-} from '../../config';
-
-import {
   getRelativeUrl,
   sanitizeElement,
   sanitizeRoute,
   startsWithUrl,
-  removeElementFromPath,
 } from '../utils';
 
 /**
@@ -81,8 +73,8 @@ export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
   );
 
   if (
-    parentItem.meta.path !== undefined &&
-    startsWithUrl(currentUrl, parentItem.meta.path) === true
+    parentItem.meta.target !== '' &&
+    startsWithUrl(currentUrl, parentItem.meta.target) === true
   ) {
     return true;
   }
@@ -91,8 +83,8 @@ export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
     let child = parentItem.children[i];
 
     if (
-      child.meta.path !== undefined &&
-      startsWithUrl(currentUrl, child.meta.path) === true
+      child.meta.target !== '' &&
+      startsWithUrl(currentUrl, child.meta.target) === true
     ) {
       return true;
     }
@@ -118,7 +110,7 @@ export const insertMetadataToItems = (items, parent) => {
 };
 
 /**
- * Return item metadata object: { path: ..., pathType: ... }
+ * Return item metadata object: { path: ..., target: ... }
  */
 export const getItemMetadata = (item, parent) => {
   const element = sanitizeElement(item.element);
@@ -133,185 +125,58 @@ export const getItemMetadata = (item, parent) => {
       external === undefined
     ) {
       return {
-        path: undefined,
-        pathType: PATH_TYPE_NONE,
+        path: '',
+        target: '',
       };
     }
 
     if (external !== undefined) {
       return {
-        path: external,
-        pathType: PATH_TYPE_EXTERNAL,
+        path: '',
+        target: external,
       };
     }
 
     if (route !== undefined) {
       return {
         path: route,
-        pathType: PATH_TYPE_ROUTE,
+        target: route,
       };
     }
 
     if (element !== undefined) {
       return {
-        path: '/' + element,
-        pathType: PATH_TYPE_ELEMENT,
+        path: '',
+        target: '/' + element,
       };
     }
   }
 
-  // route -> external
-  if (parent.meta.pathType === PATH_TYPE_ROUTE && external !== undefined) {
-    const parentPath = removeElementFromPath(parent.meta.path);
+  const parentPath = sanitizeRoute(parent.meta.path);
 
+  if (external !== undefined) {
     return {
       path: parentPath,
-      pathType: PATH_TYPE_ROUTE,
+      target: external,
     };
   }
 
-  // route -> route
-  if (parent.meta.pathType === PATH_TYPE_ROUTE && route !== undefined) {
-    const parentPath = removeElementFromPath(parent.meta.path);
-
+  if (route !== undefined) {
     return {
       path: parentPath + route,
-      pathType: PATH_TYPE_ROUTE,
+      target: parentPath + route,
     };
   }
 
-  // route -> element
-  if (parent.meta.pathType === PATH_TYPE_ROUTE && element !== undefined) {
-    const parentPath = removeElementFromPath(parent.meta.path);
-
-    return {
-      path: parentPath + element,
-      pathType: PATH_TYPE_ROUTE,
-    };
-  }
-
-  // route -> label
-  if (
-    parent.meta.pathType === PATH_TYPE_ROUTE &&
-    element === undefined &&
-    route === undefined &&
-    external === undefined
-  ) {
-    const parentPath = removeElementFromPath(parent.meta.path);
-
+  if (element !== undefined) {
     return {
       path: parentPath,
-      pathType: PATH_TYPE_ROUTE,
+      target: sanitizeRoute(parentPath + element),
     };
   }
 
-  // element -> external
-  if (parent.meta.pathType === PATH_TYPE_ELEMENT && external !== undefined) {
-    return {
-      path: external,
-      pathType: PATH_TYPE_EXTERNAL,
-    };
-  }
-
-  // element -> route
-  if (parent.meta.pathType === PATH_TYPE_ELEMENT && route !== undefined) {
-    return {
-      path: route,
-      pathType: PATH_TYPE_ROUTE,
-    };
-  }
-
-  // element -> element
-  if (parent.meta.pathType === PATH_TYPE_ELEMENT && element !== undefined) {
-    return {
-      path: element,
-      pathType: PATH_TYPE_ELEMENT,
-    };
-  }
-
-  // element -> label
-  if (
-    parent.meta.pathType === PATH_TYPE_ELEMENT &&
-    element === undefined &&
-    route === undefined &&
-    external === undefined
-  ) {
-    return {
-      path: undefined,
-      pathType: PATH_TYPE_NONE,
-    };
-  }
-
-  // label -> external
-  if (parent.meta.pathType === PATH_TYPE_NONE && external !== undefined) {
-    return {
-      path: external,
-      pathType: PATH_TYPE_EXTERNAL,
-    };
-  }
-
-  // label -> route
-  if (parent.meta.pathType === PATH_TYPE_NONE && route !== undefined) {
-    return {
-      path: route,
-      pathType: PATH_TYPE_ROUTE,
-    };
-  }
-
-  // label -> element
-  if (parent.meta.pathType === PATH_TYPE_NONE && element !== undefined) {
-    return {
-      path: '/' + element,
-      pathType: PATH_TYPE_ELEMENT,
-    };
-  }
-
-  // label -> label
-  if (
-    parent.meta.pathType === PATH_TYPE_NONE &&
-    element === undefined &&
-    route === undefined
-  ) {
-    return {
-      path: undefined,
-      pathType: PATH_TYPE_NONE,
-    };
-  }
-
-  // external -> external
-  if (parent.meta.pathType === PATH_TYPE_EXTERNAL && external !== undefined) {
-    return {
-      path: external,
-      pathType: PATH_TYPE_EXTERNAL,
-    };
-  }
-
-  // external -> route
-  if (parent.meta.pathType === PATH_TYPE_EXTERNAL && route !== undefined) {
-    return {
-      path: route,
-      pathType: PATH_TYPE_ROUTE,
-    };
-  }
-
-  // external -> element
-  if (parent.meta.pathType === PATH_TYPE_EXTERNAL && element !== undefined) {
-    return {
-      path: element,
-      pathType: PATH_TYPE_ELEMENT,
-    };
-  }
-
-  // external -> label
-  if (
-    parent.meta.pathType === PATH_TYPE_EXTERNAL &&
-    element === undefined &&
-    route === undefined &&
-    external === undefined
-  ) {
-    return {
-      path: undefined,
-      pathType: PATH_TYPE_NONE,
-    };
-  }
+  return {
+    path: parentPath,
+    target: '',
+  };
 };
