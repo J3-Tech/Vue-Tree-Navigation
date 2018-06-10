@@ -1,4 +1,4 @@
-import { mount, shallow } from '@vue/test-utils';
+import { mount, shallowMount } from '@vue/test-utils';
 
 import NavigationLevel from './NavigationLevel';
 
@@ -9,7 +9,7 @@ const parentItem = {
 
 describe('NavigationLevel ', () => {
   it('is Vue instance', () => {
-    const wrapper = shallow(NavigationLevel, {
+    const wrapper = shallowMount(NavigationLevel, {
       propsData: {
         level: 2,
         parentItem,
@@ -21,7 +21,7 @@ describe('NavigationLevel ', () => {
 
   context('with level 2', () => {
     it('assigns a correct level class', () => {
-      const wrapper = shallow(NavigationLevel, {
+      const wrapper = shallowMount(NavigationLevel, {
         propsData: {
           level: 2,
           parentItem,
