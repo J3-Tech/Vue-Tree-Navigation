@@ -111,13 +111,15 @@ describe('TreeNavigation', () => {
         },
       });
 
-      expect(wrapper.find('.NavigationLevel--level-3').classes()).toContain(
-        'NavigationLevel--closed'
-      );
+      localVue.nextTick(() => {
+        expect(wrapper.find('.NavigationLevel--level-3').classes()).toContain(
+          'NavigationLevel--closed'
+        );
 
-      expect(wrapper.find('.NavigationLevel--level-4').classes()).toContain(
-        'NavigationLevel--closed'
-      );
+        expect(wrapper.find('.NavigationLevel--level-4').classes()).toContain(
+          'NavigationLevel--closed'
+        );
+      });
     });
   });
 
@@ -132,17 +134,19 @@ describe('TreeNavigation', () => {
         },
       });
 
-      expect(wrapper.find('.NavigationLevel--level-0').classes()).not.toContain(
-        'NavigationLevel--closed'
-      );
+      localVue.nextTick(() => {
+        expect(
+          wrapper.find('.NavigationLevel--level-0').classes()
+        ).not.toContain('NavigationLevel--closed');
 
-      expect(wrapper.find('.NavigationLevel--level-1').classes()).not.toContain(
-        'NavigationLevel--closed'
-      );
+        expect(
+          wrapper.find('.NavigationLevel--level-1').classes()
+        ).not.toContain('NavigationLevel--closed');
 
-      expect(wrapper.find('.NavigationLevel--level-2').classes()).not.toContain(
-        'NavigationLevel--closed'
-      );
+        expect(
+          wrapper.find('.NavigationLevel--level-2').classes()
+        ).not.toContain('NavigationLevel--closed');
+      });
     });
   });
 
@@ -173,7 +177,9 @@ describe('TreeNavigation', () => {
       });
 
       it('is rendered as open', () => {
-        expect(wrapper.html()).toMatchSnapshot();
+        localVue.nextTick(() => {
+          expect(wrapper.html()).toMatchSnapshot();
+        });
       });
     }
   );
