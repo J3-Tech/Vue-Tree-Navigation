@@ -18,13 +18,15 @@
 </template>
 
 <script>
+import { getRelativeUrl, startsWithUrl } from '../utils';
+
 import NavigationToggle from '../NavigationToggle/NavigationToggle.vue';
 import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
 export default {
   data() {
     return {
-      isOpen: this.open,
+      isOpen: null,
     };
   },
   props: {
@@ -36,10 +38,9 @@ export default {
       type: Number,
       required: true,
     },
-    open: {
-      type: Boolean,
-      required: false,
-      default: false,
+    defaultOpenLevel: {
+      type: Number,
+      required: true,
     },
   },
   computed: {
@@ -59,10 +60,43 @@ export default {
         this.isOpen = true;
       }
     },
+    renderLevelAsOpen() {
+      if (this.defaultOpenLevel >= this.level) {
+        return true;
+      }
+
+      const currentUrl = getRelativeUrl(
+        window.location.href,
+        window.location.origin
+      );
+
+      if (
+        this.parentItem.meta.target !== '' &&
+        startsWithUrl(currentUrl, this.parentItem.meta.target) === true
+      ) {
+        return true;
+      }
+
+      for (let i = 0; i < this.parentItem.children.length; i++) {
+        let child = this.parentItem.children[i];
+
+        if (
+          child.meta.target !== '' &&
+          startsWithUrl(currentUrl, child.meta.target) === true
+        ) {
+          return true;
+        }
+      }
+
+      return false;
+    },
   },
   components: {
     NavigationItem,
     NavigationToggle,
+  },
+  mounted() {
+    this.isOpen = this.renderLevelAsOpen();
   },
 };
 </script>

@@ -4,7 +4,10 @@ import NavigationLevel from './NavigationLevel';
 
 const parentItem = {
   name: 'Contact',
-  meta: {},
+  meta: {
+    target: '/#contact',
+  },
+  children: [],
 };
 
 describe('NavigationLevel ', () => {
@@ -12,6 +15,7 @@ describe('NavigationLevel ', () => {
     const wrapper = shallowMount(NavigationLevel, {
       propsData: {
         level: 2,
+        defaultOpenLevel: 2,
         parentItem,
       },
     });
@@ -24,6 +28,7 @@ describe('NavigationLevel ', () => {
       const wrapper = shallowMount(NavigationLevel, {
         propsData: {
           level: 2,
+          defaultOpenLevel: 2,
           parentItem,
         },
       });
@@ -39,9 +44,13 @@ describe('NavigationLevel ', () => {
       wrapper = mount(NavigationLevel, {
         propsData: {
           level: 2,
-          open: false,
+          defaultOpenLevel: 1,
           parentItem,
         },
+      });
+
+      jsdom.reconfigure({
+        url: 'https://mypage.com/#about',
       });
     });
 
@@ -73,7 +82,7 @@ describe('NavigationLevel ', () => {
       wrapper = mount(NavigationLevel, {
         propsData: {
           level: 2,
-          open: true,
+          defaultOpenLevel: 3,
           parentItem,
         },
       });

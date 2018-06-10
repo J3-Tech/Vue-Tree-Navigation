@@ -1,12 +1,7 @@
 import NavigationLevel from '../NavigationLevel/NavigationLevel.vue';
 import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
-import {
-  getRelativeUrl,
-  sanitizeElement,
-  sanitizeRoute,
-  startsWithUrl,
-} from '../utils';
+import { sanitizeElement, sanitizeRoute } from '../utils';
 
 /**
  * Recursive function.
@@ -28,7 +23,7 @@ export const generateLevel = (
           props: {
             parentItem: item,
             level,
-            open: renderLevelAsOpen(item, level, defaultOpenLevel),
+            defaultOpenLevel,
           },
         },
         [
@@ -54,43 +49,6 @@ export const generateLevel = (
   });
 
   return children;
-};
-
-/**
- * Level should be opened in following cases
- * - level is less than or equal to default open level
- * - its URL is a part of an active URL
- * - it contains a child which URL is a part of an active URL
- */
-export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
-  if (defaultOpenLevel >= level) {
-    return true;
-  }
-
-  const currentUrl = getRelativeUrl(
-    window.location.href,
-    window.location.origin
-  );
-
-  if (
-    parentItem.meta.target !== '' &&
-    startsWithUrl(currentUrl, parentItem.meta.target) === true
-  ) {
-    return true;
-  }
-
-  for (let i = 0; i < parentItem.children.length; i++) {
-    let child = parentItem.children[i];
-
-    if (
-      child.meta.target !== '' &&
-      startsWithUrl(currentUrl, child.meta.target) === true
-    ) {
-      return true;
-    }
-  }
-
-  return false;
 };
 
 /**
