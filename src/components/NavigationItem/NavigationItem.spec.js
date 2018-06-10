@@ -1,4 +1,4 @@
-import { shallow, mount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 
 import NavigationItem from './NavigationItem';
@@ -37,7 +37,7 @@ const externalItem = {
 describe('NavigationItem ', () => {
   context('for a label item', () => {
     it('renders a span containing the item name', () => {
-      const wrapper = shallow(NavigationItem, {
+      const wrapper = shallowMount(NavigationItem, {
         propsData: {
           item: textItem,
         },
@@ -49,7 +49,7 @@ describe('NavigationItem ', () => {
 
   context('for an external item', () => {
     it('renders a hyperlink with a correct value, location and blank target', () => {
-      const wrapper = shallow(NavigationItem, {
+      const wrapper = shallowMount(NavigationItem, {
         propsData: {
           item: externalItem,
         },
@@ -64,7 +64,7 @@ describe('NavigationItem ', () => {
       let wrapper;
 
       beforeEach(() => {
-        wrapper = shallow(NavigationItem, {
+        wrapper = shallowMount(NavigationItem, {
           propsData: {
             item: elementItem,
           },
@@ -84,7 +84,7 @@ describe('NavigationItem ', () => {
       let wrapper;
 
       beforeEach(() => {
-        wrapper = shallow(NavigationItem, {
+        wrapper = shallowMount(NavigationItem, {
           propsData: {
             item: routeItem,
           },
@@ -108,7 +108,7 @@ describe('NavigationItem ', () => {
           url: 'https://mypage.com/#contact',
         });
 
-        wrapper = shallow(NavigationItem, {
+        wrapper = shallowMount(NavigationItem, {
           propsData: {
             item: elementItem,
           },
