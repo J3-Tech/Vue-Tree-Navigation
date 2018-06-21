@@ -88,7 +88,7 @@ describe('TreeNavigation', () => {
     });
   });
 
-  it('renders', () => {
+  /*   it('renders', () => {
     const wrapper = mount(TreeNavigation, {
       localVue,
       router,
@@ -148,7 +148,7 @@ describe('TreeNavigation', () => {
         ).not.toContain('NavigationLevel--closed');
       });
     });
-  });
+  }); */
 
   context(
     'level containing a child with an URL being part of a current URL',

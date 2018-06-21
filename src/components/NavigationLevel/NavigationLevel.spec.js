@@ -18,6 +18,12 @@ describe('NavigationLevel ', () => {
         defaultOpenLevel: 2,
         parentItem,
       },
+      mocks: {
+        $router: {},
+        $route: {
+          path: '',
+        },
+      },
     });
 
     expect(wrapper.isVueInstance()).toBe(true);
@@ -30,6 +36,12 @@ describe('NavigationLevel ', () => {
           level: 2,
           defaultOpenLevel: 2,
           parentItem,
+        },
+        mocks: {
+          $router: {},
+          $route: {
+            path: '',
+          },
         },
       });
 
@@ -46,6 +58,12 @@ describe('NavigationLevel ', () => {
           level: 2,
           defaultOpenLevel: 1,
           parentItem,
+        },
+        mocks: {
+          $router: {},
+          $route: {
+            path: '',
+          },
         },
       });
 
@@ -84,6 +102,12 @@ describe('NavigationLevel ', () => {
           level: 2,
           defaultOpenLevel: 3,
           parentItem,
+        },
+        mocks: {
+          $router: {},
+          $route: {
+            path: '',
+          },
         },
       });
     });
