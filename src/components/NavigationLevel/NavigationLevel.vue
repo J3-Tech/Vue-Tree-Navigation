@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import { getRelativeUrl, startsWithUrl } from '../utils';
-
 import NavigationToggle from '../NavigationToggle/NavigationToggle.vue';
 import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
@@ -65,14 +63,16 @@ export default {
         return true;
       }
 
-      const currentUrl = getRelativeUrl(
-        window.location.href,
-        window.location.origin
-      );
+      let currentUrl;
+      if (this.$router !== undefined) {
+        currentUrl = this.$route.path + this.$route.hash;
+      } else {
+        currentUrl = window.location.pathname + window.location.hash;
+      }
 
       if (
         this.parentItem.meta.target !== '' &&
-        startsWithUrl(currentUrl, this.parentItem.meta.target) === true
+        currentUrl.includes(this.parentItem.meta.target)
       ) {
         return true;
       }
@@ -82,7 +82,7 @@ export default {
 
         if (
           child.meta.target !== '' &&
-          startsWithUrl(currentUrl, child.meta.target) === true
+          currentUrl.includes(child.meta.target)
         ) {
           return true;
         }
