@@ -53,16 +53,12 @@ exports[`TreeNavigation level containing a child with an URL being part of a cur
           <div class="NavigationLevel__parent"><span class="NavigationToggle NavigationToggle--closed"><span class="NavigationToggle__icon NavigationToggle__icon--closed"></span></span> <span class="NavigationItem"><span class="NavigationItem__label">About</span>
             <!---->
             <!---->
-            <!---->
-            </span>
-          </div>
+            <!----></span></div>
           <ul class="NavigationLevel__children">
             <li><span class="NavigationItem"><span class="NavigationItem__label">Company</span>
               <!---->
               <!---->
-              <!---->
-              </span>
-            </li>
+              <!----></span></li>
             <li><span class="NavigationItem"><!----> <a href="#/#contact" class="NavigationItem__router-link">Contact</a> <!----> <!----></span></li>
             <li><span class="NavigationItem"><!----> <a href="#/#blog" class="NavigationItem__router-link">Blog</a> <!----> <!----></span></li>
           </ul>

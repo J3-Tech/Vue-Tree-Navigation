@@ -4,8 +4,7 @@ exports[`NavigationItem  for a label item renders a span containing the item nam
 <span class="NavigationItem"><span class="NavigationItem__label">Contact</span>
 <!---->
 <!---->
-<!---->
-</span>
+<!----></span>
 `;
 
 exports[`NavigationItem  for an external item renders a hyperlink with a correct value, location and blank target 1`] = `<span class="NavigationItem"><!----> <!----> <!----> <a href="http://github.com" target="_blank" class="NavigationItem__external-link">Github</a></span>`;
