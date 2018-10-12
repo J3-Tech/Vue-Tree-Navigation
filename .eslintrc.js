@@ -6,9 +6,10 @@ module.exports = {
     node: true,
     es6: true,
     jest: true,
+    'cypress/globals': true,
   },
   extends: ['standard', 'prettier'],
-  plugins: ['html'],
+  plugins: ['html', 'cypress'],
   globals: {
     context: true,
     jsdom: true,

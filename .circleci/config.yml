@@ -9,8 +9,8 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
 
       - run: yarn install
 
@@ -22,3 +22,4 @@ jobs:
       - run: yarn prettier-list
       - run: yarn lint
       - run: yarn unit-ci
+      - run: yarn e2e
