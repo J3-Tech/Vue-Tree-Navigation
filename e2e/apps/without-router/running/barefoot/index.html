@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue-tree-navigation</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="../../vue-tree-navigation.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <vue-tree-navigation :items="items" :default-open-level="2"></vue-tree-navigation>
+  </div>
+
+  <script>
+    Vue.use(VueTreeNavigation)
+    var app = new Vue({
+      el: '#app',
+      data: {
+        items: [
+          {
+            name: 'Home',
+            route: '/'
+          },
+          {
+            name: 'Products',
+            element: 'products',
+            children: [
+              {
+                name: 'Running',
+                route: 'running',
+                children: [
+                  {
+                    name: 'Shoes',
+                    element: 'shoes',
+                    children: [
+                      {
+                        name: 'Barefoot',
+                        route: 'barefoot'
+                      },
+                      {
+                        name: 'Minimal',
+                        element: 'minimal'
+                      },
+                    ],
+                  }
+                ]
+              },
+              {
+                name: 'Yoga',
+                route: 'yoga',
+                children: [
+                  {
+                    name: 'Mats',
+                    route: 'mats'
+                  },
+                  {
+                    name: 'Clothing',
+                    external: 'https://www.yogarebel.com',
+                    children: [
+                      {
+                        name: 'Tops',
+                        route: 'tops'
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: 'About',
+            route: 'about',
+            children: [
+              {
+                name: 'Company',
+                element: 'company'
+              },
+              {
+                name: 'Career',
+                route: 'career',
+                children: [
+                  {
+                    name: 'Design',
+                    route: 'design'
+                  },
+                  {
+                    name: 'Development',
+                    element: 'development'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: 'Github',
+            external: 'https://github.com'
+          },
+          {
+            name: 'Press',
+            element: '#press'
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>
