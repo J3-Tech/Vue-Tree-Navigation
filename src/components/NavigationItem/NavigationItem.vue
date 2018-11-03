@@ -43,12 +43,20 @@ export default {
       }
 
       if (this.$route) {
-        return (this.$route.path + this.$route.hash).endsWith(
-          this.item.meta.target
+        return (
+          (this.$route.path + this.$route.hash).endsWith(
+            this.item.meta.target
+          ) ||
+          (this.$route.path + this.$route.hash).endsWith(
+            this.item.meta.target + '/'
+          )
         );
       }
 
-      return window.location.href.endsWith(this.item.meta.target);
+      return (
+        window.location.href.endsWith(this.item.meta.target) ||
+        window.location.href.endsWith(this.item.meta.target + '/')
+      );
     },
   },
   computed: {
