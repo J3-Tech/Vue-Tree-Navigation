@@ -6,20 +6,37 @@ const TreeNavigation = {
   props: {
     items: {
       type: Array,
-      required: true,
+      required: false,
+      default: () => [],
     },
     defaultOpenLevel: {
       type: Number,
       default: 0,
     },
   },
-
   computed: {
-    navItemsWithMetadata() {
-      const self = this;
+    navItems() {
+      if (this.items && this.items.length) {
+        return this.items;
+      }
 
-      const items = JSON.parse(JSON.stringify(self.items));
-      return insertMetadataToNavItems(items);
+      if (
+        this.$router &&
+        this.$router.options &&
+        this.$router.options.routes &&
+        this.$router.options.routes.length
+      ) {
+        return this.$router.options.routes;
+      }
+
+      console.warn(
+        "[VueTreeNavigation]: Haven't you forget to provide items or define vue-router routes?"
+      );
+      return [];
+    },
+    navItemsWithMetadata() {
+      const navItems = JSON.parse(JSON.stringify(this.navItems));
+      return insertMetadataToNavItems(navItems);
     },
   },
 

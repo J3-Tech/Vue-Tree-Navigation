@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue-tree-navigation</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+  <script src="./vue-tree-navigation.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <vue-tree-navigation :default-open-level="1"></vue-tree-navigation>
+
+    <hr>
+
+    <router-view></router-view>
+  </div>
+
+  <script>
+    Vue.use(VueRouter)
+    Vue.use(VueTreeNavigation)
+
+    const routes = [
+      {
+        name: 'Home',
+        path: '/'
+      },
+      {
+        name: 'Running',
+        path: '/running',
+        children: [
+          {
+            name: 'Barefoot',
+            path: 'barefoot'
+          }
+        ]
+      },
+      {
+        name: 'Yoga',
+        path: '/yoga',
+        children: [{
+          name: 'Mats',
+          path: 'mats'
+        }, {
+          name: 'Tops',
+          path: 'tops'
+        }]
+      },
+      {
+        name: 'About',
+        path: '/about',
+        children: [
+          {
+            name: 'Career',
+            path: 'career',
+            children: [
+              {
+                name: 'Design',
+                path: 'design'
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    const router = new VueRouter({
+      routes
+    })
+
+    var app = new Vue({
+      el: '#app',
+      router: router
+    })
+  </script>
+</body>
+
+</html>

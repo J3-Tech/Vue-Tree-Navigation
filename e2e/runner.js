@@ -1,6 +1,6 @@
 const shell = require('shelljs');
 
-const tests = ['with-router', 'without-router'];
+const tests = ['with-router', 'without-router', 'auto-generated'];
 
 const runTest = test => {
   shell.cp(`./dist/vue-tree-navigation.js`, `./e2e/apps/${test}`);
