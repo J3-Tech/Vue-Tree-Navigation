@@ -55,12 +55,12 @@ export const generateLevel = (
  * Recursive function.
  * Insert metadata containing the navigation path and its type to each item.
  **/
-export const insertMetadataToItems = (items, parent) => {
+export const insertMetadataToNavItems = (items, parent) => {
   items.forEach(item => {
     item.meta = getItemMetadata(item, parent);
 
     if (item.hasOwnProperty('children')) {
-      item.children = insertMetadataToItems(item.children, item);
+      item.children = insertMetadataToNavItems(item.children, item);
     }
   });
 

@@ -1,4 +1,4 @@
-import { insertMetadataToItems, generateLevel } from './core';
+import { insertMetadataToNavItems, generateLevel } from './core';
 
 import './TreeNavigation.scss';
 
@@ -15,11 +15,11 @@ const TreeNavigation = {
   },
 
   computed: {
-    itemsWithMetadata() {
+    navItemsWithMetadata() {
       const self = this;
 
       const items = JSON.parse(JSON.stringify(self.items));
-      return insertMetadataToItems(items);
+      return insertMetadataToNavItems(items);
     },
   },
 
@@ -31,7 +31,7 @@ const TreeNavigation = {
       'ul',
       generateLevel(
         createElement,
-        self.itemsWithMetadata,
+        self.navItemsWithMetadata,
         level,
         self.defaultOpenLevel
       )
