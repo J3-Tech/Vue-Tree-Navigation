@@ -1,6 +1,6 @@
 import each from 'jest-each';
 
-import { sanitizeElement, sanitizeRoute } from './utils';
+import { sanitizeElement, sanitizePath } from './utils';
 
 describe('utils', () => {
   describe('sanitizeElement', () => {
@@ -14,15 +14,15 @@ describe('utils', () => {
     });
   });
 
-  describe('sanitizeRoute', () => {
+  describe('sanitizePath', () => {
     each([
       [undefined, undefined],
       ['', ''],
-      ['/route', '/route'],
-      ['/route', 'route'],
-      ['/route', 'route/'],
-    ]).it('returns %s for path %s', (expected, route) => {
-      expect(sanitizeRoute(route)).toBe(expected);
+      ['/path', '/path'],
+      ['/path', 'path'],
+      ['/path', 'path/'],
+    ]).it('returns %s for path %s', (expected, path) => {
+      expect(sanitizePath(path)).toBe(expected);
     });
   });
 });

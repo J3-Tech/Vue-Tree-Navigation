@@ -17,18 +17,18 @@ export const sanitizeElement = element => {
  * First character should be backslash.
  * Last character shouldn't be backslash.
  */
-export const sanitizeRoute = route => {
-  if (route === undefined) {
+export const sanitizePath = path => {
+  if (path === undefined) {
     return;
   }
 
-  if (route[0] !== '/') {
-    route = '/' + route;
+  if (path[0] !== '/') {
+    path = '/' + path;
   }
 
-  if (route[route.length - 1] === '/') {
-    route = route.slice(0, -1);
+  if (path[path.length - 1] === '/') {
+    path = path.slice(0, -1);
   }
 
-  return route;
+  return path;
 };

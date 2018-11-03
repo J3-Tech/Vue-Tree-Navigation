@@ -62,7 +62,7 @@ export default {
   computed: {
     showLabel() {
       return (
-        this.item.route === undefined &&
+        this.item.path === undefined &&
         this.item.element === undefined &&
         this.item.external === undefined
       );
@@ -77,7 +77,7 @@ export default {
       return this.item.external !== undefined;
     },
     showLink() {
-      return this.item.route !== undefined || this.item.element !== undefined;
+      return this.item.path !== undefined || this.item.element !== undefined;
     },
     classes() {
       return {

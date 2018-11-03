@@ -27,10 +27,10 @@ For more information see [documentation/demo](https://vue-tree-navigation.misrob
       return {
         items: [
           { name: 'Products', children: [                       // category label
-            { name: 'Shoes', route: 'shoes' }                   // /shoes
+            { name: 'Shoes', path: 'shoes' }                   // /shoes
           ]},
-          { name: 'About', route: 'about', children: [          // /about
-            { name: 'Contact', route: 'contact', children: [    // /about/contact
+          { name: 'About', path: 'about', children: [          // /about
+            { name: 'Contact', path: 'contact', children: [    // /about/contact
               { name: 'E-mail', element: 'email' },             // /about/contact#email
               { name: 'Phone', element: 'phone' }               // /about/contact#phone
             ]},
