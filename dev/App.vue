@@ -23,14 +23,14 @@ export default {
   data() {
     return {
       items: [
-        { name: 'Home', route: 'home' },
+        { name: 'Home', path: 'home' },
         {
           name: 'Products',
-          route: 'products',
+          path: 'products',
           children: [
             {
               name: 'Running shoes',
-              route: 'shoes',
+              path: 'shoes',
               children: [
                 { name: 'Race', element: 'race' },
                 { name: 'Road', element: 'road' },
@@ -39,12 +39,12 @@ export default {
             },
             {
               name: 'Running clothing',
-              route: 'clothing',
+              path: 'clothing',
               children: [
-                { name: 'Jackets', route: 'jackets' },
+                { name: 'Jackets', path: 'jackets' },
                 {
                   name: 'Tops',
-                  route: 'tops',
+                  path: 'tops',
                   children: [
                     {
                       name: 'Long Sleeve',

@@ -1,7 +1,7 @@
 import NavigationLevel from '../NavigationLevel/NavigationLevel.vue';
 import NavigationItem from '../NavigationItem/NavigationItem.vue';
 
-import { sanitizeElement, sanitizeRoute } from '../utils';
+import { sanitizeElement, sanitizePath } from '../utils';
 
 /**
  * Recursive function.
@@ -72,16 +72,12 @@ export const insertMetadataToItems = (items, parent) => {
  */
 export const getItemMetadata = (item, parent) => {
   const element = sanitizeElement(item.element);
-  const route = sanitizeRoute(item.route);
+  const path = sanitizePath(item.path);
   const external = item.external;
 
   // item is its own parent
   if (parent === undefined) {
-    if (
-      element === undefined &&
-      route === undefined &&
-      external === undefined
-    ) {
+    if (element === undefined && path === undefined && external === undefined) {
       return {
         path: '',
         target: '',
@@ -95,10 +91,10 @@ export const getItemMetadata = (item, parent) => {
       };
     }
 
-    if (route !== undefined) {
+    if (path !== undefined) {
       return {
-        path: route,
-        target: route,
+        path: path,
+        target: path,
       };
     }
 
@@ -110,7 +106,7 @@ export const getItemMetadata = (item, parent) => {
     }
   }
 
-  const parentPath = sanitizeRoute(parent.meta.path);
+  const parentPath = sanitizePath(parent.meta.path);
 
   if (external !== undefined) {
     return {
@@ -119,17 +115,17 @@ export const getItemMetadata = (item, parent) => {
     };
   }
 
-  if (route !== undefined) {
+  if (path !== undefined) {
     return {
-      path: parentPath + route,
-      target: parentPath + route,
+      path: parentPath + path,
+      target: parentPath + path,
     };
   }
 
   if (element !== undefined) {
     return {
       path: parentPath,
-      target: sanitizeRoute(parentPath + element),
+      target: sanitizePath(parentPath + element),
     };
   }
 

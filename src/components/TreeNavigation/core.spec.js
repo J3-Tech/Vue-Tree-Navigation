@@ -34,15 +34,15 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with a route item', () => {
+        context('with a path item', () => {
           it('returns a correct metadata', () => {
             const item = {
-              route: 'route',
+              path: 'path',
             };
 
             const expected = {
-              path: '/route',
-              target: '/route',
+              path: '/path',
+              target: '/path',
             };
 
             expect(getItemMetadata(item)).toEqual(expected);
@@ -110,7 +110,7 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with a route item', () => {
+        context('with a path item', () => {
           it('returns a correct metadata', () => {
             const parent = {
               meta: {
@@ -120,12 +120,12 @@ describe('TreeNavigation', () => {
             };
 
             const item = {
-              route: 'route',
+              path: 'path',
             };
 
             const expected = {
-              path: '/home/route',
-              target: '/home/route',
+              path: '/home/path',
+              target: '/home/path',
             };
 
             expect(getItemMetadata(item, parent)).toEqual(expected);
