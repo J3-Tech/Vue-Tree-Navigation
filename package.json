@@ -19,6 +19,11 @@
     "dist"
   ],
   "main": "dist/vue-tree-navigation.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run unit"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/MisRob/vue-tree-navigation.git"
@@ -35,13 +40,15 @@
     "e2e": "node ./e2e/runner.js"
   },
   "dependencies": {
+    "husky": "^8.0.3",
     "vue": "^2.5.17"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "@vue/test-utils": "^1.0.0-beta.25",
-    "babel-core": "~6.26.3",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^28.1.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
