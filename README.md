@@ -1,19 +1,5 @@
 # vue-tree-navigation [![Version](https://img.shields.io/npm/v/vue-tree-navigation.svg)](https://www.npmjs.com/package/vue-tree-navigation) [![License](https://img.shields.io/npm/l/vue-tree-navigation.svg)](https://www.npmjs.com/package/vue-tree-navigation)
 
-- - - -
-:rotating_light: :rotating_light: A new maintainer needed :rotating_light: :rotating_light:
-
-Hello friends,
-
-I haven't had enough time to maintain this project for a long time for various personal reasons and because I've been focusing on an open-source project that is very close to my heart https://learningequality.org/.
-
-There is still a lot of space for growth, and it would be lovely if the library got the care it deserves. That's why I've decided to find a new maintainer. If you are interested, please reach me at robosovam@gmail.com and I am happy to transfer the library.
-
-Thank you
-
-Michaela
-- - - -
-
 > Vue.js 2 tree navigation with vue-router support
 
 For more detailed information see [documentation/demo](https://misrob.github.io/vue-tree-navigation)
