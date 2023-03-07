@@ -65,8 +65,9 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true,
-    overlay: true,
+    static: {
+      directory: path.join(__dirname, 'dev'),
+    },
   },
   performance: {
     hints: false,
