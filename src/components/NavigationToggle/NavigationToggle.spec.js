@@ -6,7 +6,7 @@ describe('NavigationToggle ', () => {
   it('isVueInstance', () => {
     const wrapper = mount(NavigationToggle);
 
-    expect(wrapper.isVueInstance()).toBe(true);
+    expect(wrapper.exists()).toBe(true);
   });
 
   context('when closed', () => {
