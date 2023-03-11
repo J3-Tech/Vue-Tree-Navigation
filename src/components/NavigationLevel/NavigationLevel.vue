@@ -1,7 +1,5 @@
 <template>
-  <div 
-    class="NavigationLevel"
-    :class="classes">
+  <div class="NavigationLevel" :class="classes">
     <div class="NavigationLevel__parent">
       <NavigationToggle
         :open="isOpen"
@@ -102,5 +100,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './NavigationLevel.scss';
+  @import './NavigationLevel.scss';
 </style>

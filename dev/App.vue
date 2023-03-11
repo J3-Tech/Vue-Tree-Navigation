@@ -1,11 +1,9 @@
 <template>
   <div id="app">
     <vue-tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" />
-
     <hr>
     <h2>Router View</h2>
     <router-view></router-view>
-    
     <hr>
     <h2>About (this section is not part of router view)</h2>
     <ul>

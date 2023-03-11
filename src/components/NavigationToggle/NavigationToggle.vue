@@ -21,5 +21,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './NavigationToggle.scss';
+  @import './NavigationToggle.scss';
 </style>
