@@ -10,8 +10,16 @@ module.exports = {
     publicPath: '/dev/dist/',
     filename: 'build.js',
   },
+  devtool: "source-map",
+  // resolve: {
+  //   // Add '.ts' and '.tsx' as resolvable extensions.
+  //   extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+  // },
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.js$/, loader: "source-map-loader" },
+
       {
         test: /\.css$/,
         use: ['vue-style-loader', 'css-loader'],
@@ -42,11 +50,11 @@ module.exports = {
           // other vue-loader options go here
         },
       },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-      },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'babel-loader',
+      //   exclude: /node_modules/,
+      // },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
@@ -61,7 +69,8 @@ module.exports = {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
     },
-    extensions: ['*', '.js', '.vue', '.json'],
+    extensions: ['*', '.js', '.vue', '.json', "", ".webpack.js", ".web.js", ".ts", ".tsx"],
+
   },
   devServer: {
     historyApiFallback: true,
