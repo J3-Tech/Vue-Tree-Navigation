@@ -24,6 +24,10 @@
       "pre-commit": "npm run lint && npm run unit"
     }
   },
+  "engines": {
+    "npm": ">=7.10.0 <=9.5.0",
+    "node": ">=16.13.0 <=19.7.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/MisRob/vue-tree-navigation.git"
