@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
+import {expect, describe} from '@jest/globals';
 
-import NavigationToggle from './NavigationToggle';
+import NavigationToggle from './NavigationToggle.vue';
 
 
 describe('NavigationToggle ', () => {
