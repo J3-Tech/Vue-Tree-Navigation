@@ -2,7 +2,7 @@
 
 > Vue.js 2 tree navigation with vue-router support
 
-For more detailed information see [documentation/demo](https://misrob.github.io/vue-tree-navigation)
+For more detailed information see [documentation/demo](https://vue-tree-navigation.misrob.cz)
 
 ## Features
 
@@ -136,7 +136,7 @@ will generate
 - Github       // --> https://github.com
 ```
 
-For more examples see [documentation/demo](https://misrob.github.io/vue-tree-navigation)
+For more examples see [documentation/demo](https://vue-tree-navigation.misrob.cz)
 
 ## Installation
 
