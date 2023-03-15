@@ -11,7 +11,7 @@ describe('NavigationToggle ', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  context('when closed', () => {
+  describe('when closed', () => {
     it('is assigned closed class', () => {
       const wrapper = mount(NavigationToggle, {
         propsData: {
@@ -23,7 +23,7 @@ describe('NavigationToggle ', () => {
     });
   });
 
-  context('when opened', () => {
+  describe('when opened', () => {
     it('is not assigned closed class', () => {
       const wrapper = mount(NavigationToggle, {
         propsData: {

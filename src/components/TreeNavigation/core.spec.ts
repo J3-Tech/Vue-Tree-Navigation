@@ -3,8 +3,8 @@ import { getItemMetadata } from './core';
 describe('TreeNavigation', () => {
   describe('core', () => {
     describe('getItemMetadata', () => {
-      context('without a parent', () => {
-        context('with a label item', () => {
+      describe('without a parent', () => {
+        describe('with a label item', () => {
           it('returns a correct metadata', () => {
             const item = {
               name: 'item',
@@ -19,7 +19,7 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with an external item', () => {
+        describe('with an external item', () => {
           it('returns a correct metadata', () => {
             const item = {
               external: 'https://github.com',
@@ -34,7 +34,7 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with a path item', () => {
+        describe('with a path item', () => {
           it('returns a correct metadata', () => {
             const item = {
               path: 'path',
@@ -49,7 +49,7 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with an element item', () => {
+        describe('with an element item', () => {
           it('returns a correct metadata', () => {
             const item = {
               element: 'element',
@@ -65,8 +65,8 @@ describe('TreeNavigation', () => {
         });
       });
 
-      context('with a parent', () => {
-        context('with a label item', () => {
+      describe('with a parent', () => {
+        describe('with a label item', () => {
           it('returns correct metadata', () => {
             const parent = {
               meta: {
@@ -88,7 +88,7 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with an external item', () => {
+        describe('with an external item', () => {
           it('returns a correct metadata', () => {
             const parent = {
               meta: {
@@ -110,7 +110,7 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with a path item', () => {
+        describe('with a path item', () => {
           it('returns a correct metadata', () => {
             const parent = {
               meta: {
@@ -132,7 +132,7 @@ describe('TreeNavigation', () => {
           });
         });
 
-        context('with an element item', () => {
+        describe('with an element item', () => {
           it('returns a correct metadata', () => {
             const parent = {
               meta: {
