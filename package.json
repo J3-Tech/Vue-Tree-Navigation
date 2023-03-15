@@ -34,7 +34,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot='true'",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "cross-env NODE_ENV=production webpack --progress",
     "lint:js": "eslint --ext .js,.vue .",
     "lint:ts": "ts-standard",
     "lint:ts:fix": "ts-standard --fix",
