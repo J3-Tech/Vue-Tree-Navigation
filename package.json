@@ -42,7 +42,7 @@
     "lint": "yarn lint:ts & yarn lint:scss",
     "prettier-list": "prettier --list-different '**/*.{js,vue}' --ignore-path .eslintignore",
     "prettier": "prettier --write '**/*.{js,vue}' --ignore-path .eslintignore",
-    "unit": "jest --coverage src/",
+    "test": "jest --coverage src/",
     "e2e": "node ./e2e/runner.js"
   },
   "dependencies": {
