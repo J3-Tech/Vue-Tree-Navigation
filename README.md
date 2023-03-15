@@ -1,8 +1,8 @@
-# vue-tree-navigation [![Version](https://img.shields.io/npm/v/vue-tree-navigation.svg)](https://www.npmjs.com/package/vue-tree-navigation) [![License](https://img.shields.io/npm/l/vue-tree-navigation.svg)](https://www.npmjs.com/package/vue-tree-navigation)
+# vue-tree-navigation [![Version](https://img.shields.io/npm/v/vue-tree-navigation.svg)](https://www.npmjs.com/package/vue-tree-navigation) [![Coverage Status](https://coveralls.io/repos/github/J3-Tech/vue-tree-navigation/badge.svg?branch=master)](https://coveralls.io/github/J3-Tech/vue-tree-navigation?branch=master) [![License](https://img.shields.io/npm/l/vue-tree-navigation.svg)](https://www.npmjs.com/package/vue-tree-navigation)
 
 > Vue.js 2 tree navigation with vue-router support
 
-For more detailed information see [documentation/demo](https://vue-tree-navigation.misrob.cz)
+For more detailed information see [documentation/demo](https://vue-tree-navigation.j3-tech.com)
 
 ## Features
 
@@ -136,7 +136,7 @@ will generate
 - Github       // --> https://github.com
 ```
 
-For more examples see [documentation/demo](https://vue-tree-navigation.misrob.cz)
+For more examples see [documentation/demo](https://vue-tree-navigation.j3-tech.com)
 
 ## Installation
 
