@@ -1,23 +1,19 @@
 <template>
-  <div class="NavigationLevel" :class="classes">
-    <div class="NavigationLevel__parent">
-      <NavigationToggle
-        :open="isOpen"
-        @click.native="onToggleClick" />
-      <NavigationItem
-        :item="parentItem"
-        @click.native="onItemClick" />
+  <div class="navigation-level" :class="classes">
+    <div class="navigation-level__parent">
+      <NavigationToggle :open="isOpen" @click.native="onToggleClick" />
+      <NavigationItem :item="parentItem" @click.native="onItemClick" />
     </div>
 
-    <ul class="NavigationLevel__children">
+    <ul class="navigation-level__children">
       <slot></slot>
     </ul>
   </div>
 </template>
 
 <script>
-import NavigationToggle from '../NavigationToggle/NavigationToggle.vue';
-import NavigationItem from '../NavigationItem/NavigationItem.vue';
+import NavigationToggle from "../NavigationToggle/NavigationToggle.vue";
+import NavigationItem from "../NavigationItem/NavigationItem.vue";
 
 export default {
   data() {
@@ -42,8 +38,8 @@ export default {
   computed: {
     classes() {
       return {
-        'NavigationLevel--closed': !this.isOpen,
-        [`NavigationLevel--level-${this.level}`]: true,
+        "navigation-level--closed": !this.isOpen,
+        [`navigation-level--level-${this.level}`]: true,
       };
     },
   },
@@ -69,7 +65,7 @@ export default {
       }
 
       if (
-        this.parentItem.meta.target !== '' &&
+        this.parentItem.meta.target !== "" &&
         currentUrl.includes(this.parentItem.meta.target)
       ) {
         return true;
@@ -78,10 +74,7 @@ export default {
       for (let i = 0; i < this.parentItem.children.length; i++) {
         let child = this.parentItem.children[i];
 
-        if (
-          child.meta.target !== '' &&
-          currentUrl.includes(child.meta.target)
-        ) {
+        if (child.meta.target !== "" && currentUrl.includes(child.meta.target)) {
           return true;
         }
       }
@@ -100,5 +93,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './NavigationLevel.scss';
+@import "./NavigationLevel.scss";
 </style>

@@ -1,27 +1,25 @@
 <template>
-  <span
-    class="NavigationItem"
-    :class="classes">
-
-    <span
-      v-if="showLabel"
-      class="NavigationItem__label">{{ item.name }}</span>
+  <span class="navigation-item" :class="classes">
+    <span v-if="showLabel" class="navigation-item__label">{{ item.name }}</span>
 
     <router-link
       v-if="showRouterLink"
       :to="item.meta.target"
-      class="NavigationItem__router-link">{{ item.name }}</router-link>
+      class="navigation-item__router-link"
+      >{{ item.name }}</router-link
+    >
 
-    <a
-      v-if="showHyperLink"
-      :href="item.meta.target"
-      class="NavigationItem__link">{{ item.name }}</a>
+    <a v-if="showHyperLink" :href="item.meta.target" class="navigation-item__link">{{
+      item.name
+    }}</a>
 
     <a
       v-if="showExternalHyperLink"
       :href="item.meta.target"
       target="_blank"
-      class="NavigationItem__external-link">{{ item.name }}</a>
+      class="navigation-item__external-link"
+      >{{ item.name }}</a
+    >
   </span>
 </template>
 
@@ -38,24 +36,20 @@ export default {
   },
   methods: {
     isActive() {
-      if (this.item.meta.target === '') {
+      if (this.item.meta.target === "") {
         return false;
       }
 
       if (this.$route) {
         return (
-          (this.$route.path + this.$route.hash).endsWith(
-            this.item.meta.target
-          ) ||
-          (this.$route.path + this.$route.hash).endsWith(
-            this.item.meta.target + '/'
-          )
+          (this.$route.path + this.$route.hash).endsWith(this.item.meta.target) ||
+          (this.$route.path + this.$route.hash).endsWith(this.item.meta.target + "/")
         );
       }
 
       return (
         window.location.href.endsWith(this.item.meta.target) ||
-        window.location.href.endsWith(this.item.meta.target + '/')
+        window.location.href.endsWith(this.item.meta.target + "/")
       );
     },
   },
@@ -81,7 +75,7 @@ export default {
     },
     classes() {
       return {
-        'NavigationItem--active': this.active,
+        "navigation-item--active": this.active,
       };
     },
   },
@@ -97,7 +91,7 @@ export default {
     this.active = this.isActive();
 
     if (!this.$router) {
-      window.addEventListener('hashchange', () => {
+      window.addEventListener("hashchange", () => {
         this.active = this.isActive();
       });
     }
@@ -106,5 +100,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './NavigationItem.scss';
+@import "./NavigationItem.scss";
 </style>

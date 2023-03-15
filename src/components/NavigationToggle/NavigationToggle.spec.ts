@@ -19,7 +19,7 @@ describe('NavigationToggle ', () => {
         },
       });
 
-      expect(wrapper.classes()).toContain('NavigationToggle--closed');
+      expect(wrapper.classes()).toContain('navigation-toggle--closed');
     });
   });
 
@@ -31,7 +31,7 @@ describe('NavigationToggle ', () => {
         },
       });
 
-      expect(wrapper.classes()).not.toContain('NavigationToggle--closed');
+      expect(wrapper.classes()).not.toContain('navigation-toggle--closed');
     });
   });
 });

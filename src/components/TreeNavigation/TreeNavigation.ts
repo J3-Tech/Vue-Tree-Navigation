@@ -57,7 +57,7 @@ const TreeNavigation = {
     const level0 = createElement(
       'div',
       {
-        class: ['NavigationLevel', 'NavigationLevel--level-0'],
+        class: ['navigation-level', 'navigation-level--level-0'],
       },
       [tree]
     );
@@ -65,7 +65,7 @@ const TreeNavigation = {
     const treeNavigation = createElement(
       'div',
       {
-        class: 'TreeNavigation',
+        class: 'tree-navigation',
       },
       [level0]
     );
