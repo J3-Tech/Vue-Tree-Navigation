@@ -1,17 +1,17 @@
 /**
  * First character should be #.
  */
-export const sanitizeElement = element => {
+export const sanitizeElement = (element?: String) => {
   if (element === undefined || element === '') {
-    return element;
+    return element
   }
 
   if (element[0] !== '#') {
-    element = '#' + element;
+    element = '#' + element
   }
 
-  return element;
-};
+  return element
+}
 
 /**
  * First character should be backslash.
@@ -19,16 +19,16 @@ export const sanitizeElement = element => {
  */
 export const sanitizePath = path => {
   if (path === undefined) {
-    return;
+    return
   }
 
   if (path[0] !== '/') {
-    path = '/' + path;
+    path = '/' + path
   }
 
   if (path[path.length - 1] === '/') {
-    path = path.slice(0, -1);
+    path = path.slice(0, -1)
   }
 
-  return path;
-};
+  return path
+}

@@ -1,23 +1,23 @@
-import { insertMetadataToNavItems, generateLevel } from './core';
+import { insertMetadataToNavItems, generateLevel } from './core'
 
-import './TreeNavigation.scss';
+import './TreeNavigation.scss'
 
 const TreeNavigation = {
   props: {
     items: {
       type: Array,
       required: false,
-      default: () => [],
+      default: () => []
     },
     defaultOpenLevel: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   computed: {
-    navItems() {
+    navItems () {
       if (this.items && this.items.length) {
-        return this.items;
+        return this.items
       }
 
       if (
@@ -26,24 +26,24 @@ const TreeNavigation = {
         this.$router.options.routes &&
         this.$router.options.routes.length
       ) {
-        return this.$router.options.routes;
+        return this.$router.options.routes
       }
 
       console.warn(
         "[VueTreeNavigation]: Haven't you forget to provide items or define vue-router routes?"
-      );
-      return [];
+      )
+      return []
     },
-    navItemsWithMetadata() {
-      const navItems = JSON.parse(JSON.stringify(this.navItems));
-      return insertMetadataToNavItems(navItems);
-    },
+    navItemsWithMetadata () {
+      const navItems = JSON.parse(JSON.stringify(this.navItems))
+      return insertMetadataToNavItems(navItems)
+    }
   },
 
-  render(createElement) {
-    const self = this;
+  render (createElement) {
+    const self = this
 
-    const level = 1;
+    const level = 1
     const tree = createElement(
       'ul',
       generateLevel(
@@ -52,26 +52,26 @@ const TreeNavigation = {
         level,
         self.defaultOpenLevel
       )
-    );
+    )
 
     const level0 = createElement(
       'div',
       {
-        class: ['navigation-level', 'navigation-level--level-0'],
+        class: ['navigation-level', 'navigation-level--level-0']
       },
       [tree]
-    );
+    )
 
     const treeNavigation = createElement(
       'div',
       {
-        class: 'tree-navigation',
+        class: 'tree-navigation'
       },
       [level0]
-    );
+    )
 
-    return treeNavigation;
-  },
-};
+    return treeNavigation
+  }
+}
 
-export default TreeNavigation;
+export default TreeNavigation

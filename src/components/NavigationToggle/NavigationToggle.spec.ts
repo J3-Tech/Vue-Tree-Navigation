@@ -1,37 +1,36 @@
-import { mount } from '@vue/test-utils';
-import {expect, describe} from '@jest/globals';
+import { mount } from '@vue/test-utils'
+import { expect, describe } from '@jest/globals'
 
-import NavigationToggle from './NavigationToggle.vue';
-
+import NavigationToggle from './NavigationToggle.vue'
 
 describe('NavigationToggle ', () => {
   it('isVueInstance', () => {
-    const wrapper = mount(NavigationToggle);
+    const wrapper = mount(NavigationToggle)
 
-    expect(wrapper.exists()).toBe(true);
-  });
+    expect(wrapper.exists()).toBe(true)
+  })
 
   describe('when closed', () => {
     it('is assigned closed class', () => {
       const wrapper = mount(NavigationToggle, {
         propsData: {
-          open: false,
-        },
-      });
+          open: false
+        }
+      })
 
-      expect(wrapper.classes()).toContain('navigation-toggle--closed');
-    });
-  });
+      expect(wrapper.classes()).toContain('navigation-toggle--closed')
+    })
+  })
 
   describe('when opened', () => {
     it('is not assigned closed class', () => {
       const wrapper = mount(NavigationToggle, {
         propsData: {
-          open: true,
-        },
-      });
+          open: true
+        }
+      })
 
-      expect(wrapper.classes()).not.toContain('navigation-toggle--closed');
-    });
-  });
-});
+      expect(wrapper.classes()).not.toContain('navigation-toggle--closed')
+    })
+  })
+})

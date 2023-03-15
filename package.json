@@ -36,8 +36,10 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot='true'",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "lint:js": "eslint --ext .js,.vue .",
+    "lint:ts": "ts-standard",
+    "lint:ts:fix": "ts-standard --fix",
     "lint:scss": "stylelint './**/*.scss'",
-    "lint": "yarn lint:js & yarn lint:scss",
+    "lint": "yarn lint:ts & yarn lint:scss",
     "prettier-list": "prettier --list-different '**/*.{js,vue}' --ignore-path .eslintignore",
     "prettier": "prettier --write '**/*.{js,vue}' --ignore-path .eslintignore",
     "unit": "jest --coverage src/",
@@ -51,7 +53,9 @@
     "@babel/core": "^7.21.3",
     "@babel/eslint-parser": "~7.19.1",
     "@babel/preset-env": "^7.20.2",
+    "@tsconfig/recommended": "^1.0.2",
     "@types/jest": "^29.4.2",
+    "@types/jest-each": "^24.3.0",
     "@vue/test-utils": "^1.0.0-beta.25",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.3.0",
@@ -89,6 +93,7 @@
     "stylelint-scss": "~4.4.0",
     "ts-jest": "^26.5.6",
     "ts-loader": "^9.4.2",
+    "ts-standard": "^12.0.2",
     "typescript": "^4.9.5",
     "vue-jest": "~4.0.1",
     "vue-loader": "~15.9.7",
@@ -97,6 +102,13 @@
     "webpack": "^5.76.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.12.0"
+  },
+  "ts-standard": {
+    "project": "./tsconfig.json",
+    "ignore": [
+      "dist",
+      "*.js"
+    ]
   },
   "jest": {
     "moduleFileExtensions": [

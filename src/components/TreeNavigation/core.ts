@@ -1,7 +1,7 @@
-import NavigationLevel from '../NavigationLevel/NavigationLevel.vue';
-import NavigationItem from '../NavigationItem/NavigationItem.vue';
+import NavigationLevel from '../NavigationLevel/NavigationLevel.vue'
+import NavigationItem from '../NavigationItem/NavigationItem.vue'
 
-import { sanitizeElement, sanitizePath } from '../utils';
+import { sanitizeElement, sanitizePath } from '../utils'
 
 /**
  * Recursive function.
@@ -13,7 +13,7 @@ export const generateLevel = (
   level,
   defaultOpenLevel
 ) => {
-  const children = [];
+  const children = []
 
   items.forEach(item => {
     if (item.hasOwnProperty('children')) {
@@ -23,8 +23,8 @@ export const generateLevel = (
           props: {
             parentItem: item,
             level,
-            defaultOpenLevel,
-          },
+            defaultOpenLevel
+          }
         },
         [
           ...generateLevel(
@@ -32,24 +32,24 @@ export const generateLevel = (
             item.children,
             level + 1,
             defaultOpenLevel
-          ),
+          )
         ]
-      );
+      )
 
-      children.push(createElement('li', [navLevel]));
+      children.push(createElement('li', [navLevel]))
     } else {
       const navItem = createElement(NavigationItem, {
         props: {
-          item,
-        },
-      });
+          item
+        }
+      })
 
-      children.push(createElement('li', [navItem]));
+      children.push(createElement('li', [navItem]))
     }
-  });
+  })
 
-  return children;
-};
+  return children
+}
 
 /**
  * Recursive function.
@@ -57,80 +57,80 @@ export const generateLevel = (
  **/
 export const insertMetadataToNavItems = (items, parent?) => {
   items.forEach(item => {
-    item.meta = getItemMetadata(item, parent);
+    item.meta = getItemMetadata(item, parent)
 
     if (item.hasOwnProperty('children')) {
-      item.children = insertMetadataToNavItems(item.children, item);
+      item.children = insertMetadataToNavItems(item.children, item)
     }
-  });
+  })
 
-  return items;
-};
+  return items
+}
 
 /**
  * Return item metadata object: { path: ..., target: ... }
  */
 export const getItemMetadata = (item, parent?) => {
-  const element = sanitizeElement(item.element);
-  const path = sanitizePath(item.path);
-  const external = item.external;
+  const element = sanitizeElement(item.element)
+  const path = sanitizePath(item.path)
+  const external = item.external
 
   // item is its own parent
   if (parent === undefined) {
     if (element === undefined && path === undefined && external === undefined) {
       return {
         path: '',
-        target: '',
-      };
+        target: ''
+      }
     }
 
     if (external !== undefined) {
       return {
         path: '',
-        target: external,
-      };
+        target: external
+      }
     }
 
     if (path !== undefined) {
       return {
-        path: path,
-        target: path,
-      };
+        path,
+        target: path
+      }
     }
 
     if (element !== undefined) {
       return {
         path: '',
-        target: '/' + element,
-      };
+        target: '/' + element
+      }
     }
   }
 
-  const parentPath = sanitizePath(parent.meta.path);
+  const parentPath = sanitizePath(parent.meta.path)
 
   if (external !== undefined) {
     return {
       path: parentPath,
-      target: external,
-    };
+      target: external
+    }
   }
 
   if (path !== undefined) {
     return {
       path: parentPath + path,
-      target: parentPath + path,
-    };
+      target: parentPath + path
+    }
   }
 
   if (element !== undefined) {
     return {
       path: parentPath,
-      target: sanitizePath(parentPath + element),
-    };
+      target: sanitizePath(parentPath + element)
+    }
   }
 
   return {
     path: parentPath,
-    target: '',
-  };
-};
+    target: ''
+  }
+}
