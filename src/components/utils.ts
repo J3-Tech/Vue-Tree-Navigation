@@ -17,7 +17,7 @@ export const sanitizeElement = (element?: String) => {
  * First character should be backslash.
  * Last character shouldn't be backslash.
  */
-export const sanitizePath = path => {
+export const sanitizePath = (path?: string): string | undefined => {
   if (path === undefined) {
     return
   }

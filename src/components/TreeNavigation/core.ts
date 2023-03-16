@@ -3,6 +3,16 @@ import NavigationItem from '../NavigationItem/NavigationItem.vue'
 
 import { sanitizeElement, sanitizePath } from '../utils'
 
+export interface ItemMetaData {
+  name?: string
+  element?: string
+  path?: string
+  external?: string
+  target?: string
+  meta?: ItemMetaData
+  children?: ItemMetaData[]
+}
+
 /**
  * Recursive function.
  * One call generates one level of the tree.
@@ -55,11 +65,11 @@ export const generateLevel = (
  * Recursive function.
  * Insert metadata containing the navigation path and its type to each item.
  **/
-export const insertMetadataToNavItems = (items, parent?) => {
+export const insertMetadataToNavItems = (items: ItemMetaData[], parent?: ItemMetaData): ItemMetaData[] => {
   items.forEach(item => {
     item.meta = getItemMetadata(item, parent)
 
-    if (item.hasOwnProperty('children')) {
+    if (item.children) {
       item.children = insertMetadataToNavItems(item.children, item)
     }
   })
@@ -70,7 +80,7 @@ export const insertMetadataToNavItems = (items, parent?) => {
 /**
  * Return item metadata object: { path: ..., target: ... }
  */
-export const getItemMetadata = (item, parent?) => {
+export const getItemMetadata = (item: ItemMetaData, parent?: ItemMetaData): ItemMetaData => {
   const element = sanitizeElement(item.element)
   const path = sanitizePath(item.path)
   const external = item.external
@@ -106,7 +116,7 @@ export const getItemMetadata = (item, parent?) => {
     }
   }
 
-  const parentPath = sanitizePath(parent.meta.path)
+  const parentPath = sanitizePath(parent?.meta?.path)
 
   if (external !== undefined) {
     return {
@@ -122,7 +132,7 @@ export const getItemMetadata = (item, parent?) => {
     }
   }
 
-  if (element !== undefined) {
+  if (element !== undefined && parentPath !== undefined) {
     return {
       path: parentPath,
       target: sanitizePath(parentPath + element)
