@@ -63,7 +63,10 @@ export default {
           ],
         },
         { name: "Styling", path: "styling" },
-        { name: "Visit Github", path: "visit-github" },
+        {
+          name: "Visit Github",
+          external: "https://github.com/J3-Tech/vue-tree-navigation",
+        },
       ],
       defaultOpenLevel: 2,
     };
