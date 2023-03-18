@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
+import routes from './routes'
 
 Vue.use(VueRouter);
 
-const Home = { template: '<div><h1>Home</h1></div>' };
+const Features = { template: '<div><h1>Home</h1></div>' };
 const Jackets = { template: '<div><h1>Jackets</h1></div>' };
 const Products = { template: '<div><h1>Products</h1></div>' };
 
@@ -43,34 +44,7 @@ const Tops = {
   </div>`,
 };
 
-const routes = [
-  {
-    path: '/home',
-    component: Home,
-  },
-  {
-    path: '/products',
-    component: Products,
-  },
-  {
-    path: '/products/shoes',
-    component: Shoes,
-  },
-  {
-    path: '/products/clothing',
-    component: Clothing,
-    children: [
-      {
-        path: 'jackets',
-        component: Jackets,
-      },
-      {
-        path: 'tops',
-        component: Tops,
-      },
-    ],
-  },
-];
+
 
 const router = new VueRouter({
   scrollBehavior(to) {

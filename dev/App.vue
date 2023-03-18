@@ -1,59 +1,52 @@
 <template>
   <div id="app">
-    <vue-tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" />
-    <hr>
-    <h2>Router View</h2>
-    <router-view></router-view>
-    <hr>
-    <h2>About (this section is not part of router view)</h2>
-    <ul>
-      <li id="company">Company</li>
-      <li id="contact">Contact</li>
-      <li id="blog">Blog</li>
-    </ul>
+    <div class="container">
+      <span id="hamburger"><i class="fas fa-2x fa-bars"></i></span>
+      <nav>
+        <vue-tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" />
+      </nav>
+      <main>
+        <a
+          id="github"
+          href="https://github.com/J3-Tech/vue-tree-navigation"
+          target="_blank"
+          ><i class="fab fa-2x fa-github"></i
+        ></a>
+        <router-view></router-view>
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
-import TreeNavigation from '../src/components/TreeNavigation/TreeNavigation';
+import TreeNavigation from "../src/components/TreeNavigation/TreeNavigation";
 
 export default {
   data() {
     return {
       items: [
-        { name: 'Home', path: 'home' },
         {
-          name: 'Products',
-          path: 'products',
+          name: "Introduction",
+          path: "/introduction",
+          children: [
+            { name: "Features", element: "features" },
+            { name: "Requirements", element: "requirements" },
+            { name: "Demo", element: "demo" },
+          ],
+        },
+        {
+          name: "Installation",
+          path: "/installation",
           children: [
             {
-              name: 'Running shoes',
-              path: 'shoes',
+              name: "Usage",
+              path: "/usage",
               children: [
-                { name: 'Race', element: 'race' },
-                { name: 'Road', element: 'road' },
-                { name: 'Trail', element: 'trail' },
-              ],
-            },
-            {
-              name: 'Running clothing',
-              path: 'clothing',
-              children: [
-                { name: 'Jackets', path: 'jackets' },
                 {
-                  name: 'Tops',
-                  path: 'tops',
+                  name: "Props",
                   children: [
-                    {
-                      name: 'Long Sleeve',
-                      element: 'long-sleeve',
-                      children: [
-                        { name: 'For summer', element: 'summer' },
-                        { name: 'For winter', element: 'winter' },
-                      ],
-                    },
-                    { name: 'Short Sleeve', element: 'short-sleeve' },
-                    { name: 'Sleeveless', element: 'sleeveless' },
+                    { name: "items", element: "items" },
+                    { name: "defaultOpenLevel", element: "defaultOpenLevel" },
                   ],
                 },
               ],
@@ -61,24 +54,30 @@ export default {
           ],
         },
         {
-          name: 'About',
+          name: "Examples",
+          path: "/examples",
           children: [
-            { name: 'Company', element: 'company' },
-            { name: 'Contact', element: 'contact' },
-            { name: 'Blog', element: 'blog' },
-            { name: 'Github', external: 'https://github.com' },
+            { name: "Auto-generated", path: "/auto" },
+            { name: "Manually defined", path: "/manually-defined" },
+            { name: "This website", path: "/this-website" },
           ],
         },
+        { name: "Styling", path: "styling" },
+        { name: "Visit Github", path: "visit-github" },
       ],
       defaultOpenLevel: 2,
     };
   },
   components: {
-    'vue-tree-navigation': TreeNavigation,
+    "vue-tree-navigation": TreeNavigation,
   },
 };
+
+// window.addEventListener("popstate", () => {
+//   app.currentRoute = window.location.pathname;
+// });
 </script>
 
 <style lang="scss">
-@import './App.scss';
+@import "./App.scss";
 </style>
