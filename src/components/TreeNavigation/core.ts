@@ -2,6 +2,7 @@ import NavigationLevel from '../NavigationLevel/NavigationLevel.vue'
 import NavigationItem from '../NavigationItem/NavigationItem.vue'
 
 import { sanitizeElement, sanitizePath } from '../utils'
+import { VNode } from 'vue'
 
 export interface ItemMetaData {
   name?: string
@@ -18,12 +19,12 @@ export interface ItemMetaData {
  * One call generates one level of the tree.
  */
 export const generateLevel = (
-  createElement,
-  items,
-  level,
-  defaultOpenLevel
-) => {
-  const children = []
+  createElement: (el: String | Object | Function, prop: Object, children: VNode[]) => VNode,
+  items: ItemMetaData[],
+  level: number,
+  defaultOpenLevel: number
+): VNode[] => {
+  const children: VNode[] = []
 
   items.forEach(item => {
     if (item.hasOwnProperty('children')) {
@@ -46,15 +47,15 @@ export const generateLevel = (
         ]
       )
 
-      children.push(createElement('li', [navLevel]))
+      children.push(createElement('li', {}, [navLevel]))
     } else {
       const navItem = createElement(NavigationItem, {
         props: {
           item
         }
-      })
+      }, [])
 
-      children.push(createElement('li', [navItem]))
+      children.push(createElement('li', {}, [navItem]))
     }
   })
 
