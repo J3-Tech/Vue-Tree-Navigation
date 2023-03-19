@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "husky": "^8.0.3",
-    "vue": "^2.5.17"
+    "vue": "^2.7.14"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
