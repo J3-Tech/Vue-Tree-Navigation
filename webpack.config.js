@@ -70,7 +70,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     static: {
-      directory: path.join(__dirname, 'docs'),
+      directory: path.join(__dirname, 'dev'),
     },
   },
   performance: {
