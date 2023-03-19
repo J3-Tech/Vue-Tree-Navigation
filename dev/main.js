@@ -48,8 +48,12 @@ const Tops = {
 
 const router = new VueRouter({
   scrollBehavior(to) {
-    if (to.hash) {
-      return { selector: to.hash };
+    const isHash = to.hash ? to.hash.split('#') : undefined
+    if (to.hash && isHash) {
+      let tmp = setTimeout(() => {
+        document.getElementById(isHash[1]).scrollIntoView()
+        clearTimeout(tmp)
+      })
     }
 
     return { x: 0, y: 0 };

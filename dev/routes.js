@@ -38,8 +38,3 @@ export default [
      ],
     },
 ];
-
-// export default {
-//     '/': 'Home',
-//     '/features': 'Features'
-// }
