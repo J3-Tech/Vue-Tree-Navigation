@@ -27,7 +27,7 @@ export default {
       items: [
         {
           name: "Introduction",
-          path: "/introduction",
+          path: "/",
           children: [
             { name: "Features", element: "features" },
             { name: "Requirements", element: "requirements" },
