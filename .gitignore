@@ -5,3 +5,4 @@ coverage/
 cypress/
 
 e2e/**/vue-tree-navigation.js
+docs/build.js

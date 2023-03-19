@@ -35,6 +35,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot='true' --watch-files src",
     "build": "cross-env NODE_ENV=production webpack --progress",
+    "build:docs": "cross-env NODE_ENV=production TYPE=docs webpack --progress",
     "lint:js": "eslint --ext .js,.vue .",
     "lint:ts": "ts-standard",
     "lint:ts:fix": "ts-standard --fix",

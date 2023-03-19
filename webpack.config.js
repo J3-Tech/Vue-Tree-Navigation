@@ -70,7 +70,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     static: {
-      directory: path.join(__dirname, 'dev'),
+      directory: path.join(__dirname, 'docs'),
     },
   },
   performance: {
@@ -80,13 +80,21 @@ module.exports = {
 };
 
 if (process.env.NODE_ENV === 'production') {
+  let entry = './src/index.js'
+  let filename = 'vue-tree-navigation.js'
+  let outputPath = './dist'
+  if (process.env.TYPE == 'docs') {
+    entry = './dev/main.js'
+    filename = 'build.js'
+    outputPath = './docs'
+  }
   module.exports.mode = 'production';
 
-  module.exports.entry = './src/index.js';
+  module.exports.entry = entry;
 
   module.exports.output = {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'vue-tree-navigation.js',
+    path: path.resolve(__dirname, outputPath),
+    filename: filename,
     library: 'VueTreeNavigation',
     libraryTarget: 'umd',
   };
