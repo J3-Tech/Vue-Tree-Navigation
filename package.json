@@ -136,5 +136,8 @@
       "!src/plugin.js"
     ],
     "testEnvironment": "jest-environment-jsdom"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
