@@ -1,5 +1,9 @@
 name: Build Vue
-on: [push]
+
+on:
+  push:
+    branches: [ "master" ]
+
 jobs:
   build_vue:
     runs-on: ubuntu-latest
