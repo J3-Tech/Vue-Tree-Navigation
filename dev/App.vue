@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" :class="open ? 'navOpen' : ''">
     <div class="container">
-      <span id="hamburger"><i class="fas fa-2x fa-bars"></i></span>
+      <button id="hamburger" class="button button-clear" v-on:click="open = !open">
+        <i class="fas fa-2x fa-bars"></i>
+      </button>
       <nav>
         <vue-tree-navigation :items="items" :defaultOpenLevel="defaultOpenLevel" />
       </nav>
@@ -24,6 +26,7 @@ import TreeNavigation from "../src/components/TreeNavigation/TreeNavigation";
 export default {
   data() {
     return {
+      open: false,
       items: [
         {
           name: "Introduction",
