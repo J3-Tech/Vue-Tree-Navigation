@@ -9,6 +9,7 @@ jobs:
     - id: Build-Vue
       uses: J3-Tech/VuePagesAction@0.0.1
       with:
+        cname: vue-tree-navigation.j3-tech.com
         username: 'J3-Tech'
         reponame: 'Vue-Tree-Navigation'
         token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
