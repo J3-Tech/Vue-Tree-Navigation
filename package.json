@@ -1,6 +1,6 @@
 {
   "name": "vue-tree-navigation",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Vue.js 2 tree navigation",
   "keywords": [
     "tree",
@@ -137,5 +137,8 @@
       "!src/plugin.js"
     ],
     "testEnvironment": "jest-environment-jsdom"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
