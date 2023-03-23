@@ -5,11 +5,9 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["gh-pages"]
-  workflow_run:
-    workflows: ["Build Vue"]
-    branches: ["gh-pages"]
-    types:
-      - completed
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
