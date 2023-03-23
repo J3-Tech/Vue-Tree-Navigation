@@ -188,7 +188,7 @@ _Example_
 
 ## Requirements
 
-- [Vue.js](https://vuejs.org/)
+- [Vue.js](https://v2.vuejs.org/)
 
 ## Developers
 
