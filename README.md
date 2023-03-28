@@ -4,7 +4,7 @@
 [![Build Vue](https://github.com/J3-Tech/Vue-Tree-Navigation/actions/workflows/deploy.yaml/badge.svg)](https://github.com/J3-Tech/Vue-Tree-Navigation/actions/workflows/deploy.yaml)
 [![codecov](https://codecov.io/gh/J3-Tech/Vue-Tree-Navigation/branch/master/graph/badge.svg?token=UMg49v76h5)](https://codecov.io/gh/J3-Tech/Vue-Tree-Navigation)
 
-> Vue.js 2 tree navigation with vue-router support
+> Vue.js tree navigation with vue-router support
 
 For more detailed information see [documentation/demo](https://vue-tree-navigation.j3-tech.com)
 
