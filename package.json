@@ -46,7 +46,8 @@
     "test": "vitest",
     "e2e": "node ./e2e/runner.js",
     "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "husky": "^8.0.3",
