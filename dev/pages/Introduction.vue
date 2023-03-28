@@ -31,7 +31,7 @@
     <section id="requirements">
       <h3>Requirements</h3>
       <ul>
-        <li><a href="https://vuejs.org/" target="_blank">Vue.js 2</a></li>
+        <li><a href="https://v2.vuejs.org/" target="_blank">Vue.js 2</a></li>
       </ul>
     </section>
     <section id="demo">

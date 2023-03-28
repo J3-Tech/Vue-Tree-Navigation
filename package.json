@@ -1,6 +1,6 @@
 {
   "name": "vue-tree-navigation",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Vue.js 2 tree navigation",
   "keywords": [
     "tree",
@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MisRob/vue-tree-navigation.git"
+    "url": "https://github.com/J3-Tech/Vue-Tree-Navigation.git"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot='true' --watch-files src",
     "build": "cross-env NODE_ENV=production webpack --progress",
-    "build:docs": "cross-env NODE_ENV=production TYPE=docs webpack --progress",
+    "build:docs": "cross-env NODE_ENV=production TYPE=docs webpack",
     "lint:js": "eslint --ext .js,.vue .",
     "lint:ts": "ts-standard",
     "lint:ts:fix": "ts-standard --fix",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
-    "@babel/eslint-parser": "~7.19.1",
+    "@babel/eslint-parser": "~7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@tsconfig/recommended": "^1.0.2",
     "@types/jest": "^29.4.2",
@@ -64,17 +64,17 @@
     "babel-loader": "^8.3.0",
     "babel-preset-stage-3": "^6.24.1",
     "concurrently": "^7.6.0",
-    "cross-env": "^5.2.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
     "cypress": "^12.8.0",
     "eslint": "^8.36.0",
-    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-cypress": "^2.0.1",
-    "eslint-plugin-html": "^4.0.6",
+    "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^4.0.0",
     "file-loader": "~6.2.0",
     "http-server": "~14.1.1",
@@ -83,16 +83,16 @@
     "jest-each": "~26.6.2",
     "jest-environment-jsdom": "~26.6.2",
     "jest-plugin-context": "^2.6.0",
-    "jest-serializer-vue": "^2.0.2",
+    "jest-serializer-vue": "^3.1.0",
     "prettier": "1.14.3",
     "sass": "^1.59.3",
     "sass-loader": "~13.2.0",
     "shelljs": "^0.8.2",
     "source-map-loader": "^4.0.1",
-    "stylelint": "~15.0.0",
+    "stylelint": "~15.3.0",
     "stylelint-config-recess-order": "~4.0.0",
     "stylelint-config-standard": "~30.0.0",
-    "stylelint-processor-html": "^1.0.0",
+    "stylelint-processor-arbitrary-tags": "^0.1.0",
     "stylelint-scss": "~4.4.0",
     "ts-jest": "^26.5.6",
     "ts-loader": "^9.4.2",
@@ -139,5 +139,8 @@
       "!src/plugin.js"
     ],
     "testEnvironment": "jest-environment-jsdom"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

@@ -1,4 +1,8 @@
-# vue-tree-navigation [![Version](https://img.shields.io/npm/v/vue-tree-navigation.svg)](https://www.npmjs.com/package/vue-tree-navigation) ![Node build](https://github.com/J3-Tech/vue-tree-navigation/actions/workflows/node.js.yml/badge.svg) ![CodeQL](https://github.com/J3-Tech/vue-tree-navigation/actions/workflows/codeql.yml/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/J3-Tech/vue-tree-navigation/badge.svg?branch=master)](https://coveralls.io/github/J3-Tech/vue-tree-navigation?branch=master)
+# vue-tree-navigation
+[![Version](https://img.shields.io/npm/v/vue-tree-navigation.svg)](https://www.npmjs.com/package/vue-tree-navigation)
+[![Node.js CI](https://github.com/J3-Tech/Vue-Tree-Navigation/actions/workflows/node.js.yml/badge.svg)](https://github.com/J3-Tech/Vue-Tree-Navigation/actions/workflows/node.js.yml)
+[![Build Vue](https://github.com/J3-Tech/Vue-Tree-Navigation/actions/workflows/deploy.yaml/badge.svg)](https://github.com/J3-Tech/Vue-Tree-Navigation/actions/workflows/deploy.yaml)
+[![codecov](https://codecov.io/gh/J3-Tech/Vue-Tree-Navigation/branch/master/graph/badge.svg?token=UMg49v76h5)](https://codecov.io/gh/J3-Tech/Vue-Tree-Navigation)
 
 > Vue.js 2 tree navigation with vue-router support
 
@@ -187,7 +191,7 @@ _Example_
 
 ## Requirements
 
-- [Vue.js](https://vuejs.org/)
+- [Vue.js](https://v2.vuejs.org/)
 
 ## Developers
 

@@ -58,7 +58,7 @@
               { <span class="hljs-attr">name</span>: <span class="hljs-string">"Styling"</span>, <span class="hljs-attr">path</span>: <span class="hljs-string">"styling"</span> },
               {
                 <span class="hljs-attr">name</span>: <span class="hljs-string">"Visit GitHub"</span>,
-                <span class="hljs-attr">external</span>: <span class="hljs-string">"https://github.com/MisRob/vue-tree-navigation"</span>
+                <span class="hljs-attr">external</span>: <span class="hljs-string">"https://github.com/J3-Tech/Vue-Tree-Navigation"</span>
               }
             ],
           };
