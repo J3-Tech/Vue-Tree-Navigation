@@ -5,25 +5,29 @@ import { sanitizeElement, sanitizePath } from './utils'
 
 describe('utils', () => {
   describe('sanitizeElement', () => {
-    each([
-      [undefined, undefined],
-      ['', ''],
-      ['#element', '#element'],
-      ['#element', 'element']
-    ]).it('returns %s for path %s', (expected, element) => {
-      expect(sanitizeElement(element)).toBe(expected)
+    [
+      {expected: undefined, element: undefined},
+      {expected: '', element:''},
+      {expected:'#element', element: '#element'},
+      {expected:'#element', element: 'element'}
+    ].forEach((item, i) => {
+      it('returns %s for path %s', () => {
+        expect(sanitizeElement(item.element)).toBe(item.expected)
+      })
     })
   })
 
   describe('sanitizePath', () => {
-    each([
-      [undefined, undefined],
-      ['', ''],
-      ['/path', '/path'],
-      ['/path', 'path'],
-      ['/path', 'path/']
-    ]).it('returns %s for path %s', (expected: string, path: string) => {
-      expect(sanitizePath(path)).toBe(expected)
+    [
+      {expected:undefined, path: undefined},
+      {expected:'', path: ''},
+      {expected:'/path', path: '/path'},
+      {expected:'/path', path: 'path'},
+      {expected:'/path', path: 'path/'}
+    ].forEach((item) => {
+      it('returns %s for path %s', () => {
+        expect(sanitizePath(item.path)).toBe(item.expected)
+      })
     })
   })
 })
