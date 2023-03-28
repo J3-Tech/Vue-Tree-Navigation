@@ -6,7 +6,9 @@ import Introduction from './pages/Introduction.vue';
 import Installation from './pages/Installation.vue';
 import Usage from './pages/Usage.vue';
 
-export default [
+import { createRouter, createWebHistory } from 'vue-router'
+
+const routes = [
     {
         path: '/',
         component: Introduction,
@@ -43,3 +45,10 @@ export default [
 //     '/': 'Home',
 //     '/features': 'Features'
 // }
+
+const router = createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: routes
+  })
+
+export default router

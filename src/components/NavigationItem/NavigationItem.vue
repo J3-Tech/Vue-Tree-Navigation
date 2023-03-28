@@ -1,6 +1,6 @@
 <template>
   <span class="navigation-item" :class="classes">
-    <span v-if="showLabel" class="navigation-item__label">{{ item.name }}</span>
+    <span v-if="showLabel" class="navigation-item__label">{{ item?.name }}</span>
 
     <router-link
       v-if="showRouterLink"
@@ -36,29 +36,29 @@ export default {
   },
   methods: {
     isActive() {
-      if (this.item.meta.target === "") {
+      if (this.item?.meta.target === "") {
         return false;
       }
 
-      if (this.$route) {
-        return (
-          (this.$route.path + this.$route.hash).endsWith(this.item.meta.target) ||
-          (this.$route.path + this.$route.hash).endsWith(this.item.meta.target + "/")
-        );
-      }
+      // if (this.$route) {
+      //   return (
+      //     (this.$route.path + this.$route.hash).endsWith(this.item.meta.target) ||
+      //     (this.$route.path + this.$route.hash).endsWith(this.item.meta.target + "/")
+      //   );
+      // }
 
       return (
-        window.location.href.endsWith(this.item.meta.target) ||
-        window.location.href.endsWith(this.item.meta.target + "/")
+        window.location.href.endsWith(this.item?.meta.target) ||
+        window.location.href.endsWith(this.item?.meta.target + "/")
       );
     },
   },
   computed: {
     showLabel() {
       return (
-        this.item.path === undefined &&
-        this.item.element === undefined &&
-        this.item.external === undefined
+        this.item?.path === undefined &&
+        this.item?.element === undefined &&
+        this.item?.external === undefined
       );
     },
     showRouterLink() {
@@ -68,10 +68,10 @@ export default {
       return this.showLink && this.$router === undefined;
     },
     showExternalHyperLink() {
-      return this.item.external !== undefined;
+      return this.item?.external !== undefined;
     },
     showLink() {
-      return this.item.path !== undefined || this.item.element !== undefined;
+      return this.item?.path !== undefined || this.item?.element !== undefined;
     },
     classes() {
       return {

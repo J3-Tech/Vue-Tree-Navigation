@@ -65,14 +65,14 @@ export default {
       }
 
       if (
-        this.parentItem.meta.target !== "" &&
-        currentUrl.includes(this.parentItem.meta.target)
+        this.parentItem?.meta.target !== "" &&
+        currentUrl.includes(this.parentItem?.meta.target)
       ) {
         return true;
       }
 
-      for (let i = 0; i < this.parentItem.children.length; i++) {
-        let child = this.parentItem.children[i];
+      for (let i = 0; i < this.parentItem?.children.length; i++) {
+        let child = this.parentItem?.children[i];
 
         if (child.meta.target !== "" && currentUrl.includes(child.meta.target)) {
           return true;

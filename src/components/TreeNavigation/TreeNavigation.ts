@@ -1,5 +1,5 @@
 import { insertMetadataToNavItems, generateLevel } from './core'
-
+import { h } from 'vue';
 import './TreeNavigation.scss'
 
 const TreeNavigation = {
@@ -40,21 +40,20 @@ const TreeNavigation = {
     }
   },
 
-  render (createElement) {
+  render () {
     const self = this
 
     const level = 1
-    const tree = createElement(
+    const tree = h(
       'ul',
       generateLevel(
-        createElement,
         self.navItemsWithMetadata,
         level,
         self.defaultOpenLevel
       )
     )
 
-    const level0 = createElement(
+    const level0 = h(
       'div',
       {
         class: ['navigation-level', 'navigation-level--level-0']
@@ -62,7 +61,7 @@ const TreeNavigation = {
       [tree]
     )
 
-    const treeNavigation = createElement(
+    const treeNavigation = h(
       'div',
       {
         class: 'tree-navigation'
