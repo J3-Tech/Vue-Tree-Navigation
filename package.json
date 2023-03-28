@@ -34,7 +34,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production webpack --progress",
+    "build": "run-p type-check build-only",
     "build:docs": "cross-env NODE_ENV=production TYPE=docs webpack",
     "lint:js": "eslint --ext .js,.vue .",
     "lint:ts": "ts-standard",
@@ -44,7 +44,9 @@
     "prettier-list": "prettier --list-different '**/*.{js,vue}' --ignore-path .eslintignore",
     "prettier": "prettier --write '**/*.{js,vue}' --ignore-path .eslintignore",
     "test": "jest --coverage src/",
-    "e2e": "node ./e2e/runner.js"
+    "e2e": "node ./e2e/runner.js",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
     "husky": "^8.0.3",

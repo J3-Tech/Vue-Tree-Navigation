@@ -1,4 +1,5 @@
 import each from 'jest-each'
+import { describe, it, expect } from 'vitest'
 
 import { sanitizeElement, sanitizePath } from './utils'
 

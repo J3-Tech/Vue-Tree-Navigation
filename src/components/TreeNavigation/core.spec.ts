@@ -1,4 +1,5 @@
 import { getItemMetadata } from './core'
+import { describe, it, expect } from 'vitest'
 
 describe('TreeNavigation', () => {
   describe('core', () => {

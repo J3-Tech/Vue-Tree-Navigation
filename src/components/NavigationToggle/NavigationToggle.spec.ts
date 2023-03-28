@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
-import { expect, describe } from '@jest/globals'
+//import { expect, describe } from '@jest/globals'
+import { describe, it, expect } from 'vitest'
 
 import NavigationToggle from './NavigationToggle.vue'
 
