@@ -31,11 +31,9 @@ export const generateLevel = (
       const navLevel = h(
         NavigationLevel as never,
         {
-          props: {
-            parentItem: item,
-            level,
-            defaultOpenLevel,
-          },
+          parentItem: item,
+          level,
+          defaultOpenLevel,
         },
         [...generateLevel(item.children, level + 1, defaultOpenLevel)]
       );
@@ -43,11 +41,9 @@ export const generateLevel = (
       children.push(h('li', {}, [navLevel]));
     } else {
       const navItem = h(
-        NavigationItem,
+        NavigationItem as never,
         {
-          props: {
-            item,
-          },
+          item: item,
         },
         []
       );
