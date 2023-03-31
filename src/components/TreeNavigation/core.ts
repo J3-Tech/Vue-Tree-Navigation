@@ -27,9 +27,9 @@ export const generateLevel = (
   const children: any[] = [];
 
   items?.forEach((item) => {
-    if (item.hasOwnProperty('children')) {
+    if (item.children) {
       const navLevel = h(
-        NavigationLevel,
+        NavigationLevel as never,
         {
           props: {
             parentItem: item,

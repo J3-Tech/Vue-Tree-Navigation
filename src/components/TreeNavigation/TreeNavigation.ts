@@ -15,18 +15,18 @@ const TreeNavigation = {
     },
   },
   computed: {
-    navItems(): any {
-      if (this.items && this.items.length) {
-        return this.items;
+    navItems(props: any): any {
+      if (props.items && props.items.length) {
+        return props.items;
       }
 
       if (
-        this.$router &&
-        this.$router.options &&
-        this.$router.options.routes &&
-        this.$router.options.routes.length
+        props.$router &&
+        props.$router.options &&
+        props.$router.options.routes &&
+        props.$router.options.routes.length
       ) {
-        return this.$router.options.routes;
+        return props.$router.options.routes;
       }
 
       console.warn(
@@ -40,13 +40,11 @@ const TreeNavigation = {
     },
   },
 
-  render(): any {
-    const self = this;
-
+  render(props: any): any {
     const level = 1;
     const tree: any = h(
       'ul',
-      generateLevel(self.navItemsWithMetadata, level, self.defaultOpenLevel)
+      generateLevel(props.navItemsWithMetadata, level, props.defaultOpenLevel)
     );
 
     const level0 = h(
