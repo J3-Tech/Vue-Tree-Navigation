@@ -35,7 +35,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
-    "build:docs": "cross-env NODE_ENV=production TYPE=docs webpack",
+    "build:docs": "run-p type-check build-only",
     "lint:ts": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "lint:scss": "stylelint './**/*.scss'",
     "lint": "npm run lint:ts & npm run lint:scss",
