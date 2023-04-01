@@ -57,7 +57,6 @@ export default {
   },
   computed: {
     showLabel() {
-      console.log(this.item);
       return (
         this.item?.path === undefined &&
         this.item?.element === undefined &&

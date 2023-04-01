@@ -1,11 +1,6 @@
-//import Vue from 'vue';
 import { createApp } from 'vue'
-
 import router from './routes';
-
-//import VueRouter from 'vue-router';
 import App from './App.vue';
-import routes from './routes'
 
 const app = createApp(App)
 
@@ -52,22 +47,3 @@ app.mount('#app')
 //   </div>`,
 // };
 
-
-
-// const router = new VueRouter({
-//   scrollBehavior(to) {
-//     if (to.hash) {
-//       return { selector: to.hash };
-//     }
-
-//     return { x: 0, y: 0 };
-//   },
-//   routes,
-// });
-
-// eslint-disable-next-line
-// new Vue({
-//   el: '#app',
-//   router,
-//   render: h => h(App),
-// });

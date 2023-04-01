@@ -49,7 +49,7 @@ export default {
                   name: "Props",
                   children: [
                     { name: "items", element: "items" },
-                    { name: "defaultOpenLevel", element: "defaultOpenLevel" },
+                    { name: "defaultOpenLevel", element: "default-open-level" },
                   ],
                 },
               ],
@@ -63,9 +63,9 @@ export default {
             { name: "Auto-generated", path: "/auto" },
             { name: "Manually defined", path: "/manually-defined" },
             { name: "This website", path: "/this-website" },
+            { name: "Styling", element: "styles" },
           ],
         },
-        { name: "Styling", path: "styling" },
         {
           name: "Visit Github",
           external: "https://github.com/J3-Tech/vue-tree-navigation",

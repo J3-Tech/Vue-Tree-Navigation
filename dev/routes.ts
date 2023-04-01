@@ -23,10 +23,10 @@ const routes = [
     },
     {
         path: '/examples',
-        component: ExamplesAuto,
+        component: ExamplesWebsite,
         children: [
         {
-            path: '/auto',
+            path: '/examples/auto',
             component: ExamplesAuto,
         },
         {
@@ -41,14 +41,18 @@ const routes = [
     },
 ];
 
-// export default {
-//     '/': 'Home',
-//     '/features': 'Features'
-// }
-
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes: routes
+    routes: routes,
+    scrollBehavior(to, from, savedPosition) {
+        if (to.hash) {
+            return {
+                el: to.hash,
+                behavior: 'smooth',
+                top: -10,
+            }
+        }
+      }
   })
 
 export default router
