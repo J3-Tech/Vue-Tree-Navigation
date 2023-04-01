@@ -35,7 +35,7 @@ export const generateLevel = (
           level,
           defaultOpenLevel,
         },
-        [...generateLevel(item.children, level + 1, defaultOpenLevel)]
+        () => [...generateLevel(item.children, level + 1, defaultOpenLevel)]
       );
 
       children.push(h('li', {}, [navLevel]));
@@ -45,7 +45,7 @@ export const generateLevel = (
         {
           item: item,
         },
-        []
+        () => []
       );
 
       children.push(h('li', {}, [navItem]));
