@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: Build-Vue
-      uses: J3-Tech/VuePagesAction@0.0.2
+      uses: J3-Tech/VuePagesAction@0.0.7
       with:
         cname: vue-tree-navigation.j3-tech.com
         username: 'J3-Tech'
