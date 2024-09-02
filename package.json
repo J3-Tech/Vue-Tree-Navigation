@@ -48,7 +48,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "husky": "^8.0.3",
+    "husky": "^9.1.5",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
